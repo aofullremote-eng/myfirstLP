@@ -95,6 +95,7 @@ a { text-decoration: none; color: inherit; }
   font-size: 1.9rem;
   color: var(--color-rose-deep);
   margin: 0 auto;
+  animation: medallionFloat 4.5s ease-in-out infinite;
 }
 
 .medallion--sm {
@@ -102,6 +103,21 @@ a { text-decoration: none; color: inherit; }
   height: 60px;
   font-size: 1.4rem;
   margin-bottom: 18px;
+}
+
+@keyframes medallionFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.empathy__card:nth-child(2n) .medallion,
+.feature:nth-child(2n) .medallion {
+  animation-delay: 0.4s;
+}
+
+.empathy__card:nth-child(3n) .medallion,
+.feature:nth-child(3n) .medallion {
+  animation-delay: 0.8s;
 }
 
 /* ===== ボタン ===== */
@@ -257,6 +273,109 @@ a { text-decoration: none; color: inherit; }
   flex-wrap: wrap;
 }
 
+/* ヒーロー登場アニメーション */
+.hero__inner > .eyebrow,
+.hero__cover,
+.hero__lead,
+.hero__actions {
+  opacity: 0;
+  animation: heroFadeUp 0.9s ease forwards;
+}
+
+.hero__inner > .eyebrow { animation-delay: 0.1s; }
+.hero__cover { animation-delay: 0.25s; }
+.hero__lead { animation-delay: 0.5s; }
+.hero__actions { animation-delay: 0.7s; }
+
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero__cover img {
+  animation: heroKenBurns 22s ease-in-out infinite alternate;
+  animation-delay: 1s;
+}
+
+@keyframes heroKenBurns {
+  from { transform: scale(1); }
+  to { transform: scale(1.07); }
+}
+
+.hero .btn--primary {
+  animation: ctaPulse 3.2s ease-in-out infinite;
+  animation-delay: 1.6s;
+}
+
+.hero .btn--primary:hover {
+  animation-play-state: paused;
+}
+
+@keyframes ctaPulse {
+  0%, 100% { box-shadow: var(--shadow-soft); }
+  50% { box-shadow: 0 22px 46px rgba(185, 141, 133, 0.35); }
+}
+
+/* ===== プロフィール ===== */
+.profile {
+  padding: 96px 0;
+}
+
+.profile__inner {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.profile__photo {
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+.profile__photo img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+
+.profile__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  font-weight: 500;
+  color: var(--color-ink);
+  margin-bottom: 18px;
+}
+
+.profile__name {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--color-ink);
+  margin-bottom: 10px;
+}
+
+.profile__name span {
+  font-size: 0.85rem;
+  color: var(--color-ink-light);
+  font-weight: 400;
+  margin-left: 6px;
+}
+
+.profile__bio {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--color-rose-deep);
+  margin-bottom: 16px;
+}
+
+.profile__note {
+  color: var(--color-ink-light);
+  font-size: 0.92rem;
+}
+
 /* ===== 共通セクション見出し ===== */
 .section__title {
   font-family: var(--font-display);
@@ -386,6 +505,53 @@ a { text-decoration: none; color: inherit; }
   font-size: 0.92rem;
 }
 
+/* ===== 料金カード ===== */
+.price-card {
+  max-width: 380px;
+  margin: 72px auto 0;
+  text-align: center;
+  background: var(--color-ivory);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  padding: 36px 30px;
+  box-shadow: var(--shadow-soft);
+}
+
+.price-card__label {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-weight: 600;
+  color: var(--color-rose-deep);
+  letter-spacing: 0.2em;
+  font-size: 0.85rem;
+  margin-bottom: 12px;
+}
+
+.price-card__amount {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--color-ink);
+  margin-bottom: 10px;
+}
+
+.price-card__amount span {
+  font-family: var(--font-accent);
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: var(--color-rose-deep);
+  margin: 0 2px;
+}
+
+.price-card__amount small {
+  font-size: 0.75rem;
+  color: var(--color-ink-light);
+}
+
+.price-card__note {
+  color: var(--color-ink-light);
+  font-size: 0.88rem;
+}
+
 /* ===== 作品例セクション ===== */
 .works {
   padding: 100px 0;
@@ -394,16 +560,14 @@ a { text-decoration: none; color: inherit; }
 .works__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
+  gap: 36px 28px;
 }
 
 .works__item {
   position: relative;
-  border: 1px solid var(--color-line);
-  border-radius: var(--radius-md);
+  border-radius: 6px;
   overflow: hidden;
   background: var(--color-ivory);
-  box-shadow: 0 14px 32px rgba(90, 78, 74, 0.1);
 }
 
 .works__item img {
@@ -413,13 +577,116 @@ a { text-decoration: none; color: inherit; }
   display: block;
 }
 
-.works__item figcaption {
-  text-align: center;
-  padding: 14px 10px;
+/* クリスタル(アクリルブロック)風: 厚みのあるフチ + ホバーで輝く */
+.works__item--crystal {
+  transform: rotate(var(--rot, 0deg)) translateY(var(--ty, 0px));
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  box-shadow:
+    7px 9px 0 0 rgba(205, 196, 190, 0.85),
+    0 3px 8px rgba(90, 78, 74, 0.1),
+    0 18px 34px rgba(90, 78, 74, 0.16);
+}
+
+.works__item--crystal::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  box-shadow:
+    inset 0 0 0 3px rgba(250, 247, 244, 0.9),
+    inset 0 -14px 18px -12px rgba(74, 69, 66, 0.25);
+  pointer-events: none;
+}
+
+.works__item--crystal::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    115deg,
+    rgba(255, 255, 255, 0) 42%,
+    rgba(255, 255, 255, 0.55) 50%,
+    rgba(255, 255, 255, 0) 58%
+  );
+  transform: translateX(-130%);
+  transition: transform 0.75s ease;
+  pointer-events: none;
+}
+
+.works__item--crystal:hover::after {
+  transform: translateX(130%);
+}
+
+.works__item--crystal:hover {
+  transform: rotate(var(--rot, 0deg)) translateY(calc(var(--ty, 0px) - 8px));
+  box-shadow:
+    7px 9px 0 0 rgba(205, 196, 190, 0.85),
+    0 6px 14px rgba(90, 78, 74, 0.14),
+    0 28px 46px rgba(90, 78, 74, 0.22);
+}
+
+/* ===== よくある質問セクション ===== */
+.faq {
+  padding: 100px 0;
+}
+
+.faq__list {
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.faq__item {
+  border-bottom: 1px solid var(--color-line);
+  padding-bottom: 28px;
+}
+
+.faq__q,
+.faq__a {
+  display: flex;
+  gap: 14px;
+}
+
+.faq__q {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.05rem;
+  color: var(--color-ink);
+  margin-bottom: 12px;
+}
+
+.faq__a {
+  color: var(--color-ink-light);
+  font-size: 0.95rem;
+}
+
+.faq__q span,
+.faq__a span {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: var(--font-accent);
   font-style: italic;
-  font-size: 0.92rem;
-  color: var(--color-ink-light);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.faq__q span {
+  background: var(--color-rose);
+  color: var(--color-ivory);
+}
+
+.faq__a span {
+  background: var(--color-ivory);
+  border: 1px solid var(--color-line);
+  color: var(--color-rose-deep);
 }
 
 /* ===== お問い合わせセクション ===== */
@@ -463,11 +730,64 @@ a { text-decoration: none; color: inherit; }
   font-family: var(--font-accent);
 }
 
+/* ===== スクロール登場演出 ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 作品ギャラリーは傾き(--rot/--ty)を保つため、フェードのみで登場させる */
+.reveal-fade {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.reveal-fade.is-visible {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__inner > .eyebrow,
+  .hero__cover,
+  .hero__lead,
+  .hero__actions,
+  .hero__cover img,
+  .hero .btn--primary,
+  .medallion {
+    animation: none !important;
+  }
+
+  .reveal,
+  .reveal-fade {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
 /* ===== レスポンシブ ===== */
 @media (max-width: 600px) {
   .only-mobile { display: inline; }
   .hero { padding: 40px 16px 60px; }
-  .empathy, .content { padding: 70px 0; }
+  .empathy, .content, .profile, .works, .faq { padding: 70px 0; }
   .contact { padding: 80px 0; }
   .hero__actions { gap: 18px; }
+
+  .profile__inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .profile__photo {
+    max-width: 220px;
+    margin: 0 auto;
+  }
+
+  .price-card { margin-top: 56px; }
 }

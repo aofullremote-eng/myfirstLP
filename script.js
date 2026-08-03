@@ -10,27 +10,43 @@ window.addEventListener("scroll", () => {
 });
 
 // セクションが画面に入ったら、ふわっと表示する
-const revealTargets = document.querySelectorAll(
-  ".empathy__card, .step, .feature"
-);
+// (アニメーション低減設定のユーザーには、動きを付けずそのまま表示する)
+const prefersReducedMotion = window.matchMedia(
+  "(prefers-reduced-motion: reduce)"
+).matches;
 
-revealTargets.forEach((el) => {
-  el.style.opacity = "0";
-  el.style.transform = "translateY(16px)";
-  el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-});
+if (!prefersReducedMotion) {
+  const revealTargets = document.querySelectorAll(
+    ".empathy__card, .step, .feature, .profile__inner, .price-card, .faq__item, .section__title, .section__lead, .divider, .empathy__bridge, .contact__inner"
+  );
+  // 作品ギャラリーは傾きを保つため、専用のフェード演出にする
+  const revealFadeTargets = document.querySelectorAll(".works__item");
 
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = "1";
-        entry.target.style.transform = "translateY(0)";
-        observer.unobserve(entry.target);
-      }
+  revealTargets.forEach((el) => el.classList.add("reveal"));
+  revealFadeTargets.forEach((el) => el.classList.add("reveal-fade"));
+
+  // グリッド内の要素は少しずつ遅れて表示する(カスケード演出)
+  const staggerGroups = document.querySelectorAll(
+    ".empathy__grid, .steps, .features, .works__grid, .faq__list"
+  );
+  staggerGroups.forEach((group) => {
+    Array.from(group.children).forEach((child, i) => {
+      child.style.transitionDelay = `${Math.min(i, 6) * 0.08}s`;
     });
-  },
-  { threshold: 0.15 }
-);
+  });
 
-revealTargets.forEach((el) => observer.observe(el));
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+
+  revealTargets.forEach((el) => observer.observe(el));
+  revealFadeTargets.forEach((el) => observer.observe(el));
+}
