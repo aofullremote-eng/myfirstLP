@@ -194,6 +194,116 @@ a { text-decoration: none; color: inherit; }
   color: var(--color-grey-deep);
 }
 
+/* ===== 導入フレームアニメーション ===== */
+#frameAnimation {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: var(--color-bg-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transition: opacity 1.3s;
+}
+
+#frameAnimation.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#framePlaceholder {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, var(--color-bg) 0%, var(--color-bg-deep) 45%, #d9cac5 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#framePlaceholder .pl-name {
+  font-family: var(--font-accent);
+  font-size: clamp(2.5rem, 12vw, 6rem);
+  font-weight: 500;
+  font-style: italic;
+  color: rgba(74, 69, 66, 0.18);
+  letter-spacing: 0.2em;
+}
+
+#frameImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+}
+
+#scrollHint {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  animation: hintBob 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+#scrollHint .hint-text {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  color: #fff;
+  font-weight: 500;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+#scrollHint .hint-arrow {
+  width: 1px;
+  height: 32px;
+  background: linear-gradient(rgba(255, 255, 255, 0.85), transparent);
+  animation: arrowDrop 1.8s ease-in-out infinite;
+}
+
+@keyframes hintBob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+@keyframes arrowDrop {
+  0% { opacity: 0; transform: scaleY(0); transform-origin: center top; }
+  40% { opacity: 1; transform: scaleY(1); transform-origin: center top; }
+  80% { opacity: 0; transform: scaleY(1); transform-origin: center top; }
+  100% { opacity: 0; }
+}
+
+/* 導入演出が終わるまでは、実寸法をスクロール可能領域に含めない
+   (ページが長くても、導入のスクロール量が本編の長さに引っ張られないようにするため) */
+#mainContent {
+  position: fixed;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s 0.3s;
+}
+
+#mainContent.visible {
+  position: static;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #scrollHint,
+  #scrollHint .hint-arrow {
+    animation: none !important;
+  }
+}
+
 /* ===== ヒーロー ===== */
 .hero {
   position: relative;
@@ -253,7 +363,8 @@ a { text-decoration: none; color: inherit; }
   box-shadow: var(--shadow-soft);
 }
 
-.hero__cover img {
+.hero__cover img,
+.hero__cover video {
   width: 100%;
   display: block;
 }

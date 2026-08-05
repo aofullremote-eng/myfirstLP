@@ -12,6 +12,22 @@
 </head>
 <body>
 
+<!-- 導入フレームアニメーション(スクロールで静止画がパラパラ切り替わる演出) -->
+<div id="frameAnimation">
+  <div id="framePlaceholder" style="display:none">
+    <div class="pl-name">言の葉AI</div>
+  </div>
+  <img id="frameImg" src="assets/hero/frames/frame_0001.jpg" alt="" style="display:none">
+  <div id="scrollHint">
+    <div class="hint-text">下にスクロール</div>
+    <div class="hint-arrow"></div>
+  </div>
+</div>
+
+<noscript><style>#frameAnimation{display:none!important}#mainContent{position:static!important;opacity:1!important}</style></noscript>
+
+<div id="mainContent">
+
 <header class="header" id="header">
   <div class="container header__inner">
     <a href="#top" class="logo">言の葉AI</a>
@@ -28,7 +44,12 @@
       <h1 class="sr-only">あなたの願う世界観を、思うままに。</h1>
 
       <figure class="hero__cover">
-        <img src="assets/hero/hero-cover.jpg" alt="レースの衣装をまとい、羽が舞う中で佇む女性。「あなたの願う世界観を、思うままに。」という手書き文字が添えられた作品例">
+        <video
+          autoplay muted loop playsinline
+          poster="assets/hero/hero-cover.jpg"
+          aria-label="レースの衣装をまとい、羽が舞う中で佇む女性。「あなたの願う世界観を、思うままに。」という手書き文字が添えられた作品例">
+          <source src="assets/hero/hero-loop.mp4" type="video/mp4">
+        </video>
       </figure>
 
       <p class="hero__lead">
@@ -219,6 +240,8 @@
     <p>© 2026 言の葉AI</p>
   </div>
 </footer>
+
+</div><!-- /#mainContent -->
 
 <script src="script.js"></script>
 </body>
