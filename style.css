@@ -236,6 +236,8 @@ a { text-decoration: none; color: inherit; }
   width: 100%;
   height: 100%;
   object-fit: cover;
+  /* 被写体の顔が画面上部にあるため、横長の画面でも顔が切れないよう上寄りにトリミングする */
+  object-position: 50% 25%;
   display: none;
 }
 
