@@ -187,11 +187,12 @@ a { text-decoration: none; color: inherit; }
 }
 
 .logo {
-  font-family: var(--font-display);
-  font-size: 1.4rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  color: var(--color-grey-deep);
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--color-rose-deep);
 }
 
 /* ===== 導入フレームアニメーション ===== */
