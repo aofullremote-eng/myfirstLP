@@ -1,6 +1,6 @@
 // ===== 導入フレームアニメーション =====
 // スクロール量に応じて静止画をパラパラ切り替え、最後にLP本体を表示する
-const TOTAL_FRAMES = 60;
+const TOTAL_FRAMES = 140;
 const FRAMES_DIR = "assets/hero/frames/";
 
 const prefersReducedMotion = window.matchMedia(
