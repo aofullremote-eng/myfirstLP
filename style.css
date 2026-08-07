@@ -629,12 +629,6 @@ a { text-decoration: none; color: inherit; }
   border-radius: var(--radius-md);
   padding: 36px 30px;
   box-shadow: var(--shadow-soft);
-}.price-card__amount--soon {
-  font-family: var(--font-accent);
-  font-style: italic;
-  font-size: 1.7rem;
-  font-weight: 600;
-  color: var(--color-rose-deep);
 }
 
 .price-card__label {
@@ -652,6 +646,14 @@ a { text-decoration: none; color: inherit; }
   font-size: 1.15rem;
   color: var(--color-ink);
   margin-bottom: 10px;
+}
+
+.price-card__amount--soon {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: var(--color-rose-deep);
 }
 
 .price-card__amount span {
