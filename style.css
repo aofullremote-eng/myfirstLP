@@ -629,6 +629,12 @@ a { text-decoration: none; color: inherit; }
   border-radius: var(--radius-md);
   padding: 36px 30px;
   box-shadow: var(--shadow-soft);
+}.price-card__amount--soon {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: var(--color-rose-deep);
 }
 
 .price-card__label {
