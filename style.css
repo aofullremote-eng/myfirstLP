@@ -852,6 +852,25 @@ a { text-decoration: none; color: inherit; }
   font-family: var(--font-accent);
 }
 
+.footer__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer__social {
+  font-style: italic;
+  font-weight: 600;
+  color: var(--color-rose-deep);
+  letter-spacing: 0.04em;
+  transition: opacity 0.2s ease;
+}
+
+.footer__social:hover {
+  opacity: 0.7;
+}
+
 /* ===== スクロール登場演出 ===== */
 .reveal {
   opacity: 0;
