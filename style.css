@@ -434,10 +434,26 @@ a { text-decoration: none; color: inherit; }
 
 /* ===== プロフィール ===== */
 .profile {
+  position: relative;
   padding: 96px 0;
+  overflow: hidden;
+}
+
+.profile__deco {
+  position: absolute;
+  top: -30px;
+  right: -20px;
+  width: 220px;
+  height: 220px;
+  color: #fff;
+  opacity: 0.55;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .profile__inner {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: 240px 1fr;
   gap: 48px;
