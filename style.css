@@ -950,15 +950,20 @@ a { text-decoration: none; color: inherit; }
 }
 
 .footer__social {
+  display: inline-block;
   font-style: italic;
   font-weight: 600;
   color: var(--color-rose-deep);
   letter-spacing: 0.04em;
-  transition: opacity 0.2s ease;
+  padding: 9px 26px;
+  border: 1.5px solid var(--color-rose-deep);
+  border-radius: 999px;
+  transition: opacity 0.2s ease, background 0.2s ease, color 0.2s ease;
 }
 
 .footer__social:hover {
-  opacity: 0.7;
+  background: var(--color-rose-deep);
+  color: var(--color-ivory);
 }
 
 /* ===== スクロール登場演出 ===== */
