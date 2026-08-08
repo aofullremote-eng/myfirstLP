@@ -229,7 +229,7 @@ a { text-decoration: none; color: inherit; }
   font-size: clamp(2.5rem, 12vw, 6rem);
   font-weight: 500;
   font-style: italic;
-  color: rgba(74, 69, 66, 0.18);
+  color: rgba(107, 88, 71, 0.18);
   letter-spacing: 0.2em;
 }
 
