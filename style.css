@@ -6,9 +6,11 @@
   --color-rose-deep: #9c716b;
   --color-grey-deep: #6f6a66;
   --color-ivory: #faf7f4;
-  --color-ink: #4a4542;
+  /* 黒に見えすぎない、やわらかいモカブラウン */
+  --color-ink: #6b5847;
   --color-ink-light: #8f8783;
   --color-line: #cdc2bc;
+  --color-greige: #ded2c4;
   --radius-lg: 6px;
   --radius-md: 4px;
   --shadow-soft: 0 18px 40px rgba(90, 78, 74, 0.12);
@@ -554,11 +556,30 @@ a { text-decoration: none; color: inherit; }
 }
 
 .empathy__card {
-  background: var(--color-ivory);
+  position: relative;
+  overflow: hidden;
+  background: var(--color-greige);
   border: 1px solid var(--color-line);
   border-radius: var(--radius-md);
   padding: 34px 24px;
   text-align: center;
+}
+
+.empathy__deco {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.empathy__card .medallion,
+.empathy__card p {
+  position: relative;
+  z-index: 1;
 }
 
 .empathy__card p {
@@ -706,7 +727,29 @@ a { text-decoration: none; color: inherit; }
 
 /* ===== 作品例セクション ===== */
 .works {
+  position: relative;
   padding: 100px 0;
+  overflow: hidden;
+}
+
+.section__deco {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section__deco--works {
+  bottom: -10px;
+  left: -30px;
+  width: 150px;
+  height: 150px;
+  color: var(--color-rose);
+  opacity: 0.3;
+}
+
+.works .container {
+  position: relative;
+  z-index: 1;
 }
 
 .works__grid {
@@ -843,12 +886,25 @@ a { text-decoration: none; color: inherit; }
 
 /* ===== お問い合わせセクション ===== */
 .contact {
+  position: relative;
   padding: 110px 0;
   background: linear-gradient(160deg, var(--color-rose-deep), var(--color-grey-deep));
   text-align: center;
+  overflow: hidden;
+}
+
+.section__deco--contact {
+  bottom: -20px;
+  right: -20px;
+  width: 170px;
+  height: 170px;
+  color: #fff;
+  opacity: 0.25;
 }
 
 .contact__inner {
+  position: relative;
+  z-index: 1;
   max-width: 620px;
 }
 
