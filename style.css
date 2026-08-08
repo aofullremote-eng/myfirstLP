@@ -38,6 +38,9 @@ body {
     var(--color-bg);
   line-height: 1.9;
   -webkit-font-smoothing: antialiased;
+  /* 日本語+外来語(カタカナ)の単語の途中で改行されないようにする */
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 img { max-width: 100%; display: block; }
