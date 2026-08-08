@@ -14,9 +14,9 @@
   --radius-lg: 6px;
   --radius-md: 4px;
   --shadow-soft: 0 18px 40px rgba(90, 78, 74, 0.12);
-  --font-display: "Zen Old Mincho", "Shippori Mincho", serif;
-  --font-body: "Shippori Mincho", serif;
-  --font-accent: "Cormorant Garamond", serif;
+  --font-display: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  --font-body: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  --font-accent: Georgia, "Times New Roman", serif;
 }
 
 * {
