@@ -374,7 +374,9 @@ a { text-decoration: none; color: inherit; }
 
 .hero__lead {
   font-size: 1rem;
-  color: var(--color-ink-light);
+  /* ヒーローの背景は他セクションより明るいグレーなので、
+     共通の --color-ink-light だと読みにくいためこの部分だけ少し濃くする */
+  color: #6c6662;
   max-width: 520px;
   margin: 0 auto 40px;
 }
