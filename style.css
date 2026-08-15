@@ -580,7 +580,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 .profile__belief {
-  color: var(--color-ink);
+  color: var(--color-ink-light);
   font-size: 0.95rem;
   margin-bottom: 16px;
 }
