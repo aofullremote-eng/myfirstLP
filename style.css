@@ -27,6 +27,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -41,6 +42,9 @@ body {
   /* 日本語+外来語(カタカナ)の単語の途中で改行されないようにする */
   word-break: keep-all;
   overflow-wrap: break-word;
+  /* 何らかの理由で子要素が幅をはみ出しても、横スクロールでレイアウトが
+     崩れて見えないようにする安全策 */
+  overflow-x: hidden;
 }
 
 img { max-width: 100%; display: block; }
@@ -522,6 +526,15 @@ a { text-decoration: none; color: inherit; }
   grid-template-columns: 240px 1fr;
   gap: 48px;
   align-items: center;
+  /* Safari のグリッドはアイテムの min-width が既定で auto のままだと
+     テキストの分量によって列が縮まずに右へはみ出すことがあるため、
+     明示的に 0 にして必ずコンテナ幅に収まるようにする */
+  min-width: 0;
+}
+
+.profile__photo,
+.profile__body {
+  min-width: 0;
 }
 
 .profile__photo {
