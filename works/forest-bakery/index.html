@@ -7,7 +7,7 @@
 <meta name="description" content="深い森の奥、くるみの木の下にある小さなパン屋さん「もりのこびとベーカリー」。木の実やはちみつを使った、素朴で優しいパンを焼いています。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -118,90 +118,8 @@
       <p class="eyebrow">FOREST BAKERY</p>
       <h1 class="hero__title">森の奥から、<br>焼きたての幸せを。</h1>
 
-      <figure class="hero__illust" aria-hidden="true">
-        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#eef2de"/>
-              <stop offset="100%" stop-color="#f7f4e6"/>
-            </linearGradient>
-          </defs>
-          <rect x="0" y="0" width="400" height="300" fill="url(#sky)"/>
-
-          <!-- 遠くの丘 -->
-          <path d="M0 220 C80 200, 160 210, 400 190 L400 300 L0 300 Z" fill="#bcd3a0"/>
-          <!-- 地面 -->
-          <path d="M0 245 C100 225, 300 235, 400 220 L400 300 L0 300 Z" fill="#9dbb7d"/>
-
-          <!-- 背景の木々 -->
-          <g stroke="#241f16" stroke-width="2.2" fill="#7fa361">
-            <ellipse cx="55" cy="185" rx="30" ry="34"/>
-            <rect x="51" y="212" width="8" height="22" fill="#4a3826" stroke="none"/>
-          </g>
-          <g stroke="#241f16" stroke-width="2.2" fill="#6b8c58">
-            <ellipse cx="345" cy="180" rx="34" ry="38"/>
-            <rect x="341" y="212" width="8" height="26" fill="#3d2e1f" stroke="none"/>
-          </g>
-          <g stroke="#241f16" stroke-width="2" fill="#8fae74">
-            <ellipse cx="365" cy="205" rx="20" ry="22"/>
-            <rect x="362" y="222" width="6" height="16" fill="#4a3826" stroke="none"/>
-          </g>
-
-          <!-- とんがり屋根の家(きのこ型) -->
-          <g>
-            <!-- 煙 -->
-            <path d="M245 95 C250 88, 240 82, 246 74 C252 68, 244 60, 250 52" fill="none" stroke="#c9b8a2" stroke-width="3" stroke-linecap="round"/>
-            <!-- 煙突 -->
-            <rect x="238" y="95" width="14" height="20" rx="2" fill="#a97e5c" stroke="#2b2418" stroke-width="1.5"/>
-
-            <!-- 屋根(きのこの傘) -->
-            <path d="M150 130 C150 90, 190 62, 230 62 C270 62, 305 92, 302 130 C270 118, 190 118, 150 130 Z" fill="#d1493a" stroke="#241f16" stroke-width="2.4" stroke-linejoin="round"/>
-            <circle cx="185" cy="95" r="7" fill="#fbeedb"/>
-            <circle cx="222" cy="80" r="6" fill="#fbeedb"/>
-            <circle cx="258" cy="92" r="7" fill="#fbeedb"/>
-            <circle cx="278" cy="112" r="5" fill="#fbeedb"/>
-            <circle cx="200" cy="112" r="5" fill="#fbeedb"/>
-
-            <!-- 屋根の縁 -->
-            <path d="M150 130 C190 120, 270 120, 302 130 L302 140 C270 130, 190 130, 150 140 Z" fill="#a8382b" stroke="#241f16" stroke-width="2" stroke-linejoin="round"/>
-
-            <!-- 壁 -->
-            <path d="M158 140 L158 195 C158 202, 165 206, 226 206 C287 206, 294 202, 294 195 L294 140 Z" fill="#e8c9a0" stroke="#2b2418" stroke-width="2"/>
-
-            <!-- 窓(左右) -->
-            <circle cx="184" cy="163" r="14" fill="#f6e3ae" stroke="#2b2418" stroke-width="2"/>
-            <path d="M184 149 L184 177 M170 163 L198 163" stroke="#2b2418" stroke-width="1.5"/>
-            <circle cx="268" cy="163" r="14" fill="#f6e3ae" stroke="#2b2418" stroke-width="2"/>
-            <path d="M268 149 L268 177 M254 163 L282 163" stroke="#2b2418" stroke-width="1.5"/>
-
-            <!-- ドア -->
-            <path d="M210 206 L210 176 C210 166, 244 166, 244 176 L244 206 Z" fill="#8a5a3b" stroke="#241f16" stroke-width="2.4"/>
-            <circle cx="235" cy="192" r="2.2" fill="#f6e3ae"/>
-
-            <!-- 看板 -->
-            <line x1="205" y1="150" x2="205" y2="162" stroke="#2b2418" stroke-width="1.5"/>
-            <rect x="192" y="150" width="26" height="14" rx="2" fill="#fdf6ec" stroke="#2b2418" stroke-width="1.5"/>
-            <text x="205" y="160" text-anchor="middle" font-size="9" fill="#2b2418" font-family="'Zen Maru Gothic', sans-serif" font-weight="700">パン</text>
-          </g>
-
-          <!-- 手前のきのこと花 -->
-          <g>
-            <use href="#mushroom-motif" x="90" y="220" width="34" height="34"/>
-            <use href="#mushroom-motif" x="310" y="228" width="26" height="26"/>
-            <circle cx="130" cy="248" r="4" fill="#e3a0c9"/>
-            <circle cx="140" cy="252" r="4" fill="#f3c8de"/>
-            <circle cx="270" cy="250" r="4" fill="#f0c96a"/>
-            <circle cx="282" cy="246" r="4" fill="#e3a0c9"/>
-          </g>
-
-          <!-- 森の小動物たち -->
-          <use href="#critter-hedgehog" x="40" y="230" width="46" height="32"/>
-          <use href="#critter-squirrel" x="352" y="220" width="40" height="45"/>
-
-          <!-- 鳥 -->
-          <use href="#critter-bird" x="62" y="48" width="32" height="24"/>
-          <use href="#critter-bird" x="288" y="34" width="28" height="21"/>
-        </svg>
+      <figure class="hero__illust">
+        <img src="assets/hero-bread.jpg" alt="ウサギ型のパンや、いちごとクリームのデニッシュ、木の実のタルトが並ぶ、森のパン屋の店先">
       </figure>
 
       <p class="hero__lead">
