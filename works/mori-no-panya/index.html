@@ -197,9 +197,9 @@
   /* ---- 窯のそばのリス ---- */
   .squirrel{
     position: absolute;
-    bottom: -6px;
+    bottom: -8px;
     left: 50%;
-    width: 46px;
+    width: 68px;
     opacity: 0.92;
     filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4));
     animation: scurry 9s ease-in-out infinite;
@@ -213,6 +213,33 @@
   }
   @media (prefers-reduced-motion: reduce){
     .squirrel{ animation: none; transform: translateX(-30px); }
+  }
+
+  /* ---- 「森とパンのあいだで」のうさぎ ---- */
+  .bunny{
+    position: absolute;
+    left: 50%;
+    bottom: 6%;
+    width: 84px;
+    opacity: 0.94;
+    filter: drop-shadow(0 8px 10px rgba(0,0,0,0.28));
+    animation: hop 10s ease-in-out infinite;
+    transform-origin: 50% 100%;
+  }
+  @keyframes hop{
+    0%, 6%   { transform: translate(-120px, 0)     scaleX(1); }
+    11%      { transform: translate(-95px, -30px)  scaleX(1); }
+    16%, 22% { transform: translate(-70px, 0)      scaleX(1); }
+    27%      { transform: translate(-45px, -30px)  scaleX(1); }
+    32%, 46% { transform: translate(-20px, 0)      scaleX(1); }
+    58%      { transform: translate(-45px, -30px)  scaleX(-1); }
+    63%, 69% { transform: translate(-70px, 0)      scaleX(-1); }
+    74%      { transform: translate(-95px, -30px)  scaleX(-1); }
+    79%, 96% { transform: translate(-120px, 0)     scaleX(-1); }
+    100%     { transform: translate(-120px, 0)     scaleX(1); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .bunny{ animation: none; transform: translate(-20px, 0); }
   }
 
   /* ---------- SECTION SHELL ---------- */
@@ -249,6 +276,7 @@
     align-items:center;
   }
   .about-grid p{ margin-bottom: 1.3rem; max-width: 46ch; }
+  .oven-wrap{ position: relative; }
   .oven{
     position:relative;
     aspect-ratio: 4/5;
@@ -488,7 +516,15 @@
       <p>生地に使う水は近くの湧き水、香りづけには季節ごとに森で摘めるハーブや木の実を使うことも。飾らない配合で、素材そのものの味を大切にしています。</p>
       <p>棚に並ぶ数は多くありません。その日焼ける分だけ、丁寧に。</p>
     </div>
-    <div class="oven" aria-hidden="true"></div>
+    <div class="oven-wrap">
+      <div class="oven" aria-hidden="true"></div>
+      <svg class="bunny" viewBox="0 0 80 90" aria-hidden="true">
+        <path d="M28 14 C22 -4 40 -6 36 16 C34 24 28 24 28 14 Z" fill="#17110a"/>
+        <path d="M52 14 C58 -4 40 -6 44 16 C46 24 52 24 52 14 Z" fill="#17110a"/>
+        <ellipse cx="40" cy="46" rx="22" ry="20" fill="#17110a"/>
+        <ellipse cx="40" cy="72" rx="26" ry="20" fill="#17110a"/>
+      </svg>
+    </div>
   </div>
 </section>
 
