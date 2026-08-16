@@ -358,7 +358,9 @@ a { text-decoration: none; color: inherit; }
 .eyebrow {
   display: inline-block;
   font-family: var(--font-accent);
-  font-style: italic;
+  /* Quicksand には本来イタリック体がなく、font-style:italic だと
+     ブラウザが疑似的に斜体を合成してしまい文字ごとに形がバラつくため、
+     斜体は使わずそのまま表示する */
   font-weight: 600;
   color: var(--color-rose-deep);
   font-size: 0.95rem;
