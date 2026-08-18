@@ -68,11 +68,33 @@
     justify-content:center;
     text-align:center;
     padding: 8vh 6vw;
-    background: linear-gradient(180deg, rgba(20,17,15,0.55), rgba(20,17,15,0.72) 55%, var(--black) 96%),
-                url('assets/hero-truffles.jpg') center 42% / cover no-repeat;
+    background: var(--black);
     color: var(--ink);
+    overflow: hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: url('assets/curtain-light.jpg') center 30% / cover no-repeat;
+    opacity: 0.4;
+  }
+  .hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: linear-gradient(180deg, rgba(20,17,15,0.55), rgba(20,17,15,0.78) 55%, var(--black) 97%);
   }
   .hero-inner{ position:relative; z-index:1; max-width: 640px; }
+  .hero-photo{
+    width: min(280px, 60vw);
+    aspect-ratio: 1/1;
+    margin: 0 auto 2.4rem;
+    overflow: hidden;
+    border: 1px solid rgba(176,141,87,0.4);
+    box-shadow: 0 24px 50px rgba(0,0,0,0.45);
+  }
+  .hero-photo img{ width:100%; height:100%; object-fit:cover; }
   .eyebrow{
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
@@ -245,8 +267,9 @@
     section{ padding: 5.5rem 7vw; }
   }
   @media (max-width: 520px){
-    header.site{ padding: 1.3rem 6vw; }
-    header.site nav{ gap: 1rem; font-size: 0.72rem; }
+    header.site{ padding: 1.1rem 6vw; }
+    header.site .logo{ font-size: 1rem; }
+    header.site nav{ gap: 0.8rem; font-size: 0.62rem; letter-spacing: 0.06em; }
     .flavor:nth-child(odd){ padding-right: 0.9rem; }
     .flavor:nth-child(even){ padding-left: 0.9rem; }
   }
@@ -269,6 +292,9 @@
   <div class="hero-inner">
     <p class="eyebrow en">CHOCOLATIER AOI</p>
     <h1>静寂の中に、<br>甘さを閉じ込める。</h1>
+    <figure class="hero-photo">
+      <img src="assets/hero-truffles.jpg" alt="金箔をあしらったショコラなど、九粒が並ぶギフトボックス">
+    </figure>
     <p class="lead">厳選したカカオと、丁寧な手仕事から生まれる、ひと粒のショコラ。特別な日にも、なにげない日にも。</p>
     <a href="#collection" class="cta">コレクションを見る →</a>
   </div>
