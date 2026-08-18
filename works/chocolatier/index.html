@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chocolatier NOIR | 大人のためのショコラトリー</title>
+<meta name="description" content="黒と焦茶、静けさが導く大人のためのショコラトリー「Chocolatier NOIR」。装飾を削ぎ落とし、カカオ本来の香りと余韻だけを届けます。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- 使い回すアイコン・モチーフ定義 -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="mark-cacao" viewBox="0 0 40 60">
+      <path d="M20 4 C30 4 34 16 34 30 C34 46 28 56 20 56 C12 56 6 46 6 30 C6 16 10 4 20 4 Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M20 6 C20 20 20 40 20 54" fill="none" stroke="currentColor" stroke-width="1.1"/>
+      <path d="M12 14 C15 24 15 36 12 46 M28 14 C25 24 25 36 28 46" fill="none" stroke="currentColor" stroke-width="0.9" stroke-linecap="round"/>
+      <path d="M20 2 C18 -2 22 -4 20 2" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="icon-bonbon" viewBox="0 0 60 60">
+      <rect x="14" y="14" width="32" height="32" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M14 24 C22 20 38 28 46 22" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+      <circle cx="30" cy="34" r="2" fill="currentColor"/>
+    </symbol>
+    <symbol id="icon-truffle" viewBox="0 0 60 60">
+      <circle cx="30" cy="32" r="16" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <circle cx="24" cy="26" r="1.1" fill="currentColor"/>
+      <circle cx="32" cy="22" r="1.1" fill="currentColor"/>
+      <circle cx="38" cy="28" r="1.1" fill="currentColor"/>
+      <circle cx="26" cy="34" r="1.1" fill="currentColor"/>
+      <circle cx="35" cy="36" r="1.1" fill="currentColor"/>
+    </symbol>
+    <symbol id="icon-tablette" viewBox="0 0 60 60">
+      <rect x="10" y="20" width="40" height="20" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M20 20 L20 40 M30 20 L30 40 M40 20 L40 40" stroke="currentColor" stroke-width="1.1"/>
+    </symbol>
+    <symbol id="icon-caramel" viewBox="0 0 60 60">
+      <rect x="15" y="18" width="30" height="24" rx="8" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M20 30 C24 26 26 34 30 30 C34 26 36 34 40 30" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="icon-baton" viewBox="0 0 60 60">
+      <rect x="12" y="24" width="36" height="12" rx="6" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <circle cx="20" cy="30" r="2.1" fill="currentColor"/>
+      <circle cx="30" cy="30" r="2.1" fill="currentColor"/>
+      <circle cx="40" cy="30" r="2.1" fill="currentColor"/>
+    </symbol>
+    <symbol id="icon-macaron" viewBox="0 0 60 60">
+      <path d="M16 26 C16 20 22 16 30 16 C38 16 44 20 44 26 C44 28 42 29 40 28 C36 26 24 26 20 28 C18 29 16 28 16 26 Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M16 38 C16 44 22 48 30 48 C38 48 44 44 44 38 C44 36 42 35 40 36 C36 38 24 38 20 36 C18 35 16 36 16 38 Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M16 32 L44 32" stroke="currentColor" stroke-width="1.6"/>
+    </symbol>
+    <symbol id="leaf-deco" viewBox="0 0 60 30">
+      <path d="M2 26 C18 22 30 12 34 2" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+      <path d="M10 22 C13 18 17 16 20 12 M18 16 C21 12 25 10 28 6" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a href="#top" class="logo">
+      <svg class="logo__mark" viewBox="0 0 40 60" aria-hidden="true"><use href="#mark-cacao"/></svg>
+      <span><span class="logo__full">Chocolatier </span>NOIR</span>
+    </a>
+    <nav class="header__nav">
+      <a href="#concept">こだわり</a>
+      <a href="#collection">コレクション</a>
+      <a href="#boutique">ブティック</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ヒーロー -->
+  <section class="hero" id="top">
+    <svg class="hero__deco" viewBox="0 0 40 60" aria-hidden="true"><use href="#mark-cacao"/></svg>
+    <div class="container hero__inner">
+      <p class="eyebrow eyebrow--light">ARTISAN CHOCOLATIER</p>
+      <h1 class="hero__title">闇に溶かす、<br>ひとひらの贅沢。</h1>
+      <p class="hero__lead">
+        削ぎ落とした先にある、カカオ本来の香りと余韻。<br>
+        黒と焦茶、静けさが導く、大人のためのショコラトリー。
+      </p>
+      <div class="hero__actions">
+        <a href="#collection" class="btn btn--primary">コレクションを見る</a>
+        <a href="#concept" class="btn btn--ghost">こだわりを知る ↓</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- こだわり -->
+  <section class="concept" id="concept">
+    <div class="container concept__inner">
+      <p class="eyebrow">OUR PHILOSOPHY</p>
+      <h2 class="section__title">引き算の、美学。</h2>
+      <p class="concept__lead">
+        「甘い」だけでは、終わらせない。<br>
+        装飾を削ぎ落とし、カカオそのものと向き合う。<br>
+        色を絞り、香りを研ぎ澄ませ、余白の中に贅沢を宿す。<br>
+        それが、私たちのショコラトリーです。
+      </p>
+
+      <div class="divider" aria-hidden="true">
+        <span></span>
+        <svg class="divider__leaf" viewBox="0 0 60 30"><use href="#leaf-deco"/></svg>
+        <span></span>
+      </div>
+
+      <p class="concept__statement">一粒に、静かな主張を。</p>
+    </div>
+  </section>
+
+  <!-- 産地 -->
+  <section class="origin" id="origin">
+    <div class="container">
+      <p class="eyebrow eyebrow--light">SINGLE ORIGIN</p>
+      <h2 class="section__title section__title--light">カカオの、産地へ。</h2>
+      <p class="section__lead section__lead--light">世界各地の農園を訪ね、選び抜いた豆だけを。土地の個性が、そのまま香りになる。</p>
+
+      <div class="origin__grid">
+        <div class="origin__card">
+          <p class="origin__percent">70%</p>
+          <p class="origin__place">GHANA / ガーナ</p>
+          <p class="origin__note">力強いコクと、香ばしいロースト感。</p>
+        </div>
+        <div class="origin__card">
+          <p class="origin__percent">85%</p>
+          <p class="origin__place">ECUADOR / エクアドル</p>
+          <p class="origin__note">フローラルな香りと、際立つ酸。</p>
+        </div>
+        <div class="origin__card">
+          <p class="origin__percent">64%</p>
+          <p class="origin__place">MADAGASCAR / マダガスカル</p>
+          <p class="origin__note">赤い果実を思わせる、華やかな酸味。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- コレクション -->
+  <section class="collection" id="collection">
+    <div class="container">
+      <p class="eyebrow">COLLECTION</p>
+      <h2 class="section__title">商品ラインナップ</h2>
+      <p class="section__lead">ひと粒に、物語を込めて。</p>
+
+      <div class="collection__grid">
+        <div class="collection__item">
+          <svg class="collection__icon" viewBox="0 0 60 60" aria-hidden="true"><use href="#icon-bonbon"/></svg>
+          <p class="collection__name">ボンボン・ノワール</p>
+          <p class="collection__desc">華やかな酸味のガナッシュを、ビターな艶チョコで包んで。</p>
+          <p class="collection__price">¥480</p>
+        </div>
+        <div class="collection__item">
+          <svg class="collection__icon" viewBox="0 0 60 60" aria-hidden="true"><use href="#icon-truffle"/></svg>
+          <p class="collection__name">トリュフ・ブランシュ</p>
+          <p class="collection__desc">ホワイトチョコと発酵バターの、とろけるような口どけ。</p>
+          <p class="collection__price">¥450</p>
+        </div>
+        <div class="collection__item">
+          <svg class="collection__icon" viewBox="0 0 60 60" aria-hidden="true"><use href="#icon-tablette"/></svg>
+          <p class="collection__name">タブレット 70%</p>
+          <p class="collection__desc">シンプルながら奥深い、カカオ本来の味わい。</p>
+          <p class="collection__price">¥1,200</p>
+        </div>
+        <div class="collection__item">
+          <svg class="collection__icon" viewBox="0 0 60 60" aria-hidden="true"><use href="#icon-caramel"/></svg>
+          <p class="collection__name">キャラメル・サレ</p>
+          <p class="collection__desc">焦がしキャラメルと、ひとつまみの塩。</p>
+          <p class="collection__price">¥520</p>
+        </div>
+        <div class="collection__item">
+          <svg class="collection__icon" viewBox="0 0 60 60" aria-hidden="true"><use href="#icon-baton"/></svg>
+          <p class="collection__name">バトン・ノワゼット</p>
+          <p class="collection__desc">ローストしたヘーゼルナッツを、繊細な層に閉じ込めて。</p>
+          <p class="collection__price">¥560</p>
+        </div>
+        <div class="collection__item">
+          <svg class="collection__icon" viewBox="0 0 60 60" aria-hidden="true"><use href="#icon-macaron"/></svg>
+          <p class="collection__name">マカロン・ショコラ</p>
+          <p class="collection__desc">サクと、しっとりの間。贅沢なガナッシュを挟んで。</p>
+          <p class="collection__price">¥420</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- アトリエ -->
+  <section class="atelier" id="atelier">
+    <div class="container atelier__inner">
+      <div class="divider divider--light" aria-hidden="true">
+        <span></span>
+        <svg class="divider__leaf" viewBox="0 0 60 30"><use href="#leaf-deco"/></svg>
+        <span></span>
+      </div>
+      <p class="atelier__quote">「甘さの奥にある、<br class="only-mobile">静かな余韻を届けたい。」</p>
+      <p class="atelier__name">黒木 廉 <span>| Chocolatier</span></p>
+      <p class="atelier__bio">パティスリーでの修業を経て独立。<br class="only-mobile">色を削ぎ、香りだけを残すことに、こだわり続けています。</p>
+    </div>
+  </section>
+
+  <!-- ブティック -->
+  <section class="boutique" id="boutique">
+    <div class="container boutique__inner">
+      <p class="eyebrow eyebrow--light">BOUTIQUE</p>
+      <h2 class="section__title section__title--light">静けさの中の、<br class="only-mobile">一粒を。</h2>
+
+      <div class="boutique__grid">
+        <div class="boutique__card">
+          <p class="boutique__label">所在地</p>
+          <p class="boutique__value">東京都渋谷区神南 1-2-3</p>
+        </div>
+        <div class="boutique__card">
+          <p class="boutique__label">営業時間</p>
+          <p class="boutique__value">11:00 – 19:00</p>
+        </div>
+        <div class="boutique__card">
+          <p class="boutique__label">定休日</p>
+          <p class="boutique__value">水曜日</p>
+        </div>
+      </div>
+
+      <p class="boutique__lead">ご来店を、心よりお待ちしております。</p>
+      <a href="#" class="btn btn--primary btn--large">instagramをみる</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <svg class="footer__mark" viewBox="0 0 40 60" aria-hidden="true"><use href="#mark-cacao"/></svg>
+    <p>© Chocolatier NOIR</p>
+    <p class="footer__sample">この画面はKOTONOHAによるサンプルLPです</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
