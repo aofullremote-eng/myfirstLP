@@ -7,13 +7,13 @@
 <meta name="description" content="厳選したカカオと丁寧な手仕事から生まれる、ひと粒のショコラ。Chocolatier AOIの特別な贈り物。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;1,400;1,500&display=swap" rel="stylesheet">
 <style>
   :root{
     --black: #14110f;
-    --black-soft: #1e1a16;
     --beige: #f8f4ec;
     --beige-deep: #ece1c9;
+    --cream: #fdfaf3;
     --brown: #6b4a2f;
     --brown-deep: #4a3220;
     --gold: #b08d57;
@@ -22,273 +22,239 @@
   *{ box-sizing:border-box; margin:0; padding:0; }
   html{ scroll-behavior:smooth; overflow-x:hidden; }
   body{
-    background: var(--beige);
+    background: var(--cream);
     color: var(--black);
     font-family: 'Zen Old Mincho', serif;
-    line-height: 2;
+    line-height: 1.95;
     font-size: 16px;
     overflow-x: hidden;
   }
   img{ max-width:100%; display:block; }
   a{ color:inherit; text-decoration:none; }
   .en{ font-family: 'Cormorant Garamond', serif; }
+  .script{ font-family:'Cormorant Garamond', serif; font-style:italic; }
   @media (prefers-reduced-motion: reduce){
     *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important; }
   }
 
   /* ---------- HEADER ---------- */
   header.site{
-    position: fixed;
-    top:0; left:0; right:0;
-    z-index: 50;
+    position: sticky;
+    top:0; z-index:50;
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding: 1.8rem 6vw;
+    padding: 1.4rem 5vw;
+    background: rgba(253,250,243,0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(20,17,15,0.08);
+  }
+  .logo{ font-style:italic; font-weight:500; font-size:1.35rem; letter-spacing:0.03em; }
+  header.site nav{ display:flex; align-items:center; gap:2rem; font-size:0.82rem; letter-spacing:0.08em; }
+  header.site nav a:not(.shop-btn){ opacity:0.75; }
+  header.site nav a:not(.shop-btn):hover{ opacity:1; }
+  .shop-btn{
+    background: var(--black);
     color: var(--ink);
-    mix-blend-mode: difference;
+    padding: 0.6rem 1.3rem;
+    font-size: 0.76rem;
+    letter-spacing: 0.1em;
   }
-  .logo{
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-weight: 500;
-    font-size: 1.3rem;
-    letter-spacing: 0.08em;
-  }
-  header.site nav{ display:flex; gap:2rem; font-size:0.82rem; letter-spacing:0.12em; }
-  header.site nav a{ opacity:0.8; }
-  header.site nav a:hover{ opacity:1; }
 
   /* ---------- HERO ---------- */
   .hero{
-    position: relative;
-    min-height: 100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    padding: 5rem 5vw 6rem;
     text-align:center;
-    padding: 8vh 6vw;
-    background: var(--black);
-    color: var(--ink);
-    overflow: hidden;
+    background: var(--beige);
   }
-  .hero::before{
-    content:"";
-    position:absolute;
-    inset: -4% -6%;
-    background: url('assets/curtain-light.jpg') center 30% / cover no-repeat;
-    opacity: 0.8;
-    animation: sway 14s ease-in-out infinite;
-  }
-  @keyframes sway{
-    0%,100%{ transform: translateX(0) scale(1.02) rotate(0deg); }
-    25%{     transform: translateX(-1.2%) scale(1.04) rotate(-0.3deg); }
-    50%{     transform: translateX(0.8%) scale(1.02) rotate(0.2deg); }
-    75%{     transform: translateX(-0.6%) scale(1.03) rotate(-0.15deg); }
-  }
-  .hero::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background: linear-gradient(180deg, rgba(20,17,15,0.32), rgba(20,17,15,0.5) 55%, rgba(20,17,15,0.88) 97%);
-  }
-  @media (prefers-reduced-motion: reduce){
-    .hero::before{ animation: none; }
-  }
-  .hero-inner{ position:relative; z-index:1; max-width: 640px; }
-  .hero-photo{
-    width: min(280px, 60vw);
-    aspect-ratio: 1/1;
-    margin: 0 auto 2.4rem;
-    overflow: hidden;
-    border: 1px solid rgba(176,141,87,0.4);
-    box-shadow: 0 24px 50px rgba(0,0,0,0.45);
-  }
-  .hero-photo img{ width:100%; height:100%; object-fit:cover; }
   .eyebrow{
-    font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     font-size: 1rem;
-    letter-spacing: 0.4em;
-    opacity: 0.85;
-    margin-bottom: 2rem;
+    letter-spacing: 0.3em;
+    color: var(--brown);
+    margin-bottom: 1.6rem;
   }
   .hero h1{
-    font-size: clamp(2.1rem, 5vw, 3.3rem);
+    font-size: clamp(1.9rem, 4.4vw, 3rem);
     font-weight: 500;
     line-height: 1.7;
-    margin-bottom: 2rem;
+    margin-bottom: 1.6rem;
   }
   .hero p.lead{
-    max-width: 38ch;
-    margin: 0 auto 2.6rem;
-    font-size: 0.98rem;
-    opacity: 0.88;
+    max-width: 40ch;
+    margin: 0 auto 3rem;
+    font-size: 0.95rem;
+    color: var(--brown-deep);
+    opacity: 0.9;
+  }
+  .hero-photo{
+    position: relative;
+    max-width: 920px;
+    margin: 0 auto;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(20,17,15,0.18);
+  }
+  .hero-photo img{ width:100%; aspect-ratio: 16/9; object-fit:cover; }
+  .hero-photo .sign{
+    position:absolute;
+    left: 2rem; bottom: 1.6rem;
+    color: var(--ink);
+    font-style: italic;
+    font-size: 1.4rem;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.4);
   }
   .cta{
     display:inline-flex;
     align-items:center;
     gap:0.6rem;
-    padding: 0.95rem 2.3rem;
+    padding: 0.9rem 2rem;
     border: 1px solid var(--gold);
-    color: var(--ink);
-    font-size: 0.88rem;
-    letter-spacing: 0.14em;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
     transition: background 0.3s ease, color 0.3s ease;
   }
-  .cta:hover{ background: var(--gold); color: var(--black); }
-  .cta--dark{ border-color: var(--brown); color: var(--black); }
-  .cta--dark:hover{ background: var(--black); color: var(--ink); border-color: var(--black); }
-
-  .scroll-cue{
-    position:absolute;
-    bottom: 2.6rem;
-    left:50%;
-    transform: translateX(-50%);
-    width: 1px;
-    height: 54px;
-    background: linear-gradient(180deg, rgba(243,236,221,0), var(--ink) 60%, rgba(243,236,221,0));
-    overflow:hidden;
-  }
-  .scroll-cue::after{
-    content:"";
-    position:absolute;
-    top:-40%;
-    left:0;
-    width:100%;
-    height:40%;
-    background: var(--gold);
-    animation: cue 2.6s ease-in-out infinite;
-  }
-  @keyframes cue{
-    0%{ top:-40%; }
-    100%{ top:100%; }
-  }
+  .cta--dark{ background: var(--black); color: var(--ink); border-color: var(--black); }
+  .cta--dark:hover{ background: var(--brown); border-color: var(--brown); }
+  .cta--light{ color: var(--ink); border-color: rgba(243,236,221,0.6); }
+  .cta--light:hover{ background: var(--ink); color: var(--black); }
 
   /* ---------- SECTION SHELL ---------- */
-  section{ padding: 8rem 6vw; }
-  .section-head{
-    text-align:center;
-    margin-bottom: 4rem;
-  }
-  .section-head .eyebrow{ color: var(--brown); margin-bottom: 1.2rem; }
+  section{ padding: 6rem 5vw; }
+  .section-head{ text-align:center; margin-bottom: 3.2rem; }
+  .section-head .eyebrow{ margin-bottom:0.8rem; }
   .section-head h2{
-    font-size: clamp(1.7rem, 3.4vw, 2.4rem);
+    font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: 500;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.14em;
   }
   .section-lead{
     max-width: 46ch;
-    margin: 1.4rem auto 0;
-    font-size: 0.95rem;
+    margin: 1rem auto 0;
+    font-size: 0.92rem;
     color: var(--brown-deep);
     opacity: 0.85;
   }
-  .rule{
-    width: 44px;
-    height: 1px;
-    background: var(--gold);
-    margin: 1.6rem auto 0;
-  }
 
-  /* ---------- CONCEPT ---------- */
-  .concept{
+  /* ---------- ABOUT ---------- */
+  .about{
     position: relative;
+    color: var(--ink);
     background:
-      linear-gradient(180deg, rgba(248,244,236,0.86), rgba(248,244,236,0.94) 60%, var(--beige) 92%),
-      url('assets/curtain-light.jpg') center 30% / cover no-repeat;
+      linear-gradient(100deg, rgba(20,17,15,0.88) 0%, rgba(20,17,15,0.72) 40%, rgba(20,17,15,0.55) 100%),
+      url('assets/curtain-light.jpg') center 35% / cover no-repeat;
   }
-  .concept-grid{
-    position: relative;
-    z-index: 1;
+  .about-inner{ max-width: 1180px; margin:0 auto; }
+  .about .section-head{ text-align:left; margin-bottom: 2.2rem; max-width: 480px; }
+  .about .eyebrow{ color: var(--gold); }
+  .about p{ max-width: 46ch; font-size: 0.95rem; opacity: 0.88; margin-bottom: 1.3rem; }
+  .about .script{ font-size:1.3rem; opacity:0.8; display:block; margin-bottom:2rem; }
+
+  /* ---------- COLLECTION ---------- */
+  .collection{ background: var(--cream); }
+  .collection-grid{
     display:grid;
-    grid-template-columns: 0.9fr 1.1fr;
-    gap: 5rem;
-    align-items:center;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.2rem;
     max-width: 1180px;
     margin: 0 auto;
   }
-  .concept-photo{
-    border-radius: 2px;
+  .product{ text-align:center; }
+  .product-photo{
+    aspect-ratio: 1/1;
+    border-radius: 4px;
     overflow:hidden;
-    aspect-ratio: 4/5;
+    margin-bottom: 1.4rem;
   }
-  .concept-photo img{ width:100%; height:100%; object-fit:cover; }
-  .concept-text p{ margin-bottom: 1.4rem; max-width: 44ch; color: var(--brown-deep); font-size: 0.98rem; }
-  .concept-text .signature{
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 1.15rem;
-    color: var(--brown);
-    margin-top: 2rem;
-  }
+  .product-photo img{ width:100%; height:100%; object-fit:cover; transition: transform 0.5s ease; }
+  .product:hover .product-photo img{ transform: scale(1.05); }
+  .product .en{ font-size: 0.78rem; letter-spacing:0.14em; color: var(--brown); display:block; margin-bottom:0.5rem; }
+  .product h3{ font-size: 1.1rem; font-weight:500; margin-bottom:0.6rem; }
+  .product p{ font-size: 0.85rem; color: var(--brown-deep); opacity:0.85; margin-bottom: 1rem; }
+  .view-more{ font-size: 0.78rem; letter-spacing:0.08em; border-bottom: 1px solid var(--gold); padding-bottom: 2px; }
 
-  /* ---------- COLLECTION ---------- */
-  .collection{ background: var(--black); color: var(--ink); }
-  .collection .section-head .eyebrow{ color: var(--gold); }
-  .collection .section-lead{ color: rgba(243,236,221,0.7); }
-  .collection-grid{
-    display:grid;
-    grid-template-columns: 0.85fr 1.15fr;
-    gap: 4.5rem;
-    align-items:center;
-    max-width: 1200px;
-    margin: 0 auto;
+  /* ---------- NEWS / GIFT ---------- */
+  .news{
+    background: var(--black);
+    color: var(--ink);
+    text-align:center;
+    position: relative;
   }
-  .collection-photo{
-    border-radius: 2px;
-    overflow:hidden;
-    border: 1px solid rgba(176,141,87,0.35);
+  .news-badge{
+    width: 108px; height:108px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    display:flex; align-items:center; justify-content:center;
+    flex-direction:column;
+    margin: 0 auto 2rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    line-height: 1.5;
   }
-  .flavor-list{
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-  }
-  .flavor{
-    padding: 1.5rem 0;
-    border-bottom: 1px solid rgba(243,236,221,0.14);
-  }
-  .flavor:nth-child(odd){ padding-right: 1.6rem; }
-  .flavor:nth-child(even){ padding-left: 1.6rem; border-left: 1px solid rgba(243,236,221,0.14); }
-  .flavor .no{ font-family:'Cormorant Garamond', serif; font-style:italic; color: var(--gold); font-size:0.85rem; }
-  .flavor h3{ font-size: 1.02rem; font-weight:500; margin: 0.4rem 0 0.4rem; }
-  .flavor p{ font-size: 0.84rem; color: rgba(243,236,221,0.62); line-height:1.8; }
-
-  /* ---------- ORDER ---------- */
-  .order{ background: var(--beige-deep); }
-  .order-inner{ max-width: 760px; margin:0 auto; text-align:center; }
-  .info-rows{ margin: 3rem 0 3.2rem; }
-  .info-row{
+  .news-badge b{ font-size:1.3rem; color: var(--gold); display:block; }
+  .news h2{ font-size: clamp(1.4rem, 2.8vw, 1.8rem); font-weight:500; letter-spacing:0.1em; margin-bottom: 0.8rem; }
+  .news p{ font-size:0.88rem; opacity:0.75; margin-bottom: 2.2rem; }
+  .news-form{
     display:flex;
-    justify-content:space-between;
-    padding: 1.1rem 0;
-    border-bottom: 1px solid rgba(20,17,15,0.15);
-    font-size: 0.95rem;
+    max-width: 420px;
+    margin: 0 auto 2.6rem;
+    border: 1px solid rgba(243,236,221,0.35);
   }
-  .info-row span:first-child{ color: var(--brown); letter-spacing:0.08em; font-size:0.82rem; }
+  .news-form input{
+    flex:1;
+    background:transparent;
+    border:none;
+    padding: 0.85rem 1.1rem;
+    color: var(--ink);
+    font-family: 'Zen Old Mincho', serif;
+    font-size: 0.85rem;
+  }
+  .news-form input::placeholder{ color: rgba(243,236,221,0.5); }
+  .news-form button{
+    background: var(--gold);
+    color: var(--black);
+    border:none;
+    padding: 0 1.6rem;
+    font-size: 0.8rem;
+    letter-spacing:0.08em;
+    font-family:'Zen Old Mincho', serif;
+    cursor:pointer;
+  }
+  .socials{ display:flex; justify-content:center; gap:1rem; }
+  .socials a{
+    width:34px; height:34px;
+    border:1px solid rgba(243,236,221,0.3);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:0.72rem;
+    letter-spacing:0.02em;
+  }
 
   /* ---------- FOOTER ---------- */
   footer{
     background: var(--black);
-    color: rgba(243,236,221,0.6);
+    color: rgba(243,236,221,0.55);
     text-align:center;
-    padding: 3.5rem 6vw 3rem;
+    padding: 2.4rem 6vw 2.8rem;
+    border-top: 1px solid rgba(243,236,221,0.12);
+    font-size: 0.78rem;
   }
-  footer .logo{ color: var(--ink); display:block; margin-bottom: 1rem; font-size:1.15rem; }
-  footer .small{ font-size: 0.76rem; margin-top: 1.4rem; opacity: 0.7; }
 
   @media (max-width: 860px){
-    .concept-grid, .collection-grid{ grid-template-columns: 1fr; gap: 2.6rem; }
-    .collection-photo{ order: -1; }
-    section{ padding: 5.5rem 7vw; }
+    .collection-grid{ grid-template-columns: 1fr 1fr; }
+    .about .section-head, .about p{ max-width:none; }
+    section{ padding: 4.5rem 6vw; }
   }
-  @media (max-width: 520px){
-    header.site{ padding: 1.1rem 6vw; }
-    header.site .logo{ font-size: 1rem; }
-    header.site nav{ gap: 0.8rem; font-size: 0.62rem; letter-spacing: 0.06em; }
-    .flavor:nth-child(odd){ padding-right: 0.9rem; }
-    .flavor:nth-child(even){ padding-left: 0.9rem; }
+  @media (max-width: 700px){
+    header.site nav a:not(.shop-btn){ display:none; }
+  }
+  @media (max-width: 560px){
+    header.site{ padding: 1rem 5vw; }
+    .logo{ font-size: 1.05rem; white-space:nowrap; }
+    .shop-btn{ padding: 0.55rem 1rem; font-size:0.7rem; }
+    .collection-grid{ grid-template-columns: 1fr; }
+    .hero-photo .sign{ font-size: 1.1rem; left:1.2rem; bottom:1rem; }
+    .news-form{ flex-direction:column; }
   }
 
   :focus-visible{ outline: 1px solid var(--gold); outline-offset: 3px; }
@@ -299,121 +265,92 @@
 <header class="site">
   <a href="#top" class="logo">Chocolatier AOI</a>
   <nav>
-    <a href="#concept">ABOUT</a>
+    <a href="#top">HOME</a>
+    <a href="#about">ABOUT</a>
     <a href="#collection">COLLECTION</a>
-    <a href="#order">ORDER</a>
+    <a href="#news">NEWS</a>
+    <a href="#news" class="shop-btn en">ONLINE SHOP</a>
   </nav>
 </header>
 
 <section class="hero" id="top">
-  <div class="hero-inner">
-    <p class="eyebrow en">CHOCOLATIER AOI</p>
-    <h1>静寂の中に、<br>甘さを閉じ込める。</h1>
-    <figure class="hero-photo">
-      <img src="assets/hero-truffles.jpg" alt="金箔をあしらったショコラなど、九粒が並ぶギフトボックス">
-    </figure>
-    <p class="lead">厳選したカカオと、丁寧な手仕事から生まれる、ひと粒のショコラ。特別な日にも、なにげない日にも。</p>
-    <a href="#collection" class="cta">コレクションを見る →</a>
-  </div>
-  <div class="scroll-cue" aria-hidden="true"></div>
+  <p class="eyebrow en">CHOCOLATIER AOI</p>
+  <h1>心ときめく<br>チョコレートを、あなたへ。</h1>
+  <p class="lead">季節ごとの、ひと粒に想いを丁寧に。特別な時間にも、上質なショコラをお届けします。</p>
+  <figure class="hero-photo">
+    <img src="assets/hero-truffles.jpg" alt="金箔をあしらったショコラなど、九粒が並ぶギフトボックス">
+    <span class="sign script">Chocolatier AOI</span>
+  </figure>
 </section>
 
-<section class="concept" id="concept">
-  <div class="section-head">
-    <p class="eyebrow en">ABOUT</p>
-    <h2>光と、時間と、カカオと。</h2>
-  </div>
-  <div class="concept-grid">
-    <figure class="concept-photo">
-      <img src="assets/hero-truffles.jpg" alt="金箔をあしらったショコラなど、九粒が並ぶギフトボックス">
-    </figure>
-    <div class="concept-text">
-      <p>窓辺に差し込む陽の光、静かに流れる時間——そんな穏やかな情景の中で、ショコラは生まれます。</p>
-      <p>カカオの産地と丁寧に向き合い、余分な甘さを削ぎ落として。素材そのものの香りと余韻を、ひと粒に閉じ込めています。</p>
-      <p>大きな声で語らずとも、口にした瞬間に伝わるものを。それが、私たちの目指す静かなぜいたくです。</p>
-      <p class="signature en">— aoi, chocolatier</p>
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="section-head">
+      <p class="eyebrow en">ABOUT</p>
+      <h2>カカオの個性を大切に、<br>想いを込めてつくるショコラ。</h2>
     </div>
+    <p>世界各地の農園から、丁寧に仕入れたカカオ。産地ごとの香りや余韻をひとつひとつ確かめながら、余分なものを削ぎ落とした配合でひと粒に仕立てます。</p>
+    <p>光と時間に寄り添うように、静かな手仕事から生まれるチョコレート。あなたの特別な日に、そっと寄り添えますように。</p>
+    <span class="script">Bean to Bonbon</span>
+    <a href="#collection" class="cta cta--light en">MORE ABOUT US →</a>
   </div>
 </section>
 
 <section class="collection" id="collection">
   <div class="section-head">
     <p class="eyebrow en">COLLECTION</p>
-    <h2>九つの、小さな物語</h2>
-    <p class="section-lead">ひと箱に込めた、九つのフレーバー。それぞれに、小さな物語があります。</p>
+    <h2>季節やシーンに合わせた、<br>特別なコレクション。</h2>
   </div>
   <div class="collection-grid">
-    <figure class="collection-photo">
-      <img src="assets/gift-box.jpg" alt="リボンをかけたギフトボックスに並ぶ、九粒のショコラ">
-    </figure>
-    <div class="flavor-list">
-      <div class="flavor">
-        <span class="no en">01</span>
-        <h3>カカオ 70%</h3>
-        <p>ビターな余韻が残る、大人のためのひと粒。</p>
-      </div>
-      <div class="flavor">
-        <span class="no en">02</span>
-        <h3>ゴールドリーフ</h3>
-        <p>上質なビターショコラに、金箔をひとひら。</p>
-      </div>
-      <div class="flavor">
-        <span class="no en">03</span>
-        <h3>プラリネ・ノワゼット</h3>
-        <p>香ばしいヘーゼルナッツの食感を、たっぷりと。</p>
-      </div>
-      <div class="flavor">
-        <span class="no en">04</span>
-        <h3>ミルク キャラメル</h3>
-        <p>なめらかなミルクショコラに、線を描いて。</p>
-      </div>
-      <div class="flavor">
-        <span class="no en">05</span>
-        <h3>ダーク キャラメル</h3>
-        <p>ほろ苦さと甘さが、静かに溶け合う一粒。</p>
-      </div>
-      <div class="flavor">
-        <span class="no en">06</span>
-        <h3>ブラン フランボワーズ</h3>
-        <p>木いちごの酸味を、ホワイトショコラで包んで。</p>
-      </div>
-      <div class="flavor">
-        <span class="no en">07</span>
-        <h3>フルール・ド・セル</h3>
-        <p>塩の結晶が、甘さをそっと引き立てます。</p>
-      </div>
-      <div class="flavor">
-        <span class="no en">08</span>
-        <h3>フランボワーズ</h3>
-        <p>甘酸っぱい、木いちごの華やかな香り。</p>
-      </div>
-      <div class="flavor">
-        <span class="no en">09</span>
-        <h3>カカオ ゴールド</h3>
-        <p>金粉をまとった、いちばん華やかなひと粒。</p>
-      </div>
+    <div class="product">
+      <figure class="product-photo">
+        <img src="assets/hero-truffles.jpg" style="object-position: 15% 45%;" alt="定番のダークショコラトリュフ">
+      </figure>
+      <span class="en">LE CLASSIQUE</span>
+      <h3>定番のトリュフ</h3>
+      <p>王道のカカオを、まっすぐに味わうラインナップ。</p>
+      <a href="#news" class="view-more en">VIEW MORE →</a>
+    </div>
+    <div class="product">
+      <figure class="product-photo">
+        <img src="assets/gift-box.jpg" alt="リボンをかけたギフトボックス入りのショコラ">
+      </figure>
+      <span class="en">CADEAU</span>
+      <h3>ギフトコレクション</h3>
+      <p>大切な人へ贈る、特別な一箱をご用意します。</p>
+      <a href="#news" class="view-more en">VIEW MORE →</a>
+    </div>
+    <div class="product">
+      <figure class="product-photo">
+        <img src="assets/hero-truffles.jpg" style="object-position: 85% 55%;" alt="金箔や木の実をあしらった季節のショコラ">
+      </figure>
+      <span class="en">SAISON</span>
+      <h3>季節のスペシャリテ</h3>
+      <p>その時々の実りをまとった、期間限定のひと粒。</p>
+      <a href="#news" class="view-more en">VIEW MORE →</a>
     </div>
   </div>
 </section>
 
-<section class="order" id="order">
-  <div class="order-inner">
-    <p class="eyebrow en">ORDER</p>
-    <h2 style="font-size:clamp(1.6rem,3.6vw,2.2rem); font-weight:500;">あなたの、特別な日に</h2>
-    <div class="rule"></div>
-    <div class="info-rows">
-      <div class="info-row"><span>PRICE</span><span>¥3,800〜(9粒入り)</span></div>
-      <div class="info-row"><span>DELIVERY</span><span>ご注文から3〜5日でお届け</span></div>
-      <div class="info-row"><span>GIFT</span><span>贈り物・記念日のご相談も承ります</span></div>
-    </div>
-    <a href="#" class="cta cta--dark">ご注文について問い合わせる →</a>
+<section class="news" id="news">
+  <div class="news-badge en">
+    <b>10%</b>
+    OFF
+  </div>
+  <h2>NEWS &amp; GIFT</h2>
+  <p>季節のショコラやキャンペーン情報をお届けします。</p>
+  <form class="news-form" onsubmit="return false;">
+    <input type="email" placeholder="メールアドレスを入力" aria-label="メールアドレス">
+    <button type="submit" class="en">登録する</button>
+  </form>
+  <div class="socials" aria-hidden="true">
+    <a href="#">IG</a>
+    <a href="#">X</a>
   </div>
 </section>
 
 <footer>
-  <span class="logo en">Chocolatier AOI</span>
-  <p>© Chocolatier AOI</p>
-  <p class="small">この画面はKOTONOHAによるサンプルLPです</p>
+  <p>© Chocolatier AOI — この画面はKOTONOHAによるサンプルLPです</p>
 </footer>
 
 </body>
