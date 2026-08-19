@@ -355,7 +355,7 @@
   <!-- HERO -->
   <section class="hero" id="top">
     <div class="hero__bg">
-      <video autoplay muted loop playsinline poster="assets/hero-portrait.jpg" aria-label="透け感のあるレースの布に包まれ、なめらかな素肌を見せる女性の後ろ姿">
+      <video id="heroVideo" autoplay muted playsinline poster="assets/hero-portrait.jpg" aria-label="透け感のあるレースの布に包まれ、なめらかな素肌を見せる女性">
         <source src="assets/hero-loop.mp4" type="video/mp4">
       </video>
       <div class="hero__scrim"></div>
@@ -542,13 +542,24 @@
 </footer>
 
 <script>
+  var heroVideo = document.getElementById("heroVideo");
+  var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
   // アニメーション低減設定のユーザーには、ヒーロー動画も静止画のまま止めておく
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    var heroVideo = document.querySelector(".hero__bg video");
-    if (heroVideo) {
-      heroVideo.removeAttribute("autoplay");
-      heroVideo.pause();
-    }
+  if (heroVideo && prefersReducedMotion) {
+    heroVideo.removeAttribute("autoplay");
+    heroVideo.pause();
+  }
+
+  // 2本の動画を交互に再生し、同じ切れ目が繰り返し見えないようにする
+  if (heroVideo && !prefersReducedMotion) {
+    var heroClips = ["assets/hero-loop.mp4", "assets/hero-loop-2.mp4"];
+    var heroClipIndex = 0;
+    heroVideo.addEventListener("ended", function () {
+      heroClipIndex = (heroClipIndex + 1) % heroClips.length;
+      heroVideo.src = heroClips[heroClipIndex];
+      heroVideo.play();
+    });
   }
 </script>
 </body>
