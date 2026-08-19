@@ -77,7 +77,8 @@
     min-height: 92vh;
   }
   .hero__bg{ position:absolute; inset:0; z-index:0; }
-  .hero__bg img{
+  .hero__bg img,
+  .hero__bg video{
     width:100%; height:100%; object-fit:cover;
     object-position: 78% 30%;
   }
@@ -316,7 +317,8 @@
   /* ---------- RESPONSIVE ---------- */
   @media (max-width: 860px){
     .hero{ min-height:auto; padding: 6.5rem 0 3rem; }
-    .hero__bg img{
+    .hero__bg img,
+    .hero__bg video{
       object-fit: contain;
       object-position: center top;
     }
@@ -353,7 +355,9 @@
   <!-- HERO -->
   <section class="hero" id="top">
     <div class="hero__bg">
-      <img src="assets/hero-portrait.jpg" alt="透け感のあるレースの布に包まれ、なめらかな素肌を見せる女性の後ろ姿">
+      <video autoplay muted loop playsinline poster="assets/hero-portrait.jpg" aria-label="透け感のあるレースの布に包まれ、なめらかな素肌を見せる女性の後ろ姿">
+        <source src="assets/hero-loop.mp4" type="video/mp4">
+      </video>
       <div class="hero__scrim"></div>
     </div>
     <div class="container">
@@ -537,5 +541,15 @@
   <p>© 2026 LUMIÈRE</p>
 </footer>
 
+<script>
+  // アニメーション低減設定のユーザーには、ヒーロー動画も静止画のまま止めておく
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    var heroVideo = document.querySelector(".hero__bg video");
+    if (heroVideo) {
+      heroVideo.removeAttribute("autoplay");
+      heroVideo.pause();
+    }
+  }
+</script>
 </body>
 </html>
