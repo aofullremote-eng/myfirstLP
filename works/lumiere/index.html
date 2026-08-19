@@ -68,32 +68,45 @@
   }
 
   /* ---------- HERO ---------- */
-  .hero{ padding: 4.5rem 0 5rem; }
-  .hero__grid{
-    display:grid;
-    grid-template-columns: 1.05fr 0.95fr;
-    gap: 3rem;
+  .hero{
+    position:relative;
+    padding: 7.5rem 0 5.5rem;
+    overflow:hidden;
+    display:flex;
     align-items:center;
+    min-height: 92vh;
   }
+  .hero__bg{ position:absolute; inset:0; z-index:0; }
+  .hero__bg img{
+    width:100%; height:100%; object-fit:cover;
+    object-position: 78% 30%;
+  }
+  .hero__scrim{
+    position:absolute; inset:0;
+    background:
+      linear-gradient(100deg, rgba(250,245,236,0.97) 0%, rgba(250,245,236,0.86) 30%, rgba(250,245,236,0.4) 56%, rgba(250,245,236,0.08) 76%),
+      linear-gradient(0deg, rgba(250,245,236,0.55) 0%, rgba(250,245,236,0) 30%);
+  }
+  .hero__content{ position:relative; z-index:1; max-width: 620px; }
   .hero h1{
-    font-size: clamp(2.3rem, 4.6vw, 3.4rem);
+    font-size: clamp(2.5rem, 5.2vw, 3.8rem);
     font-weight:600;
     line-height:1.35;
-    margin-bottom: 0.7rem;
+    margin-bottom: 0.8rem;
   }
   .hero h2{
-    font-size: clamp(1.2rem, 2.4vw, 1.5rem);
+    font-size: clamp(1.25rem, 2.6vw, 1.6rem);
     font-weight:500;
     color: var(--ink-light);
-    margin-bottom: 1.4rem;
+    margin-bottom: 1.5rem;
   }
   .hero__tagline{
     font-family:'Cormorant Garamond', serif;
     font-style: italic;
-    font-size: 1rem;
+    font-size: 1.05rem;
     color: var(--gold-deep);
     letter-spacing: 0.06em;
-    margin-bottom: 2rem;
+    margin-bottom: 2.2rem;
   }
   .badges{
     display:flex;
@@ -161,13 +174,6 @@
     transition: transform 0.25s ease, box-shadow 0.25s ease;
   }
   .cta-btn:hover{ transform: translateY(-2px); box-shadow: 0 26px 50px rgba(120,95,60,0.2); }
-  .hero__photo{
-    position:relative;
-    border-radius: 16px;
-    overflow:hidden;
-    box-shadow: var(--shadow);
-  }
-  .hero__photo img{ width:100%; height:100%; object-fit:cover; }
 
   /* ---------- SECTION HEADS ---------- */
   .section-head{ text-align:center; margin-bottom: 3rem; }
@@ -269,8 +275,12 @@
 
   /* ---------- RESPONSIVE ---------- */
   @media (max-width: 860px){
-    .hero__grid{ grid-template-columns: 1fr; }
-    .hero__photo{ order:-1; aspect-ratio: 4/3; }
+    .hero{ min-height:auto; padding: 6rem 0 3rem; }
+    .hero__bg img{ object-position: 65% 22%; }
+    .hero__scrim{
+      background:
+        linear-gradient(180deg, rgba(250,245,236,0.97) 0%, rgba(250,245,236,0.9) 38%, rgba(250,245,236,0.55) 62%, rgba(250,245,236,0.15) 100%);
+    }
     .worries__grid{ grid-template-columns: 1fr; }
     .reasons__grid{ grid-template-columns: 1fr; }
     .assurance__grid{ grid-template-columns: repeat(2, 1fr); gap: 2rem 1rem; }
@@ -293,8 +303,12 @@
 
   <!-- HERO -->
   <section class="hero" id="top">
-    <div class="container hero__grid">
-      <div class="hero__text">
+    <div class="hero__bg">
+      <img src="assets/hero-portrait.jpg" alt="透け感のあるレースの布に包まれ、なめらかな素肌を見せる女性の後ろ姿">
+      <div class="hero__scrim"></div>
+    </div>
+    <div class="container">
+      <div class="hero__content">
         <h1>素肌に、<br class="only-mobile">自信。</h1>
         <h2>もっと自由に、わたしらしく。</h2>
         <p class="hero__tagline en">— 自分史上、いちばん好きな肌へ —</p>
@@ -316,10 +330,6 @@
           <a href="#contact" class="cta-btn">今すぐ無料カウンセリングを予約する →</a>
         </div>
       </div>
-
-      <figure class="hero__photo">
-        <img src="assets/hero-portrait.jpg" alt="透け感のあるレースの布に包まれ、なめらかな素肌を見せる女性の後ろ姿">
-      </figure>
     </div>
   </section>
 
