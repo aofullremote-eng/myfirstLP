@@ -77,6 +77,7 @@
     min-height: 92vh;
   }
   .hero__bg{ position:absolute; inset:0; z-index:0; }
+  .hero__bg picture{ display:block; width:100%; height:100%; }
   .hero__bg img{
     width:100%; height:100%; object-fit:cover;
     object-position: 78% 30%;
@@ -184,7 +185,22 @@
   .section-head__title{ font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight:600; }
 
   /* ---------- WORRIES ---------- */
-  .worries{ padding: 5rem 0; }
+  .worries{
+    position:relative;
+    padding: 5rem 0;
+    overflow:hidden;
+    background:
+      radial-gradient(circle 90px at 10% 18%, rgba(255,255,255,0.9), rgba(255,255,255,0) 70%),
+      radial-gradient(circle 46px at 22% 62%, rgba(255,255,255,0.85), rgba(255,255,255,0) 70%),
+      radial-gradient(circle 130px at 6% 78%, rgba(201,164,99,0.28), rgba(201,164,99,0) 70%),
+      radial-gradient(circle 60px at 92% 12%, rgba(255,255,255,0.85), rgba(255,255,255,0) 70%),
+      radial-gradient(circle 150px at 90% 30%, rgba(227,163,160,0.3), rgba(227,163,160,0) 70%),
+      radial-gradient(circle 34px at 80% 55%, rgba(255,255,255,0.8), rgba(255,255,255,0) 70%),
+      radial-gradient(circle 170px at 96% 85%, rgba(201,164,99,0.26), rgba(201,164,99,0) 70%),
+      radial-gradient(circle 55px at 55% 92%, rgba(255,255,255,0.75), rgba(255,255,255,0) 70%),
+      radial-gradient(circle 200px at 50% 40%, rgba(240,185,160,0.22), rgba(240,185,160,0) 65%),
+      var(--cream);
+  }
   .worries__grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items:center; }
   .worries__list{ display:flex; flex-direction:column; gap: 1.1rem; }
   .worries__list li{ display:flex; align-items:flex-start; gap: 0.8rem; font-size: 1rem; }
@@ -275,12 +291,25 @@
 
   /* ---------- RESPONSIVE ---------- */
   @media (max-width: 860px){
-    .hero{ min-height:auto; padding: 6rem 0 3rem; }
-    .hero__bg img{ object-position: 65% 22%; }
+    .hero{ min-height:auto; padding: 15rem 0 3rem; }
+    .hero__bg img{ object-position: 50% 12%; }
     .hero__scrim{
       background:
-        linear-gradient(180deg, rgba(250,245,236,0.97) 0%, rgba(250,245,236,0.9) 38%, rgba(250,245,236,0.55) 62%, rgba(250,245,236,0.15) 100%);
+        linear-gradient(180deg, rgba(250,245,236,0.15) 0%, rgba(250,245,236,0.1) 34%, rgba(250,245,236,0.7) 56%, rgba(250,245,236,0.97) 76%);
     }
+    .hero__heading{
+      display:inline-block;
+      background: rgba(255,253,250,0.72);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 18px;
+      padding: 1.1rem 1.3rem;
+      margin-bottom: 1.6rem;
+    }
+    .hero__heading h1,
+    .hero__heading h2,
+    .hero__heading .hero__tagline{ margin-bottom: 0.5rem; }
+    .hero__heading .hero__tagline{ margin-bottom: 0; }
     .worries__grid{ grid-template-columns: 1fr; }
     .reasons__grid{ grid-template-columns: 1fr; }
     .assurance__grid{ grid-template-columns: repeat(2, 1fr); gap: 2rem 1rem; }
@@ -304,14 +333,19 @@
   <!-- HERO -->
   <section class="hero" id="top">
     <div class="hero__bg">
-      <img src="assets/hero-portrait.jpg" alt="透け感のあるレースの布に包まれ、なめらかな素肌を見せる女性の後ろ姿">
+      <picture>
+        <source media="(max-width: 860px)" srcset="assets/hero-portrait-mobile.jpg">
+        <img src="assets/hero-portrait.jpg" alt="透け感のあるレースの布に包まれ、なめらかな素肌を見せる女性の後ろ姿">
+      </picture>
       <div class="hero__scrim"></div>
     </div>
     <div class="container">
       <div class="hero__content">
-        <h1>素肌に、<br class="only-mobile">自信。</h1>
-        <h2>もっと自由に、わたしらしく。</h2>
-        <p class="hero__tagline en">— 自分史上、いちばん好きな肌へ —</p>
+        <div class="hero__heading">
+          <h1>素肌に、<br class="only-mobile">自信。</h1>
+          <h2>もっと自由に、わたしらしく。</h2>
+          <p class="hero__tagline en">— 自分史上、いちばん好きな肌へ —</p>
+        </div>
 
         <div class="badges">
           <div class="badge">痛みが少ない<br>最新脱毛</div>
