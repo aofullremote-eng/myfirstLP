@@ -189,17 +189,10 @@
     padding: 5rem 0;
     overflow:hidden;
     background:
-      radial-gradient(circle 60px at 10% 18%, rgba(255,255,255,1), rgba(255,255,255,0) 60%),
-      radial-gradient(circle 30px at 22% 62%, rgba(255,255,255,1), rgba(255,255,255,0) 60%),
-      radial-gradient(circle 150px at 6% 78%, rgba(201,164,99,0.55), rgba(201,164,99,0) 60%),
-      radial-gradient(circle 42px at 92% 12%, rgba(255,255,255,1), rgba(255,255,255,0) 60%),
-      radial-gradient(circle 170px at 90% 28%, rgba(227,163,160,0.55), rgba(227,163,160,0) 60%),
-      radial-gradient(circle 24px at 80% 55%, rgba(255,255,255,1), rgba(255,255,255,0) 60%),
-      radial-gradient(circle 190px at 97% 88%, rgba(201,164,99,0.5), rgba(201,164,99,0) 60%),
-      radial-gradient(circle 38px at 55% 90%, rgba(255,255,255,0.95), rgba(255,255,255,0) 60%),
-      radial-gradient(circle 20px at 65% 22%, rgba(255,255,255,0.95), rgba(255,255,255,0) 60%),
-      radial-gradient(circle 230px at 50% 42%, rgba(240,185,160,0.4), rgba(240,185,160,0) 58%),
-      var(--cream);
+      linear-gradient(rgba(250,245,236,0.55), rgba(250,245,236,0.55)),
+      url('assets/bokeh-texture.jpg');
+    background-size: cover;
+    background-position: center;
   }
   .worries__grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items:center; }
   .worries__list{ display:flex; flex-direction:column; gap: 1.1rem; }
@@ -249,10 +242,28 @@
   .reason__photo img{ width:100%; height:100%; object-fit:cover; }
 
   /* ---------- CTA BANNER ---------- */
-  .cta-banner{ padding: 4.5rem 0; text-align:center; }
+  .cta-banner{
+    position:relative;
+    padding: 7rem 0;
+    text-align:center;
+    overflow:hidden;
+  }
+  .cta-banner__bg{ position:absolute; inset:0; z-index:0; }
+  .cta-banner__bg img{
+    width:100%; height:100%; object-fit:cover;
+    object-position: 62% 22%;
+  }
+  .cta-banner__scrim{
+    position:absolute; inset:0;
+    background: linear-gradient(180deg, rgba(250,245,236,0.1) 0%, rgba(250,245,236,0.35) 45%, rgba(250,245,236,0.7) 100%);
+  }
   .cta-banner__inner{
-    background: var(--white);
-    border: 1px solid var(--line);
+    position:relative;
+    z-index:1;
+    background: rgba(255,253,250,0.55);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.5);
     border-radius: 20px;
     padding: 2.6rem 2rem;
     box-shadow: var(--shadow);
@@ -445,6 +456,10 @@
 
   <!-- CTA BANNER -->
   <section class="cta-banner" id="contact">
+    <div class="cta-banner__bg">
+      <img src="assets/cta-portrait.jpg" alt="透け感のあるレースの布に包まれ、光の中で横顔を見せる女性">
+      <div class="cta-banner__scrim"></div>
+    </div>
     <div class="container">
       <div class="cta-banner__inner">
         <p class="lead">まずは無料カウンセリングで、あなたのお悩みをお聞かせください。</p>
