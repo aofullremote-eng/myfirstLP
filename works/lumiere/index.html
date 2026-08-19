@@ -82,6 +82,13 @@
     width:100%; height:100%; object-fit:cover;
     object-position: 78% 30%;
   }
+  .hero__bg .hero__clip{
+    position:absolute; inset:0;
+    opacity:0; transition: opacity 1.2s ease;
+  }
+  .hero__bg .hero__clip.is-active{
+    opacity:1;
+  }
   .hero__scrim{
     position:absolute; inset:0;
     background:
@@ -355,8 +362,11 @@
   <!-- HERO -->
   <section class="hero" id="top">
     <div class="hero__bg">
-      <video id="heroVideo" autoplay muted playsinline poster="assets/hero-portrait.jpg" aria-label="透け感のあるレースの布に包まれ、なめらかな素肌を見せる女性">
+      <video class="hero__clip is-active" id="heroVideoA" autoplay muted playsinline preload="auto" poster="assets/hero-portrait.jpg" aria-label="透け感のあるレースの布に包まれ、なめらかな素肌を見せる女性">
         <source src="assets/hero-loop.mp4" type="video/mp4">
+      </video>
+      <video class="hero__clip" id="heroVideoB" muted playsinline preload="auto" aria-label="透け感のあるレースの布に包まれ、なめらかな素肌を見せる女性">
+        <source src="assets/hero-loop-2.mp4" type="video/mp4">
       </video>
       <div class="hero__scrim"></div>
     </div>
@@ -542,23 +552,33 @@
 </footer>
 
 <script>
-  var heroVideo = document.getElementById("heroVideo");
+  var heroVideoA = document.getElementById("heroVideoA");
+  var heroVideoB = document.getElementById("heroVideoB");
   var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   // アニメーション低減設定のユーザーには、ヒーロー動画も静止画のまま止めておく
-  if (heroVideo && prefersReducedMotion) {
-    heroVideo.removeAttribute("autoplay");
-    heroVideo.pause();
+  if (heroVideoA && prefersReducedMotion) {
+    heroVideoA.removeAttribute("autoplay");
+    heroVideoA.pause();
   }
 
-  // 2本の動画を交互に再生し、同じ切れ目が繰り返し見えないようにする
-  if (heroVideo && !prefersReducedMotion) {
-    var heroClips = ["assets/hero-loop.mp4", "assets/hero-loop-2.mp4"];
-    var heroClipIndex = 0;
-    heroVideo.addEventListener("ended", function () {
-      heroClipIndex = (heroClipIndex + 1) % heroClips.length;
-      heroVideo.src = heroClips[heroClipIndex];
-      heroVideo.play();
+  // 2本の動画をあらかじめ両方読み込んでおき、片方が終わったらもう一方に
+  // フェードで切り替える(src差し替え方式だと再生直前に読み込みが
+  // 発生し、環境によっては切り替わりに失敗するため、要素を2つ用意して
+  // 常時プリロードしておく方式に変更)
+  if (heroVideoA && heroVideoB && !prefersReducedMotion) {
+    var heroClips = [heroVideoA, heroVideoB];
+    heroClips.forEach(function (video, index) {
+      video.addEventListener("ended", function () {
+        var next = heroClips[(index + 1) % heroClips.length];
+        video.classList.remove("is-active");
+        next.currentTime = 0;
+        var playPromise = next.play();
+        if (playPromise && playPromise.catch) {
+          playPromise.catch(function () {});
+        }
+        next.classList.add("is-active");
+      });
     });
   }
 </script>
