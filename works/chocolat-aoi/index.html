@@ -7,7 +7,7 @@
 <meta name="description" content="厳選したカカオと丁寧な手仕事から生まれる、ひと粒のショコラ。Chocolatier AOIの特別な贈り物。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;1,400;1,500&family=Alex+Brush&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;1,400;1,500&display=swap" rel="stylesheet">
 <style>
   :root{
     --black: #14110f;
@@ -32,7 +32,6 @@
   img{ max-width:100%; display:block; }
   a{ color:inherit; text-decoration:none; }
   .en{ font-family: 'Cormorant Garamond', serif; }
-  .script{ font-family:'Alex Brush', 'Cormorant Garamond', cursive; font-weight:400; }
   @media (prefers-reduced-motion: reduce){
     *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important; }
   }
@@ -99,7 +98,16 @@
     inset:0;
     background: linear-gradient(180deg, rgba(20,17,15,0.55), rgba(20,17,15,0.72) 55%, var(--black) 97%);
   }
-  .hero-inner{ position:relative; z-index:1; max-width:720px; }
+  .hero-inner{ position:relative; z-index:1; max-width:1000px; }
+  .sr-only{
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
   .eyebrow{
     font-style: italic;
     font-size: 1rem;
@@ -121,21 +129,14 @@
   }
   .hero-photo{
     position: relative;
-    width: min(600px, 90vw);
-    aspect-ratio: 1/1;
+    width: 100%;
+    max-width: 1000px;
+    aspect-ratio: 1179 / 512;
     margin: 0 auto 2.6rem;
-    overflow: hidden;
-    border: 1px solid rgba(176,141,87,0.4);
-    box-shadow: 0 24px 50px rgba(0,0,0,0.45);
+    -webkit-mask-image: radial-gradient(ellipse 94% 94% at center, #000 70%, transparent 100%);
+    mask-image: radial-gradient(ellipse 94% 94% at center, #000 70%, transparent 100%);
   }
-  .hero-photo img{ width:100%; height:100%; object-fit:cover; }
-  .hero-photo .sign{
-    position:absolute;
-    left: 1.3rem; bottom: 1rem;
-    color: var(--ink);
-    font-size: 1.9rem;
-    text-shadow: 0 2px 12px rgba(0,0,0,0.5);
-  }
+  .hero-photo img{ width:100%; height:100%; object-fit:contain; display:block; }
   .cta{
     display:inline-flex;
     align-items:center;
@@ -316,7 +317,6 @@
     .logo{ font-size: 1.05rem; white-space:nowrap; }
     .shop-btn{ padding: 0.55rem 1rem; font-size:0.7rem; }
     .collection-grid{ grid-template-columns: 1fr; }
-    .hero-photo .sign{ font-size: 1.4rem; left:1rem; bottom:0.8rem; }
     .news-form{ flex-direction:column; }
   }
 
@@ -339,10 +339,9 @@
 <section class="hero" id="top">
   <div class="hero-inner">
     <p class="eyebrow en">CHOCOLATIER AOI</p>
-    <h1>心ときめく<br>チョコレートを、あなたへ。</h1>
+    <h1 class="sr-only">心ときめくチョコレートを、あなたへ。</h1>
     <figure class="hero-photo">
-      <img src="assets/hero-plate.jpg" alt="お皿に並んだハート型やゴールドをあしらったショコラ6粒、ドライフラワーとギフトボックスを添えて">
-      <span class="sign script">Chocolatier AOI</span>
+      <img src="assets/hero-banner.jpg" alt="「心ときめくチョコレートを、あなたへ。」の文字とともに、お皿に並んだハート型やゴールドをあしらったショコラ6粒、ドライフラワーとギフトボックスを添えて">
     </figure>
     <p class="lead">季節ごとの、ひと粒に想いを丁寧に。特別な時間にも、上質なショコラをお届けします。</p>
   </div>
