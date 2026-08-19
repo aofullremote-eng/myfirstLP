@@ -199,9 +199,10 @@
   /* ---------- SECTION HEADS ---------- */
   .section-head{ text-align:center; margin-bottom: 3rem; }
   .section-head__inner{
-    display:inline-flex; align-items:center; gap: 1.2rem;
+    display:flex; align-items:center; justify-content:center; gap: 1.2rem;
+    max-width:100%;
   }
-  .section-head__inner span:not(.section-head__title){ width: 48px; height:1px; background: var(--line); }
+  .section-head__inner span:not(.section-head__title){ width: 48px; height:1px; background: var(--line); flex-shrink:0; }
   .section-head__title{ font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight:600; }
 
   /* ---------- WORRIES ---------- */
@@ -339,7 +340,13 @@
     .hero__heading h2,
     .hero__heading .hero__tagline{ margin-bottom: 0.5rem; }
     .hero__heading .hero__tagline{ margin-bottom: 0; }
+    .section-head__inner{ gap: 0.6rem; }
+    .section-head__inner span:not(.section-head__title){ width: 20px; }
     .worries__grid{ grid-template-columns: 1fr; }
+    .worries__icons{ grid-template-columns: 1fr; gap: 1.6rem; }
+    .worry-icon{ display:flex; align-items:center; gap: 1rem; text-align:left; }
+    .worry-icon__circle{ width: 64px; height:64px; margin:0; flex-shrink:0; }
+    .worry-icon p{ margin:0; }
     .reasons__grid{ grid-template-columns: 1fr; }
     .assurance__grid{ grid-template-columns: repeat(2, 1fr); gap: 2rem 1rem; }
     .badges{ justify-content:center; }
