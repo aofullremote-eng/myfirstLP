@@ -196,8 +196,16 @@
   .about .eyebrow{ color: var(--gold); }
   .about p{ max-width: 46ch; font-size: 0.95rem; opacity: 0.88; margin-bottom: 1.3rem; }
   .about .script{ font-size:1.3rem; opacity:0.8; display:block; margin-bottom:2rem; }
-  .about-illust{ opacity:0.92; }
-  .about-illust svg{ width:100%; max-width:320px; margin:0 auto; display:block; }
+  .about-photo{
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 3 / 4;
+    max-width: 380px;
+    margin: 0 auto;
+    border: 1px solid rgba(176,141,87,0.4);
+    box-shadow: 0 24px 50px rgba(0,0,0,0.45);
+  }
+  .about-photo img{ width:100%; height:100%; object-fit:cover; display:block; }
 
   /* ---------- COLLECTION ---------- */
   .collection{ background: var(--cream); }
@@ -293,7 +301,7 @@
     .collection-grid{ grid-template-columns: 1fr 1fr; }
     .about .section-head, .about p{ max-width:none; }
     .about-inner{ grid-template-columns: 1fr; text-align:center; }
-    .about-illust{ order:-1; }
+    .about-photo{ order:-1; }
     section{ padding: 4.5rem 6vw; }
   }
   @media (max-width: 700px){
@@ -345,21 +353,10 @@
       </div>
       <p>世界各地の農園から、丁寧に仕入れたカカオ。産地ごとの香りや余韻をひとつひとつ確かめながら、余分なものを削ぎ落とした配合でひと粒に仕立てます。</p>
       <p>光と時間に寄り添うように、静かな手仕事から生まれるチョコレート。あなたの特別な日に、そっと寄り添えますように。</p>
-      <span class="script">Bean to Bonbon</span>
       <a href="#collection" class="cta cta--light en">MORE ABOUT US →</a>
     </div>
-    <figure class="about-illust" aria-hidden="true">
-      <svg viewBox="0 0 220 300" fill="none" stroke="#e8d3ab" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M112 40 C130 36 144 48 140 64 C150 62 154 76 144 82 C148 90 142 98 132 96"/>
-        <path d="M96 52 C86 58 82 70 88 80 C83 84 84 92 91 96 C94 106 102 112 112 112 C128 112 138 98 137 80 C136 62 122 44 106 46 C102 47 98 49 96 52 Z"/>
-        <path d="M106 108 C106 120 108 128 110 136"/>
-        <path d="M58 300 C55 216 70 154 110 136 C150 154 163 216 160 300"/>
-        <path d="M110 158 C134 168 156 178 176 176 C188 175 197 168 202 158"/>
-        <path d="M202 158 C212 153 222 156 224 166 C226 175 216 182 206 179"/>
-        <ellipse cx="212" cy="196" rx="16" ry="5"/>
-        <circle cx="230" cy="184" r="3.2" fill="#e8d3ab" stroke="none"/>
-        <circle cx="221" cy="187" r="2.2" fill="#e8d3ab" stroke="none"/>
-      </svg>
+    <figure class="about-photo">
+      <img src="assets/about-chocolatier.jpg" alt="工房の淡い灯りの下、ひと粒ひと粒に筆で仕上げを施すショコラティエの女性">
     </figure>
   </div>
 </section>
