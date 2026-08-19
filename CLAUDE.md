@@ -11,7 +11,7 @@
 - **ターゲット**: ハンドメイド作品やアート活動をSNSで発信していて、そろそろ自分のページを持ちたい30代の個人クリエイター
 - **提供者プロフィール**: aoi(LP制作パートナー)。実績はまだ無く、その点は正直に打ち出す方針
 - **料金**: 現在調整中。LP上は "Coming Soon" 表示(`.price-card__amount--soon`)
-- `works/` 配下には、KOTONOHAが実際に制作したサンプルLP(chocolat-aoi、forest-bakery、mori-no-panya など)も同居している。これらは本体LPの「作品」として紹介される想定のデモ制作物。
+- `works/` 配下には、KOTONOHAが実際に制作したサンプルLP(chocolat-aoi、forest-bakery、mori-no-panya、lumiere など)も同居している。これらは本体LPの「作品」として紹介される想定のデモ制作物。
 
 ## LPのデザイン
 
