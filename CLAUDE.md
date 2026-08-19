@@ -34,7 +34,7 @@
 | 導入フレームアニメーション(140枚) | `assets/hero/frames/frame_0001.jpg` 〜 `frame_0140.jpg` |
 | ヒーロー背景の水彩テクスチャ(SVG) | `assets/hero/water-texture.svg` |
 | プロフィール写真 | `assets/profile/profile-portrait.jpg` |
-| 作品ギャラリー(8点) | `assets/works/work-01-paris.jpg` 〜 `work-08-gift.jpg`(`work-02-mirror.png` のみPNG) |
+| 作品ギャラリー(8点) | `assets/works/work-01-eclat-chocolat.jpg` 〜 `work-08-gift.jpg`(`work-02-mirror.png` のみPNG) |
 
 ## 画像の保存場所
 
@@ -60,7 +60,7 @@ assets/
 | `hero/hero-cover.jpg` | 1254×1254 | `.hero__cover` 内で幅100%表示(正方形) |
 | `hero/frames/frame_*.jpg` | 可変(連番) | フルスクリーン `object-fit: cover` |
 | `profile/profile-portrait.jpg` | 900×1200 | `aspect-ratio: 3 / 4` で `object-fit: cover` |
-| `works/work-01-paris.jpg` | 819×900 | `aspect-ratio: 4 / 5` で `object-fit: cover` |
+| `works/work-01-eclat-chocolat.jpg` | 481×601 | `aspect-ratio: 4 / 5` で `object-fit: cover`。サンプルLP `works/chocolat-aoi/` へのリンク付き |
 | `works/work-02-mirror.png` | 1086×1448 | 同上 |
 | `works/work-03-glitter.jpg` | 900×900 | 同上 |
 | `works/work-04-woodland.jpg` | 580×422 | 同上 |
