@@ -60,7 +60,7 @@ assets/
 | `hero/hero-cover.jpg` | 1254×1254 | `.hero__cover` 内で幅100%表示(正方形) |
 | `hero/frames/frame_*.jpg` | 可変(連番) | フルスクリーン `object-fit: cover` |
 | `profile/profile-portrait.jpg` | 900×1200 | `aspect-ratio: 3 / 4` で `object-fit: cover` |
-| `works/work-01-eclat-chocolat.jpg` | 481×601 | `aspect-ratio: 4 / 5` で `object-fit: cover`。サンプルLP `works/chocolat-aoi/` へのリンク付き |
+| `works/work-01-eclat-chocolat.jpg` | 1003×1254 | `aspect-ratio: 4 / 5` で `object-fit: cover`。サンプルLP `works/chocolat-aoi/` へのリンク付き |
 | `works/work-02-mirror.png` | 1086×1448 | 同上 |
 | `works/work-03-glitter.jpg` | 900×900 | 同上 |
 | `works/work-04-woodland.jpg` | 580×422 | 同上 |
