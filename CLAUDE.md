@@ -128,3 +128,88 @@ Google Fonts依存は解消済み。CSS変数(`style.css` の `:root`)で定義:
 - **デプロイ運用**: このリポジトリは `master` に直接pushする運用(PRは使わない)。Vercel(`kotonoha-ai` プロジェクト)が `master` への自動デプロイに連携済みのため、`master` ブランチの扱いには注意する
 - `assets/vendor/` 配下(BudouXなどのサードパーティ製アセット)は手動で編集しない
 - `works/` 配下の各サンプルLP(`chocolat-aoi` 等)は、それぞれ独立した制作物として扱い、本体LP(`index.html` / `style.css` / `script.js`)の変更に巻き込んで一括変更しない
+
+---
+
+# works/lumiere/ — LUMIÈRE サンプルLP仕様
+
+`works/lumiere/index.html` 1ファイル完結(インラインCSS/JS)の脱毛サロン向けサンプルLP。本体LP(KOTONOHA)の作品ギャラリーから紹介される想定のデモ制作物で、本体の `assets/` `style.css` `script.js` とは完全に独立している。
+
+## このプロジェクトの目的
+
+- **業種**: 脱毛サロン「LUMIÈRE」
+- **目的**: 無料カウンセリングへの誘導(`mailto:aofullremote@gmail.com` リンク)
+- **トンマナ**: ゴールド × クリーム × ローズの上品・華やかな女性向けサロン系デザイン(KOTONOHA本体とは配色・フォントとも別方針)
+
+## LPのデザイン
+
+**構成(セクション順)**:
+ヘッダー → ヒーロー(`#top`、動画背景+シマーグラデーション見出し)→ こんなお悩みありませんか(`#worries`、玉ボケ背景)→ 当サロンが選ばれる3つの理由(`#reasons`)→ CTAバナー・無料カウンセリング予約(`#contact`)→ 安心して通っていただくために(`.assurance`)→ フッター
+
+**世界観・トンマナ**:
+- ヒーローは2本の動画(`hero-loop.mp4` / `hero-loop-2.mp4`)を交互にクロスフェード再生し、単体ループの繋ぎ目が目立たないようにしている(`#heroVideoA` / `#heroVideoB`、`ended` イベントで `.is-active` クラスをトグル)
+- ヒーロー見出し(`h1`)はゴールド系グラデーションが流れる「シマー」アニメーション(`background-clip: text` + `@keyframes shimmer`)
+- こんなお悩みありませんかセクションは、ヒーローと同系統の玉ボケ写真(`bokeh-texture.jpg`)を背景に使用
+- CTAバナーは背景写真(`cta-portrait.jpg`)の上に半透明のガラス風カード(`backdrop-filter: blur()`)を重ねる構成
+- 各セクション見出しは中央の左右に細い装飾ライン(`.section-head__inner`)を配置する共通デザイン
+
+## 使用する画像
+
+| 用途 | ファイル |
+|---|---|
+| ヒーロー動画のポスター | `assets/hero-portrait.jpg` |
+| ヒーローのループ動画(2本、交互再生) | `assets/hero-loop.mp4`, `assets/hero-loop-2.mp4` |
+| こんなお悩みありませんかの背景(玉ボケ) | `assets/bokeh-texture.jpg` |
+| 当サロンが選ばれる3つの理由の写真 | `assets/treatment.jpg`, `assets/legs.jpg`, `assets/private-room.jpg` |
+| CTAバナーの背景写真 | `assets/cta-portrait.jpg` |
+
+## 画像の保存場所
+
+`works/lumiere/assets/` 配下(本体LPの `assets/` とは独立。他のサンプルLPと同じ命名規則)。
+
+## 画像サイズ
+
+- ヒーロー動画: 1018×508(`hero-loop.mp4` が元動画のネイティブ解像度。`hero-loop-2.mp4` は元動画をクロップ後この解像度にスケールして揃えている)。H.264・音声トラック無し・CRF20で再エンコードし、各約900KB前後
+- 静止画は用途に応じたサイズで、`aspect-ratio` で `object-fit: cover` トリミング表示するため、正方形〜縦長を目安に追加する
+
+## フォント
+
+Google Fonts に依存(本体LPと異なり、BudouX等での脱Google Fonts対応はしていない)。
+
+```css
+font-family: 'Zen Old Mincho', serif;   /* 和文見出し・本文 */
+font-family: 'Cormorant Garamond', serif; /* 英字アクセント(ロゴ・番号・価格など。`.en` クラス */
+```
+
+## 色
+
+`<style>` 内 `:root` で一元管理。
+
+```css
+--cream:      #faf5ec;  /* 背景 */
+--cream-deep: #f2e9da;  /* 背景(やや濃いめ) */
+--white:      #fffdfa;  /* カード背景等 */
+--gold:       #c9a463;  /* ゴールドアクセント */
+--gold-deep:  #a67f42;  /* ゴールド(濃) */
+--rose:       #e3a3a0;  /* ローズアクセント */
+--rose-deep:  #d1817d;  /* ローズ(濃) */
+--peach:      #f0b9a0;  /* ピーチアクセント */
+--ink:        #55483c;  /* 本文色 */
+--ink-light:  #8d7d6c;  /* 本文色(淡) */
+--line:       #e6d9c6;  /* ボーダー・装飾ライン */
+--shadow:     0 20px 45px rgba(120, 95, 60, 0.14);
+```
+
+## レスポンシブ対応
+
+- **ブレークポイント**: `@media (max-width: 860px)` のみ
+- ヒーロー動画/画像: PCは `object-fit: cover`、モバイルは `object-fit: contain`(全身が見えるように)+ `.hero__content` を画像下に押し下げる `margin-top`
+- `h1` はモバイル用改行(`.only-mobile` の `<br>`)で行間を調整。長すぎる語尾(句読点など)は1文字だけ折り返して浮かないよう、行に収まる文字数に調整する
+- `.section-head__inner`(見出し両脇の装飾ライン)は `display:flex; justify-content:center` + `max-width:100%` で、幅が収まりきらない場合でも中央寄せが崩れないようにしている。モバイルではライン幅・gapを縮小してさらに折り返りにくくしている
+- `.worries__icons` はPC3カラムグリッド → モバイルは1カラム(アイコン+テキスト横並び)に変更し、狭い列でのテキスト折り返しを防止
+
+## 変更してはいけない部分
+
+- **ヒーロー動画のクロスフェード再生の仕組み**(`#heroVideoA` / `#heroVideoB` の2要素プリロード + `ended` イベントでの `.is-active` トグル)は、ループの繋ぎ目を隠す核となる演出のため、構造を変える場合は動作確認を必須とする(単一 `<video>` の `src` 差し替え方式は、環境によって切り替え失敗することが確認済みのため不採用)
+- **お問い合わせ導線**: `mailto:aofullremote@gmail.com` への問い合わせリンクを削除・変更しない
+- 本体LP(KOTONOHA)の `index.html` / `style.css` / `script.js` の変更にこのサンプルLPを巻き込んで一括変更しない(独立した制作物として扱う)
