@@ -34,7 +34,7 @@
 | 導入フレームアニメーション(140枚) | `assets/hero/frames/frame_0001.jpg` 〜 `frame_0140.jpg` |
 | ヒーロー背景の水彩テクスチャ(SVG) | `assets/hero/water-texture.svg` |
 | プロフィール写真 | `assets/profile/profile-portrait.jpg` |
-| 作品ギャラリー(8点) | `assets/works/work-01-eclat-chocolat.jpg` 〜 `work-08-gift.jpg`(`work-02-mirror.png` のみPNG) |
+| 作品ギャラリー(9点) | `assets/works/work-01-eclat-chocolat.jpg` 〜 `work-09-lumiere.jpg`(`work-02-mirror.png` のみPNG) |
 
 ## 画像の保存場所
 
@@ -68,6 +68,7 @@ assets/
 | `works/work-06-cat.jpg` | 900×900 | 同上 |
 | `works/work-07-crow.jpg` | 900×900 | 同上 |
 | `works/work-08-gift.jpg` | 1254×1254 | 同上 |
+| `works/work-09-lumiere.jpg` | 1400×933 | 同上。サンプルLP `works/lumiere/` へのリンク付き |
 
 作品ギャラリー画像は `aspect-ratio: 4/5` でトリミング表示されるため、追加素材は正方形〜縦長(4:5前後)を目安にする。ファイル容量はJPEG品質を落としすぎない範囲で、おおよそ数十KB〜200KB程度に収めている(`work-02-mirror.png` は2MB超と重いため、追加でPNGを使う場合は圧縮を検討する)。
 
