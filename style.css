@@ -910,6 +910,32 @@ a { text-decoration: none; color: inherit; }
     0 28px 46px rgba(90, 78, 74, 0.22);
 }
 
+/* 制作待ちの作品例: 画像をやや落ち着かせ、中央に「Coming Soon」バッジを重ねる */
+.works__item--soon img {
+  filter: saturate(0.55) brightness(0.92);
+}
+
+.works__badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+  transform: translate(-50%, -50%) rotate(-4deg);
+  background: var(--color-ivory);
+  border: 1px solid var(--color-rose);
+  color: var(--color-rose-deep);
+  font-family: var(--font-accent);
+  font-weight: 600;
+  font-style: italic;
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  padding: 9px 22px;
+  border-radius: 999px;
+  box-shadow: 0 8px 20px rgba(90, 78, 74, 0.2);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
 /* ===== よくある質問セクション ===== */
 .faq {
   padding: 100px 0;

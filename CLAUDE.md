@@ -34,7 +34,7 @@
 | 導入フレームアニメーション(140枚) | `assets/hero/frames/frame_0001.jpg` 〜 `frame_0140.jpg` |
 | ヒーロー背景の水彩テクスチャ(SVG) | `assets/hero/water-texture.svg` |
 | プロフィール写真 | `assets/profile/profile-portrait.jpg` |
-| 作品ギャラリー(9点) | `assets/works/work-01-eclat-chocolat.jpg` 〜 `work-09-lumiere.jpg`(`work-02-mirror.png` のみPNG) |
+| 作品ギャラリー(9点) | `assets/works/work-01-eclat-chocolat.jpg` 〜 `work-09-gift.jpg`(`work-03-mirror.png` のみPNG) |
 
 ## 画像の保存場所
 
@@ -61,14 +61,16 @@ assets/
 | `hero/frames/frame_*.jpg` | 可変(連番) | フルスクリーン `object-fit: cover` |
 | `profile/profile-portrait.jpg` | 900×1200 | `aspect-ratio: 3 / 4` で `object-fit: cover` |
 | `works/work-01-eclat-chocolat.jpg` | 1003×1254 | `aspect-ratio: 4 / 5` で `object-fit: cover`。サンプルLP `works/chocolat-aoi/` へのリンク付き |
-| `works/work-02-mirror.png` | 1086×1448 | 同上 |
-| `works/work-03-glitter.jpg` | 900×900 | 同上 |
-| `works/work-04-woodland.jpg` | 580×422 | 同上 |
-| `works/work-05-goldfish.jpg` | 677×900 | 同上 |
-| `works/work-06-cat.jpg` | 900×900 | 同上 |
-| `works/work-07-crow.jpg` | 900×900 | 同上 |
-| `works/work-08-gift.jpg` | 1254×1254 | 同上 |
-| `works/work-09-lumiere.jpg` | 1400×933 | 同上。サンプルLP `works/lumiere/` へのリンク付き |
+| `works/work-02-lumiere.jpg` | 960×1200 | 同上。`works/lumiere/` のヒーローを撮影したスクリーンショット。サンプルLP `works/lumiere/` へのリンク付き |
+| `works/work-03-mirror.png` | 1086×1448 | 同上。リンク無し(`.works__item--soon` で「Coming Soon」バッジ表示) |
+| `works/work-04-glitter.jpg` | 900×900 | 同上 |
+| `works/work-05-woodland.jpg` | 580×422 | 同上 |
+| `works/work-06-goldfish.jpg` | 677×900 | 同上 |
+| `works/work-07-cat.jpg` | 900×900 | 同上 |
+| `works/work-08-crow.jpg` | 900×900 | 同上 |
+| `works/work-09-gift.jpg` | 1254×1254 | 同上 |
+
+現在、実際のサンプルLPへリンクしているのは `work-01`(Éclat Chocolat)と `work-02`(LUMIÈRE)の2点のみ。残り(`work-03`〜`work-09`)はまだ専用サンプルLPが無いイラスト作品例のため、`.works__item--soon` クラス+`.works__badge`(「Coming Soon」)で準備中であることを示している。
 
 作品ギャラリー画像は `aspect-ratio: 4/5` でトリミング表示されるため、追加素材は正方形〜縦長(4:5前後)を目安にする。ファイル容量はJPEG品質を落としすぎない範囲で、おおよそ数十KB〜200KB程度に収めている(`work-02-mirror.png` は2MB超と重いため、追加でPNGを使う場合は圧縮を検討する)。
 
