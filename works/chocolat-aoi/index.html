@@ -98,6 +98,15 @@
     inset:0;
     background: linear-gradient(180deg, rgba(20,17,15,0.55), rgba(20,17,15,0.72) 55%, var(--black) 97%);
   }
+  .hero-figure{
+    position:absolute;
+    top:0; right:0; bottom:0;
+    width: min(26vw, 340px);
+    background: url('assets/about-chocolatier.jpg') 60% center / cover no-repeat;
+    opacity: 0.55;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 35%);
+    mask-image: linear-gradient(90deg, transparent, #000 35%);
+  }
   .hero-inner{ position:relative; z-index:1; width:100%; max-width:1000px; }
   .sr-only{
     position: absolute;
@@ -314,6 +323,7 @@
   @media (max-width: 860px){
     .collection-grid{ grid-template-columns: 1fr 1fr; }
     section{ padding: 4.5rem 6vw; }
+    .hero-figure{ display:none; }
   }
   @media (max-width: 700px){
     header.site nav a:not(.shop-btn){ display:none; }
@@ -343,6 +353,7 @@
 </header>
 
 <section class="hero" id="top">
+  <div class="hero-figure" aria-hidden="true"></div>
   <div class="hero-inner">
     <p class="eyebrow en">ÉCLAT CHOCOLAT</p>
     <h1 class="sr-only">心ときめくチョコレートを、あなたへ。</h1>
