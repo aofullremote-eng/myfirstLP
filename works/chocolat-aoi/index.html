@@ -137,6 +137,12 @@
     mask-image: radial-gradient(ellipse 94% 94% at center, #000 70%, transparent 100%);
   }
   .hero-photo img{ width:100%; height:100%; object-fit:contain; display:block; }
+  .hero-photo img.hero-photo__slide{
+    position:absolute; inset:0;
+    opacity:0;
+    transition: opacity 1.4s ease;
+  }
+  .hero-photo img.hero-photo__slide.is-active{ opacity:1; }
   .cta{
     display:inline-flex;
     align-items:center;
@@ -341,7 +347,9 @@
     <p class="eyebrow en">ÉCLAT CHOCOLAT</p>
     <h1 class="sr-only">心ときめくチョコレートを、あなたへ。</h1>
     <figure class="hero-photo">
-      <img src="assets/hero-banner.jpg" alt="「心ときめくチョコレートを、あなたへ。」の文字とともに、お皿に並んだハート型やゴールドをあしらったショコラ6粒、ドライフラワーとギフトボックスを添えて">
+      <img class="hero-photo__slide is-active" src="assets/hero-banner.jpg" alt="「心ときめくチョコレートを、あなたへ。」の文字とともに、お皿に並んだハート型やゴールドをあしらったショコラ6粒、ドライフラワーとギフトボックスを添えて">
+      <img class="hero-photo__slide" src="assets/hero-slide-02.jpg" alt="大理石のプレートに並んだハート型やドーム型など10粒のショコラ。カカオ豆やドライフラワーを添えて">
+      <img class="hero-photo__slide" src="assets/hero-slide-03.jpg" alt="ドライフルーツとナッツを散りばめた、スティック仕立てのチョコレートバー">
     </figure>
     <p class="lead">季節ごとの、ひと粒に想いを丁寧に。特別な時間にも、上質なショコラをお届けします。</p>
   </div>
@@ -430,5 +438,18 @@
   <p>© Éclat Chocolat — この画面はKOTONOHAによるサンプルLPです</p>
 </footer>
 
+<script>
+  var heroSlides = document.querySelectorAll(".hero-photo__slide");
+  var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (heroSlides.length > 1 && !prefersReducedMotion) {
+    var heroSlideIndex = 0;
+    setInterval(function () {
+      heroSlides[heroSlideIndex].classList.remove("is-active");
+      heroSlideIndex = (heroSlideIndex + 1) % heroSlides.length;
+      heroSlides[heroSlideIndex].classList.add("is-active");
+    }, 4200);
+  }
+</script>
 </body>
 </html>
