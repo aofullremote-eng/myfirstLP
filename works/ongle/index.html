@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ONGLE | 指先にも、静かな贅沢を。</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white: #ffffff;
+    --cream: #f8f6f2;
+    --cream-deep: #efeae1;
+    --olive: #8a8368;
+    --olive-deep: #66604a;
+    --taupe: #d9d1c3;
+    --rose-dust: #c7a79c;
+    --ink: #3c3730;
+    --ink-light: #948d7d;
+    --shadow: 0 24px 50px rgba(60, 55, 45, 0.10);
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; overflow-x:hidden; }
+  body{
+    font-family: 'Shippori Mincho', serif;
+    background: var(--white);
+    color: var(--ink);
+    line-height: 1.9;
+    overflow-x:hidden;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+  img{ max-width:100%; display:block; }
+  a{ color:inherit; text-decoration:none; }
+  .en{ font-family: 'Cormorant Garamond', serif; }
+  .container{ width:100%; max-width:1100px; margin:0 auto; padding:0 24px; }
+  .only-mobile{ display:none; }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation: none !important; transition: none !important; }
+  }
+
+  /* ---------- HEADER ---------- */
+  header.site{
+    position:sticky; top:0; z-index:10;
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 1.4rem 5vw;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--taupe);
+  }
+  .logo{
+    font-family:'Cormorant Garamond', serif; font-style:italic; font-weight:600;
+    font-size: 1.5rem; letter-spacing:0.08em; color: var(--olive-deep);
+  }
+  header.site nav{ display:flex; align-items:center; gap:2.2rem; }
+  header.site nav a{
+    font-family:'Cormorant Garamond', serif; font-size:0.95rem; letter-spacing:0.12em;
+    color: var(--ink); text-decoration:none; opacity:0.8;
+  }
+  header.site nav a:hover{ opacity:1; }
+  .header-cta{
+    padding: 0.6rem 1.3rem;
+    border: 1px solid var(--olive-deep);
+    color: var(--olive-deep) !important;
+    opacity:1 !important;
+    border-radius: 2px;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  .header-cta:hover{ background: var(--olive-deep); color: var(--white) !important; }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{ padding: 6.5rem 0; }
+  .section-head{ text-align:center; margin-bottom: 3.4rem; }
+  .eyebrow{
+    font-family:'Cormorant Garamond', serif; font-style:italic;
+    font-size: 1rem; letter-spacing:0.32em; color: var(--olive);
+    margin-bottom: 1rem; display:block;
+  }
+  .section-head h2{
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    font-weight:600; letter-spacing:0.08em;
+  }
+  .section-lead{
+    max-width: 46ch; margin: 1.1rem auto 0;
+    font-size: 0.95rem; color: var(--ink-light);
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height: 92vh;
+    display:flex; align-items:center; justify-content:center;
+    text-align:center; overflow:hidden;
+    color: var(--ink);
+  }
+  .hero__bg{ position:absolute; inset:0; z-index:0; }
+  .hero__bg img{ width:100%; height:100%; object-fit:cover; object-position: 60% 40%; }
+  .hero__scrim{
+    position:absolute; inset:0;
+    background: linear-gradient(180deg, rgba(255,253,249,0.55) 0%, rgba(255,253,249,0.72) 45%, rgba(255,253,249,0.94) 88%);
+  }
+  .hero__inner{ position:relative; z-index:1; max-width: 640px; padding: 0 6vw; }
+  .hero h1{
+    font-size: clamp(2rem, 4.4vw, 3rem);
+    font-weight:600; line-height:1.7; margin-bottom:1.4rem;
+  }
+  .hero p.lead{
+    max-width:38ch; margin:0 auto 2.2rem;
+    font-size:0.95rem; color: var(--ink-light);
+  }
+  .hero .divider{
+    display:flex; align-items:center; justify-content:center; gap:1rem;
+    margin-bottom: 1.6rem;
+  }
+  .hero .divider span{ width:36px; height:1px; background: var(--olive); }
+  .hero .divider p{ font-family:'Cormorant Garamond', serif; font-style:italic; letter-spacing:0.28em; font-size:0.85rem; color:var(--olive-deep); }
+
+  .btn{
+    display:inline-flex; align-items:center; gap:0.6rem;
+    padding: 0.95rem 2.2rem;
+    background: var(--olive-deep);
+    color: var(--white);
+    text-decoration:none;
+    font-size:0.85rem; letter-spacing:0.1em;
+    border-radius: 2px;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  .btn:hover{ background: var(--ink); transform: translateY(-1px); }
+  .btn--outline{
+    background:transparent; color: var(--olive-deep); border:1px solid var(--olive-deep);
+  }
+  .btn--outline:hover{ background: var(--olive-deep); color:var(--white); }
+
+  /* ---------- CONCEPT / ABOUT ---------- */
+  .concept .container{
+    display:grid; grid-template-columns: 1fr 1fr; gap: 5vw; align-items:center;
+  }
+  .concept-motif{ width:100%; }
+  .concept-motif svg{ width:100%; height:auto; }
+  .concept-text h2{
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight:600; line-height:1.7; margin-bottom:1.6rem;
+  }
+  .concept-text p{ font-size:0.94rem; color: var(--ink-light); margin-bottom:1.2rem; }
+  .concept-text p:last-child{ margin-bottom:0; }
+
+  /* ---------- CONCERNS ---------- */
+  .concerns{ background: var(--cream); }
+  .concerns__list{
+    max-width:640px; margin:0 auto 4rem;
+    list-style:none;
+  }
+  .concerns__list li{
+    display:flex; align-items:baseline; gap:0.9rem;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--taupe);
+    font-size: 0.98rem;
+  }
+  .concerns__list li:first-child{ border-top: 1px solid var(--taupe); }
+  .concerns__list li::before{
+    content:"—";
+    font-family:'Cormorant Garamond', serif;
+    color: var(--olive);
+    flex-shrink:0;
+  }
+  .concerns__feats{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+    max-width: 900px; margin:0 auto;
+  }
+  .feat{ text-align:center; }
+  .feat__icon{
+    width:64px; height:64px; margin:0 auto 1rem;
+    border-radius:50%;
+    border:1px solid var(--olive);
+    display:flex; align-items:center; justify-content:center;
+    color: var(--olive-deep);
+    background: var(--white);
+  }
+  .feat p{ font-size:0.85rem; color: var(--ink-light); }
+
+  /* ---------- MENU / PRICE ---------- */
+  .menu .container{ max-width: 760px; }
+  .price-card{
+    background: var(--white);
+    border: 1px solid var(--taupe);
+    border-radius: 4px;
+    padding: 2.4rem 2rem;
+    text-align:center;
+    box-shadow: var(--shadow);
+    margin-bottom: 3.4rem;
+  }
+  .price-card__label{
+    display:inline-block; font-size:0.75rem; letter-spacing:0.16em;
+    color: var(--white); background: var(--olive-deep);
+    padding: 0.3rem 0.9rem; border-radius: 999px; margin-bottom:1.1rem;
+  }
+  .price-card__plan{ font-size:1.05rem; font-weight:600; margin-bottom:0.9rem; }
+  .price-card__row{ display:flex; align-items:baseline; justify-content:center; gap:0.9rem; flex-wrap:wrap; }
+  .price-card__old{ font-family:'Cormorant Garamond', serif; font-size:0.95rem; color: var(--ink-light); text-decoration: line-through; }
+  .price-card__amount{ font-family:'Cormorant Garamond', serif; font-size:2.4rem; font-weight:600; color: var(--olive-deep); line-height:1; }
+  .price-card__tax{ font-size:0.85rem; font-weight:400; margin-left:0.2rem; }
+  .price-card__note{ margin-top:1rem; font-size:0.78rem; color: var(--ink-light); }
+
+  .menu-table{ list-style:none; border-top: 1px solid var(--taupe); }
+  .menu-table li{
+    display:flex; align-items:baseline; justify-content:space-between; gap:1rem;
+    padding: 1.1rem 0.3rem;
+    border-bottom: 1px solid var(--taupe);
+    font-size:0.92rem;
+  }
+  .menu-table li .name{ }
+  .menu-table li .name span{ display:block; font-size:0.76rem; color: var(--ink-light); margin-top:0.2rem; }
+  .menu-table li .price{ font-family:'Cormorant Garamond', serif; font-size:1.1rem; color: var(--olive-deep); white-space:nowrap; }
+
+  /* ---------- COLOR PALETTE ---------- */
+  .palette{ background: var(--cream); }
+  .palette__grid{
+    display:grid; grid-template-columns: repeat(6, 1fr); gap: 1.6rem 1rem;
+    max-width: 880px; margin: 0 auto;
+  }
+  .swatch{ text-align:center; }
+  .swatch__dot{
+    width:56px; height:56px; margin:0 auto 0.7rem;
+    border-radius:50%;
+    box-shadow: inset 0 -6px 10px rgba(0,0,0,0.08), inset 0 4px 8px rgba(255,255,255,0.5), 0 6px 14px rgba(60,55,45,0.12);
+  }
+  .swatch p{ font-family:'Cormorant Garamond', serif; font-size:0.82rem; letter-spacing:0.04em; color: var(--ink-light); }
+
+  /* ---------- VOICE ---------- */
+  .voice__grid{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+    max-width: 1000px; margin:0 auto;
+  }
+  .voice-card{
+    background: var(--white);
+    border: 1px solid var(--taupe);
+    border-radius: 4px;
+    padding: 2rem 1.7rem;
+  }
+  .voice-card__quote{ font-family:'Cormorant Garamond', serif; font-style:italic; font-size:1.6rem; color: var(--olive); margin-bottom:1rem; line-height:1; }
+  .voice-card p{ font-size:0.88rem; color: var(--ink-light); margin-bottom:1.2rem; }
+  .voice-card__meta{ font-size:0.78rem; letter-spacing:0.06em; color: var(--olive-deep); }
+
+  /* ---------- CTA ---------- */
+  .cta-banner{ position:relative; overflow:hidden; padding:0; }
+  .cta-banner__bg{ position:relative; min-height: 60vh; display:flex; align-items:center; justify-content:center; }
+  .cta-banner__bg img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position: 25% 55%; }
+  .cta-banner__scrim{
+    position:absolute; inset:0;
+    background: linear-gradient(180deg, rgba(255,253,249,0.5) 0%, rgba(255,253,249,0.68) 45%, rgba(255,253,249,0.85) 100%);
+  }
+  .cta-banner__inner{
+    position:relative; z-index:1;
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.7);
+    border-radius: 6px; padding: 2.8rem 2.2rem;
+    box-shadow: var(--shadow);
+    max-width: 620px; margin: 0 auto; text-align:center;
+  }
+  .cta-banner__inner h2{ font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight:600; margin-bottom:1rem; }
+  .cta-banner__inner p{ font-size:0.9rem; color: var(--ink-light); margin-bottom:1.8rem; }
+
+  /* ---------- FOOTER ---------- */
+  footer.site{
+    text-align:center; padding: 3.5rem 5vw; background: var(--ink); color: rgba(255,255,255,0.7);
+  }
+  footer.site .logo{ display:block; margin-bottom:0.6rem; font-size:1.2rem; color: var(--white); }
+  footer.site p{ font-size:0.78rem; letter-spacing:0.04em; }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 860px){
+    header.site nav a:not(.header-cta){ display:none; }
+    section{ padding: 4.5rem 0; }
+    .concept .container{ grid-template-columns: 1fr; gap:2.6rem; }
+    .concept-motif{ max-width: 220px; margin: 0 auto; order:-1; }
+    .concerns__feats{ grid-template-columns: 1fr; gap: 1.6rem; }
+    .feat{ display:flex; align-items:center; gap:1rem; text-align:left; }
+    .feat__icon{ margin:0; flex-shrink:0; }
+    .palette__grid{ grid-template-columns: repeat(3, 1fr); }
+    .voice__grid{ grid-template-columns: 1fr; }
+    .only-mobile{ display:inline; }
+    .hero h1{ font-size: clamp(1.8rem, 6vw, 2.4rem); }
+    .cta-banner__inner{ padding: 2.2rem 1.5rem; margin: 0 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <a href="#top" class="logo">ONGLE</a>
+  <nav>
+    <a href="#about">ABOUT</a>
+    <a href="#menu">MENU</a>
+    <a href="#gallery">COLOR</a>
+    <a href="#voice">VOICE</a>
+    <a href="#contact" class="header-cta en">ご予約はこちら</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero__bg">
+      <img src="assets/interior.jpg" alt="観葉植物と白い花が飾られた、ナチュラルな光の差し込む白基調のプライベートサロンの一室">
+    </div>
+    <div class="hero__scrim"></div>
+    <div class="hero__inner">
+      <div class="divider"><span></span><p class="en">PRIVATE NAIL SALON</p><span></span></div>
+      <h1>指先にも、<br class="only-mobile">静かな贅沢を。</h1>
+      <p class="lead">完全予約制、おひとりのための時間。<br class="only-mobile">丁寧な施術で、指先からほどけていく。</p>
+      <a href="#contact" class="btn en">ご予約はこちら →</a>
+    </div>
+  </section>
+
+  <!-- CONCEPT / ABOUT -->
+  <section class="concept" id="about">
+    <div class="container">
+      <div class="concept-motif" aria-hidden="true">
+        <svg viewBox="0 0 200 260" fill="none" stroke="var(--olive)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="76" y="16" width="48" height="42" rx="9"/>
+          <rect x="92" y="58" width="16" height="18"/>
+          <path d="M56 78c-6 8-9 18-9 30v112c0 15 12 24 27 24h52c15 0 27-9 27-24V108c0-12-3-22-9-30Z"/>
+          <path d="M47 128h106"/>
+          <path d="M70 150v70M100 150v70M130 150v70"/>
+          <circle cx="26" cy="150" r="2.2" fill="var(--olive)" stroke="none"/>
+          <circle cx="176" cy="96" r="1.8" fill="var(--olive)" stroke="none"/>
+          <circle cx="168" cy="206" r="2.4" fill="var(--olive)" stroke="none"/>
+        </svg>
+      </div>
+      <div class="concept-text">
+        <span class="eyebrow">ABOUT</span>
+        <h2>忙しい日々にこそ、<br>指先だけの贅沢な時間を。</h2>
+        <p>ONGLEは、完全予約制のプライベートネイルサロンです。流行だけを追いかけるのではなく、指先から立ち上る「品」を大切に、おひとりおひとりの骨格や指の表情に寄り添うデザインをご提案します。</p>
+        <p>静かな時間の中で、丁寧に整えられていく爪先。気づけば心までほどけているような、そんなひとときをお届けします。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONCERNS -->
+  <section class="concerns" id="concerns">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">CONCERN</span>
+        <h2>こんなお悩みありませんか?</h2>
+      </div>
+      <ul class="concerns__list">
+        <li>毎回、同じようなデザインになってしまう</li>
+        <li>自爪が薄く、すぐ欠けたり剥がれたりする</li>
+        <li>サロンでゆっくりくつろげた試しがない</li>
+        <li>自分に似合う色や形が、よくわからない</li>
+      </ul>
+      <div class="concerns__feats">
+        <div class="feat">
+          <div class="feat__icon">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="20" height="16" rx="2"/><path d="M3 10h20"/></svg>
+          </div>
+          <p>完全個室の<br>プライベート空間</p>
+        </div>
+        <div class="feat">
+          <div class="feat__icon">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3v6M13 17v6M3 13h6M17 13h6"/><circle cx="13" cy="13" r="4"/></svg>
+          </div>
+          <p>爪を痛めない<br>丁寧なオフ・施術</p>
+        </div>
+        <div class="feat">
+          <div class="feat__icon">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 23c1-9 6-14 8-14s7 5 8 14"/><circle cx="13" cy="7" r="4"/></svg>
+          </div>
+          <p>骨格に合わせた<br>デザイン提案</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU / PRICE -->
+  <section class="menu" id="menu">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">MENU</span>
+        <h2>メニュー・料金</h2>
+        <p class="section-lead">すべて完全予約制。初回はカウンセリングにお時間をいただいております。</p>
+      </div>
+
+      <div class="price-card">
+        <span class="price-card__label en">初回限定</span>
+        <p class="price-card__plan">ジェルワンカラー(ケア・オフ込み)</p>
+        <div class="price-card__row">
+          <span class="price-card__old en">通常価格 12,000円(税込)</span>
+          <span class="price-card__amount en">8,800<span class="price-card__tax">円(税込)</span></span>
+        </div>
+        <p class="price-card__note">※ジェルオフが必要な場合も追加料金はいただきません。</p>
+      </div>
+
+      <ul class="menu-table">
+        <li>
+          <span class="name">ハンド ジェルワンカラー<span>ケア込み</span></span>
+          <span class="price en">¥7,700</span>
+        </li>
+        <li>
+          <span class="name">ハンド ジェルデザイン<span>アート・ラメなど</span></span>
+          <span class="price en">¥8,800〜</span>
+        </li>
+        <li>
+          <span class="name">フット ジェルワンカラー<span>ケア込み</span></span>
+          <span class="price en">¥8,800</span>
+        </li>
+        <li>
+          <span class="name">パラジェル(高耐久プラン)<span>通常メニューに追加</span></span>
+          <span class="price en">+¥2,200</span>
+        </li>
+        <li>
+          <span class="name">ケアのみ<span>甘皮・爪表面・パラフィン</span></span>
+          <span class="price en">¥4,400</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- COLOR PALETTE -->
+  <section class="palette" id="gallery">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">COLOR PALETTE</span>
+        <h2>指先を彩る、季節のカラー</h2>
+        <p class="section-lead">肌なじみのよいくすみカラーを中心に、季節ごとに色をご用意しています。</p>
+      </div>
+      <div class="palette__grid">
+        <div class="swatch">
+          <div class="swatch__dot" style="background:#e7ddd0;"></div>
+          <p>Milk Beige</p>
+        </div>
+        <div class="swatch">
+          <div class="swatch__dot" style="background:#cbb79a;"></div>
+          <p>Bisque</p>
+        </div>
+        <div class="swatch">
+          <div class="swatch__dot" style="background:#a9ab8f;"></div>
+          <p>Sage</p>
+        </div>
+        <div class="swatch">
+          <div class="swatch__dot" style="background:#c39a89;"></div>
+          <p>Terracotta</p>
+        </div>
+        <div class="swatch">
+          <div class="swatch__dot" style="background:#cbb2ae;"></div>
+          <p>Dusty Rose</p>
+        </div>
+        <div class="swatch">
+          <div class="swatch__dot" style="background:#8f8674;"></div>
+          <p>Khaki</p>
+        </div>
+        <div class="swatch">
+          <div class="swatch__dot" style="background:#d8c7b6;"></div>
+          <p>Milk Tea</p>
+        </div>
+        <div class="swatch">
+          <div class="swatch__dot" style="background:#b7bdb4;"></div>
+          <p>Ash Green</p>
+        </div>
+        <div class="swatch">
+          <div class="swatch__dot" style="background:#e0d3c3;"></div>
+          <p>Ivory Beige</p>
+        </div>
+        <div class="swatch">
+          <div class="swatch__dot" style="background:#9c8577;"></div>
+          <p>Mocha</p>
+        </div>
+        <div class="swatch">
+          <div class="swatch__dot" style="background:#e3e1d8;"></div>
+          <p>Pearl White</p>
+        </div>
+        <div class="swatch">
+          <div class="swatch__dot" style="background:#b39a8b;"></div>
+          <p>Cinnamon</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VOICE -->
+  <section class="voice" id="voice">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">VOICE</span>
+        <h2>お客様の声</h2>
+      </div>
+      <div class="voice__grid">
+        <div class="voice-card">
+          <p class="voice-card__quote en">“</p>
+          <p>個室なので周りを気にせず、施術中はほとんど眠ってしまうくらいリラックスできます。爪もすごく長持ちします。</p>
+          <p class="voice-card__meta en">20s / 会社員</p>
+        </div>
+        <div class="voice-card">
+          <p class="voice-card__quote en">“</p>
+          <p>骨格に合わせて長さや形を提案してもらえたのが初めてで感動しました。派手すぎない上品なデザインがお気に入りです。</p>
+          <p class="voice-card__meta en">30s / 美容師</p>
+        </div>
+        <div class="voice-card">
+          <p class="voice-card__quote en">“</p>
+          <p>自爪がとても薄いのですが、丁寧な下処理のおかげで欠けにくくなりました。次の予約もすでに楽しみです。</p>
+          <p class="voice-card__meta en">40s / パート</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner" id="contact">
+    <div class="cta-banner__bg">
+      <img src="assets/interior.jpg" alt="花と観葉植物が飾られた、白を基調としたプライベートサロンの施術スペース">
+      <div class="cta-banner__scrim"></div>
+      <div class="container">
+        <div class="cta-banner__inner">
+          <h2>まずは、指先にひと呼吸を。</h2>
+          <p>初回はカウンセリングからじっくりと。<br class="only-mobile">完全予約制のため、事前のご連絡をお願いしております。</p>
+          <a href="mailto:aofullremote@gmail.com?subject=ONGLEについてのお問い合わせ" class="btn en">今すぐ予約を相談する →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <span class="logo en">ONGLE</span>
+  <p>© 2026 ONGLE — この画面はKOTONOHAによるサンプルLPです</p>
+</footer>
+
+</body>
+</html>
