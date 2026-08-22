@@ -71,8 +71,8 @@
   .header-cta:hover{ background: var(--olive-deep); color: var(--white) !important; }
 
   /* ---------- SECTION SHELL ---------- */
-  section{ padding: 6.5rem 0; }
-  .section-head{ text-align:center; margin-bottom: 3.4rem; }
+  section{ padding: 9rem 0; }
+  .section-head{ text-align:center; margin-bottom: 4.4rem; }
   .eyebrow{
     font-family:'Cormorant Garamond', serif; font-style:italic;
     font-size: 1rem; letter-spacing:0.32em; color: var(--olive);
@@ -146,6 +146,27 @@
   .concept-text p{ font-size:0.94rem; color: var(--ink-light); margin-bottom:1.2rem; }
   .concept-text p:last-child{ margin-bottom:0; }
 
+  /* ---------- ABOUT1 (ARCH PORTRAIT) ---------- */
+  .about1{ background: var(--cream); }
+  .about1 .container{
+    display:grid; grid-template-columns: 1fr 1fr; gap: 6vw; align-items:center;
+  }
+  .about1__arch{
+    width:100%; max-width: 320px; margin: 0 auto;
+    aspect-ratio: 3 / 4;
+    border-radius: 999px 999px 0 0;
+    overflow:hidden;
+    box-shadow: var(--shadow);
+  }
+  .about1__arch img{ width:100%; height:100%; object-fit:cover; object-position: center 18%; }
+  .about1-text .en{ font-style:italic; letter-spacing:0.18em; color: var(--olive); font-size:0.95rem; display:block; margin-bottom:1rem; }
+  .about1-text h2{
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight:600; line-height:1.7; margin-bottom:1.6rem;
+  }
+  .about1-text p{ font-size:0.94rem; color: var(--ink-light); margin-bottom:1.2rem; }
+  .about1-text p:last-child{ margin-bottom:0; }
+
   /* ---------- CONCERNS ---------- */
   .concerns{ background: var(--cream); }
   .concerns__list{
@@ -166,7 +187,7 @@
     flex-shrink:0;
   }
   .concerns__feats{
-    display:grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+    display:grid; grid-template-columns: repeat(3, 1fr); gap: 2.6rem;
     max-width: 900px; margin:0 auto;
   }
   .feat{ text-align:center; }
@@ -186,10 +207,10 @@
     background: var(--white);
     border: 1px solid var(--taupe);
     border-radius: 4px;
-    padding: 2.4rem 2rem;
+    padding: 2.8rem 2.2rem;
     text-align:center;
     box-shadow: var(--shadow);
-    margin-bottom: 3.4rem;
+    margin-bottom: 4rem;
   }
   .price-card__label{
     display:inline-block; font-size:0.75rem; letter-spacing:0.16em;
@@ -217,7 +238,7 @@
   /* ---------- COLOR PALETTE ---------- */
   .palette{ background: var(--cream); }
   .palette__grid{
-    display:grid; grid-template-columns: repeat(6, 1fr); gap: 1.6rem 1rem;
+    display:grid; grid-template-columns: repeat(6, 1fr); gap: 2.2rem 1.4rem;
     max-width: 880px; margin: 0 auto;
   }
   .swatch{ text-align:center; }
@@ -230,7 +251,7 @@
 
   /* ---------- VOICE ---------- */
   .voice__grid{
-    display:grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+    display:grid; grid-template-columns: repeat(3, 1fr); gap: 2.6rem;
     max-width: 1000px; margin:0 auto;
   }
   .voice-card{
@@ -276,6 +297,8 @@
     section{ padding: 4.5rem 0; }
     .concept .container{ grid-template-columns: 1fr; gap:2.6rem; }
     .concept-motif{ max-width: 220px; margin: 0 auto; order:-1; }
+    .about1 .container{ grid-template-columns: 1fr; gap:2.6rem; text-align:center; }
+    .about1__arch{ max-width: 240px; }
     .concerns__feats{ grid-template-columns: 1fr; gap: 1.6rem; }
     .feat{ display:flex; align-items:center; gap:1rem; text-align:left; }
     .feat__icon{ margin:0; flex-shrink:0; }
@@ -336,6 +359,21 @@
         <h2>忙しい日々にこそ、<br>指先だけの贅沢な時間を。</h2>
         <p>ONGLEは、完全予約制のプライベートネイルサロンです。流行だけを追いかけるのではなく、指先から立ち上る「品」を大切に、おひとりおひとりの骨格や指の表情に寄り添うデザインをご提案します。</p>
         <p>静かな時間の中で、丁寧に整えられていく爪先。気づけば心までほどけているような、そんなひとときをお届けします。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT1 (ARCH PORTRAIT) -->
+  <section class="about1" id="about1">
+    <div class="container">
+      <div class="about1-text">
+        <span class="en">Nail Artist</span>
+        <h2>指先に、<br>想いを込めて。</h2>
+        <p>「一人ひとりの爪の形や骨格を見ながら、その方に一番似合う表情を見つけること」。それが、ONGLEの施術で大切にしていることです。</p>
+        <p>流行にとらわれすぎない、長く楽しめる上品さを。技術と対話を重ねながら、あなたの指先にちょうどいいデザインをご提案します。</p>
+      </div>
+      <div class="about1__arch">
+        <img src="assets/about1-portrait.jpg" alt="やわらかな光の中でこちらを振り返る女性(イメージ)">
       </div>
     </div>
   </section>
