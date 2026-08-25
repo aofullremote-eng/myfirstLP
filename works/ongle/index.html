@@ -139,8 +139,14 @@
   .concept .container{
     display:grid; grid-template-columns: 1fr 1fr; gap: 5vw; align-items:center;
   }
-  .concept-motif{ width:100%; }
-  .concept-motif svg{ width:100%; height:auto; }
+  .concept-motif{ width:100%; max-width:360px; margin:0 auto; }
+  .concept-motif__frame{
+    border: 1px solid var(--olive);
+    padding: 14px;
+    background: var(--white);
+    box-shadow: var(--shadow);
+  }
+  .concept-motif__frame img{ width:100%; aspect-ratio: 1 / 1; object-fit:cover; display:block; }
   .concept-text .subtitle{ font-style:italic; letter-spacing:0.16em; color: var(--olive); font-size:0.95rem; display:block; margin-bottom:0.8rem; }
   .concept-text h2{
     font-size: clamp(1.5rem, 3vw, 2rem);
@@ -345,17 +351,10 @@
   <!-- CONCEPT / ABOUT -->
   <section class="concept" id="about">
     <div class="container">
-      <div class="concept-motif" aria-hidden="true">
-        <svg viewBox="0 0 200 260" fill="none" stroke="var(--olive)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="76" y="16" width="48" height="42" rx="9"/>
-          <rect x="92" y="58" width="16" height="18"/>
-          <path d="M56 78c-6 8-9 18-9 30v112c0 15 12 24 27 24h52c15 0 27-9 27-24V108c0-12-3-22-9-30Z"/>
-          <path d="M47 128h106"/>
-          <path d="M70 150v70M100 150v70M130 150v70"/>
-          <circle cx="26" cy="150" r="2.2" fill="var(--olive)" stroke="none"/>
-          <circle cx="176" cy="96" r="1.8" fill="var(--olive)" stroke="none"/>
-          <circle cx="168" cy="206" r="2.4" fill="var(--olive)" stroke="none"/>
-        </svg>
+      <div class="concept-motif">
+        <div class="concept-motif__frame">
+          <img src="assets/concept-nail.jpg" alt="やわらかな影が差し込む壁に触れる、ヌーディーカラーのジェルネイルを施した手(イメージ)">
+        </div>
       </div>
       <div class="concept-text">
         <span class="eyebrow">ABOUT</span>
