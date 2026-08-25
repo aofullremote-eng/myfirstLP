@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ONGLE | 指先にも、静かな贅沢を。</title>
+<title>nailsalon_aoi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hina+Mincho&family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
@@ -176,6 +176,14 @@
   .about1-text p{ font-size:0.94rem; color: var(--ink-light); margin-bottom:1.2rem; }
   .about1-text p:last-child{ margin-bottom:0; }
 
+  /* ---------- GALLERY PHOTOS ---------- */
+  .gallery-photos__grid{
+    display:grid; grid-template-columns: repeat(2, 1fr); gap: 2.6rem;
+    max-width: 760px; margin: 0 auto;
+  }
+  .gallery-photos__card{ background: var(--ink); padding: 18px; }
+  .gallery-photos__card img{ width:100%; aspect-ratio: 1 / 1; object-fit:cover; display:block; }
+
   /* ---------- CONCERNS ---------- */
   .concerns{ background: var(--cream); }
   .concerns__list{
@@ -304,11 +312,16 @@
   /* ---------- RESPONSIVE ---------- */
   @media (max-width: 860px){
     header.site nav a:not(.header-cta){ display:none; }
+    header.site{ padding: 1.1rem 5vw; }
+    .logo{ font-size: 1.05rem; letter-spacing:0.02em; }
+    .header-cta{ padding: 0.55rem 0.9rem; font-size:0.78rem; white-space:nowrap; }
     section{ padding: 4.5rem 0; }
     .concept .container{ grid-template-columns: 1fr; gap:2.6rem; }
     .concept-motif{ max-width: 220px; margin: 0 auto; order:-1; }
     .about1 .container{ grid-template-columns: 1fr; gap:2.6rem; text-align:center; }
     .about1__arch{ max-width: 240px; }
+    .gallery-photos__grid{ gap: 1rem; }
+    .gallery-photos__card{ padding: 10px; }
     .concerns__feats{ grid-template-columns: 1fr; gap: 1.6rem; }
     .feat{ display:flex; align-items:center; gap:1rem; text-align:left; }
     .feat__icon{ margin:0; flex-shrink:0; }
@@ -323,7 +336,7 @@
 <body>
 
 <header class="site">
-  <a href="#top" class="logo">ONGLE</a>
+  <a href="#top" class="logo">nailsalon_aoi</a>
   <nav>
     <a href="#about">ABOUT</a>
     <a href="#menu">MENU</a>
@@ -343,8 +356,6 @@
     <div class="hero__scrim"></div>
     <div class="hero__inner">
       <div class="divider"><span></span><p class="en">PRIVATE NAIL SALON</p><span></span></div>
-      <h1>指先にも、<br class="only-mobile">静かな贅沢を。</h1>
-      <p class="lead">完全予約制、おひとりのための時間。<br class="only-mobile">丁寧な施術で、指先からほどけていく。</p>
       <a href="#contact" class="btn en">ご予約はこちら →</a>
     </div>
   </section>
@@ -361,7 +372,7 @@
         <span class="eyebrow">ABOUT</span>
         <span class="subtitle en">A Quiet Kind of Luxury</span>
         <h2>忙しい日々にこそ、<br>指先だけの贅沢な時間を。</h2>
-        <p>ONGLEは、完全予約制のプライベートネイルサロンです。流行だけを追いかけるのではなく、指先から立ち上る「品」を大切に、おひとりおひとりの骨格や指の表情に寄り添うデザインをご提案します。</p>
+        <p>nailsalon_aoiは、完全予約制のプライベートネイルサロンです。流行だけを追いかけるのではなく、指先から立ち上る「品」を大切に、おひとりおひとりの骨格や指の表情に寄り添うデザインをご提案します。</p>
         <p>静かな時間の中で、丁寧に整えられていく爪先。気づけば心までほどけているような、そんなひとときをお届けします。</p>
       </div>
     </div>
@@ -373,11 +384,29 @@
       <div class="about1-text">
         <span class="en">Nail Artist</span>
         <h2>指先に、<br>想いを込めて。</h2>
-        <p>「一人ひとりの爪の形や骨格を見ながら、その方に一番似合う表情を見つけること」。それが、ONGLEの施術で大切にしていることです。</p>
+        <p>「一人ひとりの爪の形や骨格を見ながら、その方に一番似合う表情を見つけること」。それが、nailsalon_aoiの施術で大切にしていることです。</p>
         <p>流行にとらわれすぎない、長く楽しめる上品さを。技術と対話を重ねながら、あなたの指先にちょうどいいデザインをご提案します。</p>
       </div>
       <div class="about1__arch">
         <img src="assets/about1-portrait.jpg" alt="朝の柔らかな光が差し込む洗面所で、鏡越しに歯を磨く女性(イメージ)">
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY PHOTOS -->
+  <section class="gallery-photos">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">GALLERY</span>
+        <h2>実際の仕上がり</h2>
+      </div>
+      <div class="gallery-photos__grid">
+        <div class="gallery-photos__card">
+          <img src="assets/gallery-01.jpg" alt="ダークグリーンとべっ甲柄を組み合わせたジェルネイル">
+        </div>
+        <div class="gallery-photos__card">
+          <img src="assets/gallery-02.jpg" alt="深みのあるボルドーレッドで仕上げたジェルネイル">
+        </div>
       </div>
     </div>
   </section>
@@ -559,7 +588,7 @@
         <div class="cta-banner__inner">
           <h2>まずは、指先にひと呼吸を。</h2>
           <p>初回はカウンセリングからじっくりと。<br class="only-mobile">完全予約制のため、事前のご連絡をお願いしております。</p>
-          <a href="mailto:aofullremote@gmail.com?subject=ONGLEについてのお問い合わせ" class="btn en">今すぐ予約を相談する →</a>
+          <a href="mailto:aofullremote@gmail.com?subject=nailsalon_aoiについてのお問い合わせ" class="btn en">今すぐ予約を相談する →</a>
         </div>
       </div>
     </div>
@@ -568,8 +597,8 @@
 </main>
 
 <footer class="site">
-  <span class="logo en">ONGLE</span>
-  <p>© 2026 ONGLE — この画面はKOTONOHAによるサンプルLPです</p>
+  <span class="logo en">nailsalon_aoi</span>
+  <p>© 2026 nailsalon_aoi — この画面はKOTONOHAによるサンプルLPです</p>
 </footer>
 
 </body>
