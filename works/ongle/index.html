@@ -20,6 +20,8 @@
     --rose-dust: #c7a79c;
     --ink: #333333;
     --ink-light: #7d7d78;
+    --charcoal: #26241f;
+    --gold-light: #d1bd8c;
     --shadow: 0 24px 50px rgba(60, 55, 45, 0.10);
   }
   *{ box-sizing:border-box; margin:0; padding:0; }
@@ -176,14 +178,6 @@
   .about1-text p{ font-size:0.94rem; color: var(--ink-light); margin-bottom:1.2rem; }
   .about1-text p:last-child{ margin-bottom:0; }
 
-  /* ---------- GALLERY PHOTOS ---------- */
-  .gallery-photos__grid{
-    display:grid; grid-template-columns: repeat(2, 1fr); gap: 2.6rem;
-    max-width: 760px; margin: 0 auto;
-  }
-  .gallery-photos__card{ background: var(--ink); padding: 18px; }
-  .gallery-photos__card img{ width:100%; aspect-ratio: 1 / 1; object-fit:cover; display:block; }
-
   /* ---------- CONCERNS ---------- */
   .concerns{ background: var(--cream); }
   .concerns__list{
@@ -219,39 +213,53 @@
   .feat p{ font-size:0.85rem; color: var(--ink-light); }
 
   /* ---------- MENU / PRICE ---------- */
-  .menu .container{ max-width: 760px; }
+  .menu{ background: var(--charcoal); }
+  .menu__layout{ display:grid; grid-template-columns: 1fr 0.8fr; gap: 5vw; align-items:start; }
+  .menu .eyebrow{ color: var(--gold-light); }
+  .menu .section-head h2{ color: var(--white); }
+  .menu .section-lead{ color: rgba(255,255,255,0.6); }
+
   .price-card{
-    background: var(--white);
-    border: 1px solid var(--taupe);
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.16);
     border-radius: 4px;
     padding: 2.8rem 2.2rem;
     text-align:center;
-    box-shadow: var(--shadow);
     margin-bottom: 4rem;
   }
   .price-card__label{
     display:inline-block; font-size:0.75rem; letter-spacing:0.16em;
-    color: var(--white); background: var(--olive-deep);
+    color: var(--charcoal); background: var(--gold-light);
     padding: 0.3rem 0.9rem; border-radius: 999px; margin-bottom:1.1rem;
   }
-  .price-card__plan{ font-family:'Bodoni Moda', serif; font-size:1.3rem; font-weight:600; letter-spacing:0.03em; margin-bottom:0.9rem; }
-  .price-card__plan .jp{ display:block; font-family:'Hina Mincho', serif; font-size:0.76rem; font-weight:400; letter-spacing:0.02em; color: var(--ink-light); margin-top:0.4rem; }
+  .price-card__plan{ font-family:'Bodoni Moda', serif; font-size:1.3rem; font-weight:600; letter-spacing:0.03em; margin-bottom:0.9rem; color: var(--white); }
+  .price-card__plan .jp{ display:block; font-family:'Hina Mincho', serif; font-size:0.76rem; font-weight:400; letter-spacing:0.02em; color: rgba(255,255,255,0.55); margin-top:0.4rem; }
   .price-card__row{ display:flex; align-items:baseline; justify-content:center; gap:0.9rem; flex-wrap:wrap; }
-  .price-card__old{ font-family:'Bodoni Moda', serif; font-size:0.95rem; color: var(--ink-light); text-decoration: line-through; }
-  .price-card__amount{ font-family:'Bodoni Moda', serif; font-size:2.4rem; font-weight:600; color: var(--olive-deep); line-height:1; }
-  .price-card__tax{ font-size:0.85rem; font-weight:400; margin-left:0.2rem; }
-  .price-card__note{ margin-top:1rem; font-size:0.78rem; color: var(--ink-light); }
+  .price-card__old{ font-family:'Bodoni Moda', serif; font-size:0.95rem; color: rgba(255,255,255,0.45); text-decoration: line-through; }
+  .price-card__amount{ font-family:'Bodoni Moda', serif; font-size:2.4rem; font-weight:600; color: var(--gold-light); line-height:1; }
+  .price-card__tax{ font-size:0.85rem; font-weight:400; margin-left:0.2rem; color: var(--white); }
+  .price-card__note{ margin-top:1rem; font-size:0.78rem; color: rgba(255,255,255,0.5); }
 
-  .menu-table{ list-style:none; border-top: 1px solid var(--taupe); }
+  .menu-table{ list-style:none; border-top: 1px solid rgba(255,255,255,0.16); }
   .menu-table li{
     display:flex; align-items:baseline; justify-content:space-between; gap:1rem;
     padding: 1.1rem 0.3rem;
-    border-bottom: 1px solid var(--taupe);
+    border-bottom: 1px solid rgba(255,255,255,0.16);
     font-size:0.92rem;
   }
-  .menu-table li .name{ font-family:'Bodoni Moda', serif; font-size:1.02rem; letter-spacing:0.02em; }
-  .menu-table li .name span{ display:block; font-family:'Hina Mincho', serif; font-size:0.76rem; color: var(--ink-light); margin-top:0.3rem; letter-spacing:0.02em; }
-  .menu-table li .price{ font-family:'Bodoni Moda', serif; font-size:1.1rem; color: var(--olive-deep); white-space:nowrap; }
+  .menu-table li .name{ font-family:'Bodoni Moda', serif; font-size:1.02rem; letter-spacing:0.02em; color: var(--white); }
+  .menu-table li .name span{ display:block; font-family:'Hina Mincho', serif; font-size:0.76rem; color: rgba(255,255,255,0.5); margin-top:0.3rem; letter-spacing:0.02em; }
+  .menu-table li .price{ font-family:'Bodoni Moda', serif; font-size:1.1rem; color: var(--gold-light); white-space:nowrap; }
+
+  .menu-gallery{ position:relative; }
+  .menu-gallery__item{
+    width:76%;
+    box-shadow: 0 24px 50px rgba(0,0,0,0.5);
+    transform: rotate(var(--rot, 0deg)) translateY(var(--ty, 0px));
+  }
+  .menu-gallery__item:first-child{ margin-left:0; }
+  .menu-gallery__item:last-child{ margin-left:auto; margin-top:-2.6rem; }
+  .menu-gallery__item img{ width:100%; aspect-ratio: 1 / 1; object-fit:cover; display:block; }
 
   /* ---------- COLOR PALETTE ---------- */
   .palette{ background: var(--cream); }
@@ -320,8 +328,9 @@
     .concept-motif{ max-width: 220px; margin: 0 auto; order:-1; }
     .about1 .container{ grid-template-columns: 1fr; gap:2.6rem; text-align:center; }
     .about1__arch{ max-width: 240px; }
-    .gallery-photos__grid{ gap: 1rem; }
-    .gallery-photos__card{ padding: 10px; }
+    .menu__layout{ grid-template-columns: 1fr; gap: 3rem; }
+    .menu-gallery{ max-width: 320px; margin: 0 auto; }
+    .menu-gallery__item{ width:80%; }
     .concerns__feats{ grid-template-columns: 1fr; gap: 1.6rem; }
     .feat{ display:flex; align-items:center; gap:1rem; text-align:left; }
     .feat__icon{ margin:0; flex-shrink:0; }
@@ -356,7 +365,6 @@
     <div class="hero__scrim"></div>
     <div class="hero__inner">
       <div class="divider"><span></span><p class="en">PRIVATE NAIL SALON</p><span></span></div>
-      <a href="#contact" class="btn en">ご予約はこちら →</a>
     </div>
   </section>
 
@@ -389,24 +397,6 @@
       </div>
       <div class="about1__arch">
         <img src="assets/about1-portrait.jpg" alt="朝の柔らかな光が差し込む洗面所で、鏡越しに歯を磨く女性(イメージ)">
-      </div>
-    </div>
-  </section>
-
-  <!-- GALLERY PHOTOS -->
-  <section class="gallery-photos">
-    <div class="container">
-      <div class="section-head">
-        <span class="eyebrow">GALLERY</span>
-        <h2>実際の仕上がり</h2>
-      </div>
-      <div class="gallery-photos__grid">
-        <div class="gallery-photos__card">
-          <img src="assets/gallery-01.jpg" alt="ダークグリーンとべっ甲柄を組み合わせたジェルネイル">
-        </div>
-        <div class="gallery-photos__card">
-          <img src="assets/gallery-02.jpg" alt="深みのあるボルドーレッドで仕上げたジェルネイル">
-        </div>
       </div>
     </div>
   </section>
@@ -449,45 +439,56 @@
 
   <!-- MENU / PRICE -->
   <section class="menu" id="menu">
-    <div class="container">
-      <div class="section-head">
-        <span class="eyebrow">MENU</span>
-        <h2>メニュー・料金</h2>
-        <p class="section-lead">すべて完全予約制。初回はカウンセリングにお時間をいただいております。</p>
-      </div>
-
-      <div class="price-card">
-        <span class="price-card__label en">FIRST VISIT</span>
-        <p class="price-card__plan en">Gel One Color<span class="jp">ケア・オフ込み</span></p>
-        <div class="price-card__row">
-          <span class="price-card__old en">通常価格 12,000円(税込)</span>
-          <span class="price-card__amount en">8,800<span class="price-card__tax">円(税込)</span></span>
+    <div class="container menu__layout">
+      <div class="menu-content">
+        <div class="section-head">
+          <span class="eyebrow">MENU</span>
+          <h2>メニュー・料金</h2>
+          <p class="section-lead">すべて完全予約制。初回はカウンセリングにお時間をいただいております。</p>
         </div>
-        <p class="price-card__note">※ジェルオフが必要な場合も追加料金はいただきません。</p>
+
+        <div class="price-card">
+          <span class="price-card__label en">FIRST VISIT</span>
+          <p class="price-card__plan en">Gel One Color<span class="jp">ケア・オフ込み</span></p>
+          <div class="price-card__row">
+            <span class="price-card__old en">通常価格 12,000円(税込)</span>
+            <span class="price-card__amount en">8,800<span class="price-card__tax">円(税込)</span></span>
+          </div>
+          <p class="price-card__note">※ジェルオフが必要な場合も追加料金はいただきません。</p>
+        </div>
+
+        <ul class="menu-table">
+          <li>
+            <span class="name en">Hand — One Color<span>ケア込み</span></span>
+            <span class="price en">¥7,700</span>
+          </li>
+          <li>
+            <span class="name en">Hand — Gel Design<span>アート・ラメなど</span></span>
+            <span class="price en">¥8,800〜</span>
+          </li>
+          <li>
+            <span class="name en">Foot — One Color<span>ケア込み</span></span>
+            <span class="price en">¥8,800</span>
+          </li>
+          <li>
+            <span class="name en">Para Gel<span>高耐久プラン・通常メニューに追加</span></span>
+            <span class="price en">+¥2,200</span>
+          </li>
+          <li>
+            <span class="name en">Care Only<span>甘皮・爪表面・パラフィン</span></span>
+            <span class="price en">¥4,400</span>
+          </li>
+        </ul>
       </div>
 
-      <ul class="menu-table">
-        <li>
-          <span class="name en">Hand — One Color<span>ケア込み</span></span>
-          <span class="price en">¥7,700</span>
-        </li>
-        <li>
-          <span class="name en">Hand — Gel Design<span>アート・ラメなど</span></span>
-          <span class="price en">¥8,800〜</span>
-        </li>
-        <li>
-          <span class="name en">Foot — One Color<span>ケア込み</span></span>
-          <span class="price en">¥8,800</span>
-        </li>
-        <li>
-          <span class="name en">Para Gel<span>高耐久プラン・通常メニューに追加</span></span>
-          <span class="price en">+¥2,200</span>
-        </li>
-        <li>
-          <span class="name en">Care Only<span>甘皮・爪表面・パラフィン</span></span>
-          <span class="price en">¥4,400</span>
-        </li>
-      </ul>
+      <div class="menu-gallery">
+        <div class="menu-gallery__item" style="--rot:-4deg; --ty:0px;">
+          <img src="assets/gallery-01.jpg" alt="ダークグリーンとべっ甲柄を組み合わせたジェルネイル">
+        </div>
+        <div class="menu-gallery__item" style="--rot:3deg; --ty:-16px;">
+          <img src="assets/gallery-02.jpg" alt="深みのあるボルドーレッドで仕上げたジェルネイル">
+        </div>
+      </div>
     </div>
   </section>
 
