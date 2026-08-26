@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>esthe_aoi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hina+Mincho&family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white: #ffffff;
+    --beige: #f7f3ee;
+    --beige-deep: #efe7db;
+    --grey: #b7b3ac;
+    --grey-deep: #8b877f;
+    --taupe: #ddd5c8;
+    --ink: #333333;
+    --ink-light: #7d7d78;
+    --shadow: 0 24px 50px rgba(60, 55, 45, 0.10);
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; overflow-x:hidden; }
+  body{
+    font-family: 'Hina Mincho', serif;
+    background: var(--white);
+    color: var(--ink);
+    line-height: 1.9;
+    overflow-x:hidden;
+    overflow-wrap: break-word;
+  }
+  img{ max-width:100%; display:block; }
+  a{ color:inherit; text-decoration:none; }
+  h1, h2, .logo, .eyebrow, .subtitle, .divider p{ word-break: keep-all; }
+  .en{ font-family: 'Bodoni Moda', serif; font-style: italic; }
+  .container{ width:100%; max-width:1100px; margin:0 auto; padding:0 24px; }
+  .only-mobile{ display:none; }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation: none !important; transition: none !important; }
+  }
+
+  /* ---------- HEADER ---------- */
+  header.site{
+    position:sticky; top:0; z-index:10;
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 1.4rem 5vw;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--taupe);
+  }
+  .logo{
+    font-family:'Bodoni Moda', serif; font-style:italic; font-weight:600;
+    font-size: 1.5rem; letter-spacing:0.08em; color: var(--grey-deep);
+  }
+  header.site nav{ display:flex; align-items:center; gap:2.2rem; }
+  header.site nav a{
+    font-family:'Bodoni Moda', serif; font-style:italic; font-size:0.95rem; letter-spacing:0.12em;
+    color: var(--ink); text-decoration:none; opacity:0.8;
+  }
+  header.site nav a:hover{ opacity:1; }
+  .header-cta{
+    padding: 0.6rem 1.3rem;
+    border: 1px solid var(--grey-deep);
+    color: var(--grey-deep) !important;
+    opacity:1 !important;
+    border-radius: 2px;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  .header-cta:hover{ background: var(--grey-deep); color: var(--white) !important; }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{ padding: 9rem 0; }
+  .section-head{ text-align:center; margin-bottom: 4.4rem; }
+  .eyebrow{
+    font-family:'Bodoni Moda', serif; font-style:italic;
+    font-size: 1rem; letter-spacing:0.32em; color: var(--grey);
+    margin-bottom: 1rem; display:block;
+  }
+  .section-head h2{
+    font-size: clamp(1.7rem, 3.4vw, 2.4rem);
+    font-weight:500; letter-spacing:0.02em;
+  }
+  .section-lead{
+    max-width: 46ch; margin: 1.1rem auto 0;
+    font-size: 0.95rem; color: var(--ink-light);
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height: 92vh;
+    display:flex; align-items:center; justify-content:center;
+    text-align:center; overflow:hidden;
+    color: var(--ink);
+  }
+  .hero__bg{ position:absolute; inset: clamp(12px, 2.4vw, 32px); z-index:0; }
+  .hero__bg img{ width:100%; height:100%; object-fit:cover; object-position: 50% 22%; }
+  .hero__scrim{
+    position:absolute; inset: clamp(12px, 2.4vw, 32px);
+    background: linear-gradient(180deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.5) 55%, rgba(255,255,255,0.82) 100%);
+  }
+  .hero__inner{ position:relative; z-index:1; max-width: 640px; padding: 0 6vw; }
+  .hero .divider{
+    display:flex; align-items:center; justify-content:center; gap:1rem;
+  }
+  .hero .divider span{ width:36px; height:1px; background: var(--grey); }
+  .hero .divider p{ font-family:'Bodoni Moda', serif; font-style:italic; letter-spacing:0.28em; font-size:0.85rem; color:var(--grey-deep); }
+
+  .btn{
+    display:inline-flex; align-items:center; gap:0.6rem;
+    padding: 0.95rem 2.2rem;
+    background: var(--grey-deep);
+    color: var(--white);
+    text-decoration:none;
+    font-size:0.85rem; letter-spacing:0.1em;
+    border-radius: 2px;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  .btn:hover{ background: var(--ink); transform: translateY(-1px); }
+
+  /* ---------- CONCEPT / ABOUT ---------- */
+  .concept .container{
+    display:grid; grid-template-columns: 1fr 1fr; gap: 5vw; align-items:center;
+  }
+  .concept-motif{ width:100%; max-width:300px; margin:0 auto; }
+  .concept-motif svg{ width:100%; height:auto; }
+  .concept-text .subtitle{ font-style:italic; letter-spacing:0.16em; color: var(--grey-deep); font-size:0.95rem; display:block; margin-bottom:0.8rem; }
+  .concept-text h2{
+    font-size: clamp(1.7rem, 3.4vw, 2.3rem);
+    font-weight:500; letter-spacing:0.01em; line-height:1.5; margin-bottom:1.6rem;
+  }
+  .concept-text p{ font-size:0.94rem; color: var(--ink-light); margin-bottom:1.2rem; }
+  .concept-text p:last-child{ margin-bottom:0; }
+
+  /* ---------- ABOUT1 (ARCH PORTRAIT) ---------- */
+  .about1{ background: var(--beige); }
+  .about1 .container{
+    display:grid; grid-template-columns: 1fr 1fr; gap: 6vw; align-items:center;
+  }
+  .about1__arch{
+    width:100%; max-width: 320px; margin: 0 auto;
+    aspect-ratio: 3 / 4;
+    border-radius: 999px 999px 0 0;
+    overflow:hidden;
+    box-shadow: var(--shadow);
+  }
+  .about1__arch img{ width:100%; height:100%; object-fit:cover; object-position: center 15%; }
+  .about1-text .en{ letter-spacing:0.18em; color: var(--grey-deep); font-size:0.95rem; display:block; margin-bottom:1rem; }
+  .about1-text h2{
+    font-size: clamp(1.7rem, 3.4vw, 2.3rem);
+    font-weight:500; letter-spacing:0.01em; line-height:1.5; margin-bottom:1.6rem;
+  }
+  .about1-text p{ font-size:0.94rem; color: var(--ink-light); margin-bottom:1.2rem; }
+  .about1-text p:last-child{ margin-bottom:0; }
+
+  /* ---------- CONCERNS ---------- */
+  .concerns__list{
+    max-width:640px; margin:0 auto 4rem;
+    list-style:none;
+  }
+  .concerns__list li{
+    display:flex; align-items:baseline; gap:0.9rem;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--taupe);
+    font-size: 0.98rem;
+  }
+  .concerns__list li:first-child{ border-top: 1px solid var(--taupe); }
+  .concerns__list li::before{
+    content:"—";
+    font-family:'Bodoni Moda', serif;
+    color: var(--grey);
+    flex-shrink:0;
+  }
+  .concerns__feats{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap: 2.6rem;
+    max-width: 900px; margin:0 auto;
+  }
+  .feat{ text-align:center; }
+  .feat__icon{
+    width:64px; height:64px; margin:0 auto 1rem;
+    border-radius:50%;
+    border:1px solid var(--grey);
+    display:flex; align-items:center; justify-content:center;
+    color: var(--grey-deep);
+    background: var(--white);
+  }
+  .feat p{ font-size:0.85rem; color: var(--ink-light); }
+
+  /* ---------- MENU / PRICE ---------- */
+  .menu{ position:relative; background: var(--beige); overflow:hidden; }
+  .menu__figure{
+    position:absolute; top:0; right:0; bottom:0;
+    width: min(34vw, 440px);
+    background: url('assets/menu-figure.jpg') center 25% / cover no-repeat;
+    opacity: 0.5;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 30%);
+    mask-image: linear-gradient(90deg, transparent, #000 30%);
+  }
+  .menu .container{ position:relative; z-index:1; max-width: 720px; }
+  .price-card{
+    background: rgba(255,255,255,0.75);
+    border: 1px solid var(--taupe);
+    border-radius: 4px;
+    padding: 2.8rem 2.2rem;
+    text-align:center;
+    box-shadow: var(--shadow);
+    margin-bottom: 4rem;
+  }
+  .price-card__label{
+    display:inline-block; font-size:0.75rem; letter-spacing:0.16em;
+    color: var(--white); background: var(--grey-deep);
+    padding: 0.3rem 0.9rem; border-radius: 999px; margin-bottom:1.1rem;
+  }
+  .price-card__plan{ font-family:'Bodoni Moda', serif; font-size:1.3rem; font-weight:600; letter-spacing:0.03em; margin-bottom:0.9rem; }
+  .price-card__plan .jp{ display:block; font-family:'Hina Mincho', serif; font-size:0.76rem; font-weight:400; letter-spacing:0.02em; color: var(--ink-light); margin-top:0.4rem; }
+  .price-card__row{ display:flex; align-items:baseline; justify-content:center; gap:0.9rem; flex-wrap:wrap; }
+  .price-card__old{ font-family:'Bodoni Moda', serif; font-size:0.95rem; color: var(--ink-light); text-decoration: line-through; }
+  .price-card__amount{ font-family:'Bodoni Moda', serif; font-size:2.4rem; font-weight:600; color: var(--grey-deep); line-height:1; }
+  .price-card__tax{ font-size:0.85rem; font-weight:400; margin-left:0.2rem; }
+  .price-card__note{ margin-top:1rem; font-size:0.78rem; color: var(--ink-light); }
+
+  .menu-table{ list-style:none; border-top: 1px solid var(--taupe); background: rgba(255,255,255,0.55); }
+  .menu-table li{
+    display:flex; align-items:baseline; justify-content:space-between; gap:1rem;
+    padding: 1.1rem 0.6rem;
+    border-bottom: 1px solid var(--taupe);
+    font-size:0.92rem;
+  }
+  .menu-table li .name{ font-family:'Bodoni Moda', serif; font-style:italic; font-size:1.02rem; letter-spacing:0.02em; }
+  .menu-table li .name span{ display:block; font-family:'Hina Mincho', serif; font-size:0.76rem; color: var(--ink-light); margin-top:0.3rem; letter-spacing:0.02em; }
+  .menu-table li .price{ font-family:'Bodoni Moda', serif; font-size:1.1rem; color: var(--grey-deep); white-space:nowrap; }
+
+  /* ---------- VOICE ---------- */
+  .voice__grid{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap: 2.6rem;
+    max-width: 1000px; margin:0 auto;
+  }
+  .voice-card{
+    background: var(--white);
+    border: 1px solid var(--taupe);
+    border-radius: 4px;
+    padding: 2rem 1.7rem;
+  }
+  .voice-card__quote{ font-family:'Bodoni Moda', serif; font-style:italic; font-size:1.6rem; color: var(--grey); margin-bottom:1rem; line-height:1; }
+  .voice-card p{ font-size:0.88rem; color: var(--ink-light); margin-bottom:1.2rem; }
+  .voice-card__meta{ font-size:0.78rem; letter-spacing:0.06em; color: var(--grey-deep); }
+
+  /* ---------- CTA ---------- */
+  .cta-banner{ position:relative; overflow:hidden; padding:0; }
+  .cta-banner__bg{ position:relative; min-height: 60vh; display:flex; align-items:center; justify-content:center; }
+  .cta-banner__bg img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position: 50% 15%; }
+  .cta-banner__scrim{
+    position:absolute; inset:0;
+    background: linear-gradient(180deg, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.68) 45%, rgba(255,255,255,0.9) 100%);
+  }
+  .cta-banner__inner{
+    position:relative; z-index:1;
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.7);
+    border-radius: 6px; padding: 2.8rem 2.2rem;
+    box-shadow: var(--shadow);
+    max-width: 620px; margin: 0 auto; text-align:center;
+  }
+  .cta-banner__inner h2{ font-size: clamp(1.5rem, 3vw, 2rem); font-weight:500; letter-spacing:0.01em; margin-bottom:1rem; }
+  .cta-banner__inner p{ font-size:0.9rem; color: var(--ink-light); margin-bottom:1.8rem; }
+
+  /* ---------- FOOTER ---------- */
+  footer.site{
+    text-align:center; padding: 3.5rem 5vw; background: var(--ink); color: rgba(255,255,255,0.7);
+  }
+  footer.site .logo{ display:block; margin-bottom:0.6rem; font-size:1.2rem; color: var(--white); }
+  footer.site p{ font-size:0.78rem; letter-spacing:0.04em; }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 860px){
+    header.site nav a:not(.header-cta){ display:none; }
+    header.site{ padding: 1.1rem 5vw; }
+    .logo{ font-size: 1.05rem; letter-spacing:0.02em; }
+    .header-cta{ padding: 0.55rem 0.9rem; font-size:0.78rem; white-space:nowrap; }
+    section{ padding: 4.5rem 0; }
+    .concept .container{ grid-template-columns: 1fr; gap:2.6rem; }
+    .concept-motif{ max-width: 200px; margin: 0 auto; order:-1; }
+    .about1 .container{ grid-template-columns: 1fr; gap:2.6rem; text-align:center; }
+    .about1__arch{ max-width: 240px; }
+    .concerns__feats{ grid-template-columns: 1fr; gap: 1.6rem; }
+    .feat{ display:flex; align-items:center; gap:1rem; text-align:left; }
+    .feat__icon{ margin:0; flex-shrink:0; }
+    .menu__figure{
+      top:0; right:0; bottom:auto; left:0;
+      width:auto; height: 260px;
+      background-position: 50% 20%;
+      -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent);
+      mask-image: linear-gradient(180deg, #000 55%, transparent);
+    }
+    .voice__grid{ grid-template-columns: 1fr; }
+    .only-mobile{ display:inline; }
+    .cta-banner__inner{ padding: 2.2rem 1.5rem; margin: 0 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <a href="#top" class="logo">esthe_aoi</a>
+  <nav>
+    <a href="#about">ABOUT</a>
+    <a href="#menu">MENU</a>
+    <a href="#voice">VOICE</a>
+    <a href="#contact" class="header-cta en">ご予約はこちら</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero__bg">
+      <img src="assets/hero-back.jpg" alt="レースのカーテン越しの光の中、鏡台で身支度をする女性の後ろ姿">
+    </div>
+    <div class="hero__scrim"></div>
+    <div class="hero__inner">
+      <div class="divider"><span></span><p class="en">PRIVATE ESTHETIC SALON</p><span></span></div>
+    </div>
+  </section>
+
+  <!-- CONCEPT / ABOUT -->
+  <section class="concept" id="about">
+    <div class="container">
+      <div class="concept-motif" aria-hidden="true">
+        <svg viewBox="0 0 200 220" fill="none" stroke="var(--grey-deep)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M100 20c-38 0-64 30-64 70 0 46 40 78 64 100 24-22 64-54 64-100 0-40-26-70-64-70Z"/>
+          <path d="M100 60c-16 10-26 28-26 46 0 22 14 38 26 50"/>
+          <circle cx="60" cy="70" r="2" fill="var(--grey-deep)" stroke="none"/>
+          <circle cx="150" cy="110" r="1.8" fill="var(--grey-deep)" stroke="none"/>
+          <circle cx="140" cy="50" r="2.2" fill="var(--grey-deep)" stroke="none"/>
+        </svg>
+      </div>
+      <div class="concept-text">
+        <span class="eyebrow">ABOUT</span>
+        <span class="subtitle en">A Quiet Kind of Care</span>
+        <h2 class="en">Return to Bare Skin</h2>
+        <p>esthe_aoiは、完全予約制のプライベートエステサロンです。次から次へと重ねるケアではなく、肌が本来持つ力を引き出すことを大切にしています。</p>
+        <p>一人ひとりの肌の状態と向き合い、その日、その季節にちょうどいい処方を。静かな時間の中で、肌も心もゆっくりとほどけていきます。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT1 (ARCH PORTRAIT) -->
+  <section class="about1" id="about1">
+    <div class="container">
+      <div class="about1-text">
+        <span class="en">Esthetician</span>
+        <h2 class="en">Bare Skin, Best Skin</h2>
+        <p>「今日の肌の声を聞くこと」。それが、esthe_aoiの施術で何より大切にしていることです。メイクの下でも、素肌のままでも、自信を持てる肌へ。</p>
+        <p>丁寧なカウンセリングから始まり、その日の肌質・体調に合わせてメニューを組み立てます。派手さより、続けられる心地よさを。</p>
+      </div>
+      <div class="about1__arch">
+        <img src="assets/about1-lipstick.jpg" alt="洗面所の鏡の前で口紅を塗る女性(イメージ)">
+      </div>
+    </div>
+  </section>
+
+  <!-- CONCERNS -->
+  <section class="concerns" id="concerns">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">CONCERN</span>
+        <h2 class="en">Does This Sound Familiar?</h2>
+      </div>
+      <ul class="concerns__list">
+        <li>季節の変わり目に、肌が揺らぎやすい</li>
+        <li>スキンケアを見直しても、変化を感じにくい</li>
+        <li>メイクのノリが以前より悪くなった気がする</li>
+        <li>自分のための時間が、なかなか取れない</li>
+      </ul>
+      <div class="concerns__feats">
+        <div class="feat">
+          <div class="feat__icon">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="20" height="16" rx="2"/><path d="M3 10h20"/></svg>
+          </div>
+          <p>完全個室の<br>プライベート空間</p>
+        </div>
+        <div class="feat">
+          <div class="feat__icon">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3c3 4 7 8 7 13a7 7 0 0 1-14 0c0-5 4-9 7-13Z"/></svg>
+          </div>
+          <p>肌質に合わせた<br>オーダーメイド処方</p>
+        </div>
+        <div class="feat">
+          <div class="feat__icon">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="13" cy="13" r="9"/><path d="M13 8v5l4 3"/></svg>
+          </div>
+          <p>60分〜のゆったり<br>施術時間</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU / PRICE -->
+  <section class="menu" id="menu">
+    <div class="menu__figure"></div>
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">MENU</span>
+        <h2 class="en">menu / price</h2>
+        <p class="section-lead">すべて完全予約制。初回はカウンセリングにお時間をいただいております。</p>
+      </div>
+
+      <div class="price-card">
+        <span class="price-card__label en">FIRST VISIT</span>
+        <p class="price-card__plan en">Facial Care<span class="jp">カウンセリング込み・60分</span></p>
+        <div class="price-card__row">
+          <span class="price-card__old en">通常価格 15,000円(税込)</span>
+          <span class="price-card__amount en">9,900<span class="price-card__tax">円(税込)</span></span>
+        </div>
+        <p class="price-card__note">※お肌に合わせたカウンセリングからご案内いたします。</p>
+      </div>
+
+      <ul class="menu-table">
+        <li>
+          <span class="name en">Basic Facial<span>クレンジング・保湿ケア</span></span>
+          <span class="price en">¥9,900</span>
+        </li>
+        <li>
+          <span class="name en">Deep Cleansing<span>毛穴・角質ケア</span></span>
+          <span class="price en">¥11,000</span>
+        </li>
+        <li>
+          <span class="name en">Lifting Care<span>ハンドリフト集中コース</span></span>
+          <span class="price en">¥13,200</span>
+        </li>
+        <li>
+          <span class="name en">Head Spa<span>単品追加メニュー</span></span>
+          <span class="price en">+¥3,300</span>
+        </li>
+        <li>
+          <span class="name en">Home Care Set<span>ご自宅用ケア用品一式</span></span>
+          <span class="price en">¥6,600〜</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- VOICE -->
+  <section class="voice" id="voice">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">VOICE</span>
+        <h2 class="en">Client Voices</h2>
+      </div>
+      <div class="voice__grid">
+        <div class="voice-card">
+          <p class="voice-card__quote en">“</p>
+          <p>肌の状態を丁寧に見てもらえるので安心感があります。施術後は化粧ノリが全然違って、鏡を見るのが楽しみになりました。</p>
+          <p class="voice-card__meta en">20s / 会社員</p>
+        </div>
+        <div class="voice-card">
+          <p class="voice-card__quote en">“</p>
+          <p>完全個室で人目を気にせずゆっくり過ごせます。施術中に眠ってしまうくらいリラックスできました。</p>
+          <p class="voice-card__meta en">30s / 美容師</p>
+        </div>
+        <div class="voice-card">
+          <p class="voice-card__quote en">“</p>
+          <p>季節の変わり目の肌荒れが落ち着き、崩れにくくなりました。自宅ケアのアドバイスも的確で助かっています。</p>
+          <p class="voice-card__meta en">40s / パート</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner" id="contact">
+    <div class="cta-banner__bg">
+      <img src="assets/hero-back.jpg" alt="レースのカーテン越しの光の中、鏡台で身支度をする女性の後ろ姿">
+      <div class="cta-banner__scrim"></div>
+      <div class="container">
+        <div class="cta-banner__inner">
+          <h2 class="en">Begin Your Ritual</h2>
+          <p>初回はカウンセリングからじっくりと。<br class="only-mobile">完全予約制のため、事前のご連絡をお願いしております。</p>
+          <a href="mailto:aofullremote@gmail.com?subject=esthe_aoiについてのお問い合わせ" class="btn en">今すぐ予約を相談する →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <span class="logo en">esthe_aoi</span>
+  <p>© 2026 esthe_aoi — この画面はKOTONOHAによるサンプルLPです</p>
+</footer>
+
+</body>
+</html>
