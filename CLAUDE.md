@@ -255,7 +255,7 @@ font-family: 'Cormorant Garamond', serif; /* 英字アクセント(ロゴ・番�
 --grey:       #b7b3ac;  /* アクセント(淡) */
 --grey-deep:  #8b877f;  /* アクセント(濃)。ボタン・価格・バッジなどに使用 */
 --taupe:      #ddd5c8;  /* ボーダー */
---ink:        #333333;  /* 本文色。濃いグレー(ブラウンではない) */
+--ink:        #333333〜#5a5a5a;  /* 本文色。濃いグレー(ブラウンではない)。「黒は強すぎる」というフィードバックで#5a5a5a程度まで薄めた例もあり、新規LPはこのくらいのトーンから始めてよい */
 --ink-light:  #7d7d78;
 ```
 
@@ -265,18 +265,18 @@ nailsalon_aoiは当初オリーブ系(`--olive`)+ ゴールドで作ったが、
 
 ```css
 font-family: 'Hina Mincho', serif;      /* 和文本文・見出し(繊細な明朝体) */
-font-family: 'Bodoni Moda', serif;      /* 英字(.en クラス)。斜体(font-style:italic)で統一 */
-font-family: 'Great Vibes', cursive;    /* ロゴ・大きめの英語見出し(h2)専用。小さい文字や詰まった箇所には使わない可読性の理由 */
+font-family: 'Bodoni Moda', serif;      /* 英字全般。ロゴ・見出し・ナビ・価格・メニュー名まで含め、斜体(font-style:italic)で統一 */
 ```
 
 - 和文は当初「Shippori Mincho」→「Kaisei Decol」(おしゃれ狙い)→ユーザーの指摘で「Shippori Mincho」に戻す→「Hina Mincho」(より繊細)、と変遷した経緯がある。現時点の到達点は **Hina Mincho**
 - 英字(`.en`)は当初「Cormorant Garamond」だったが「Bodoni Moda」に変更し、さらに全体を斜体(`font-style:italic`)で統一した(一部だけ斜体で不揃いだったため)
-- ロゴや大見出しに「Great Vibes」のような装飾フォントを使う場合、**ナビゲーションリンク・価格・メニュー項目名など小さく密度の高いテキストには適用しない**(可読性が落ちるため)
+- **装飾フォント(Great Vibes等)は不採用と確定**: esthe_aoiでロゴ・大見出しにGoogle Fontsの「Great Vibes」(筆記体)を試したが、「やはりヒーローにあるフォント(斜体Bodoni Moda)で全部統一したい」というフィードバックで元に戻した。**新規LPでもロゴ・見出しを含む英字はすべて斜体Bodoni Modaに統一し、Great Vibesのような装飾フォントは使わない**
 
 ## 構造上のモチーフ
 
 - **ヒーロー**: 写真を `inset: clamp(...)` で少し余白を残して配置、`hero__scrim` で薄い白グラデーションを重ねる。見出し文言・ボタンは付けず、`PRIVATE ○○ SALON` のような英字ラベル(divider付き)のみに留めるのが最終的に落ち着いた形(最初は見出し+ボタンもあったが、ユーザーの「余計なものはいらない」「予約ボタンは最後の方に」という指示で削ぎ落とした)
-- **about1(アーチ型写真)**: `border-radius: 999px 999px 0 0;` を使うと、要素の横幅に応じて自動的にきれいな半円(ドア型アーチ)にクランプされる。`aspect-ratio: 3/4` の箱に人物ポートレートを `object-fit: cover` で収める
+- **about1(アーチ型写真)**: `border-radius: 999px 999px 0 0;` を使うと、要素の横幅に応じて自動的にきれいな半円(ドア型アーチ)にクランプされる。`aspect-ratio: 3/4` の箱に人物ポートレートを `object-fit: cover` で収める。「もう少しふわっとさせて」と言われた場合は、`img` に `opacity:0.85` 程度 + `filter: saturate(0.92) brightness(1.04) blur(0.4px);` + 疑似要素`::after`で薄い白グラデーション(`linear-gradient(180deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.05) 35%, rgba(255,255,255,0.3) 100%)`)を重ねると柔らかい印象になる(esthe_aoiで確立)
+- **ABOUT/conceptセクションに手描き風SVGモチーフを入れない**: nailsalon_aoi・esthe_aoiでネイルポリッシュの瓶や水滴のような線画アイコンを試したが、esthe_aoiで「ABOUTの前の手書きの絵は今後作成しないでください」と明確に不要判定が出た。**今後の新規LPでも、ABOUT/conceptセクションに手描き風SVGモチーフは追加しない**。写真素材があれば正方形フレームで、無ければテキストを中央寄せ1カラムにするだけで十分
 - **正方形フレーム**: 手描き風のSVGイラストの代わりに実写真を使う場合は、`aspect-ratio: 1/1` の正方形でシンプルに。白マット+枠で飾るより、枠無しの方が「すっきり」した印象になりやすい(ユーザーからのフィードバック)
 - **メニュー内の写真配置**: 2通りの手法を使い分けた
   1. 写真をメニューの脇に「ランダムに」散らす場合: `transform: rotate(var(--rot,0deg)) translateY(var(--ty,0px));` を各カードのインラインスタイルで指定(本体LPの `works__item--crystal` と同じ手法)。背景は濃いめ〜普通のグレー(`#3a3a3a` → `#808080` → `#a3a3a3` と調整した経緯あり)
