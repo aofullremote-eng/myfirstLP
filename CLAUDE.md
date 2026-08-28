@@ -64,13 +64,13 @@ assets/
 | `works/work-02-lumiere.jpg` | 960×1200 | 同上。`works/lumiere/` のヒーローを撮影したスクリーンショット。サンプルLP `works/lumiere/` へのリンク付き |
 | `works/work-03-mirror.png` | 1086×1448 | 同上。`works/ongle/` のabout1写真と同一。サンプルLP「nailsalon_aoi」(`works/ongle/`)へのリンク付き |
 | `works/work-04-esthe.jpg` | 1003×1254 | 同上。`works/esthe-aoi/` のヒーロー写真(`hero-back.jpg`)を4:5にトリミング。サンプルLP「esthe_aoi」(`works/esthe-aoi/`)へのリンク付き |
-| `works/work-05-woodland.jpg` | 580×422 | 同上 |
+| `works/work-05-nailatelier.jpg` | 1003×1254 | 同上。`works/nailatelier_aoi/` のネイル写真(`gallery-01.jpg`、シャビーシック系ネイルLP共通素材)を4:5にトリミング。サンプルLP「nailatelier_aoi」(`works/nailatelier_aoi/`)へのリンク付き |
 | `works/work-06-goldfish.jpg` | 677×900 | 同上 |
 | `works/work-07-cat.jpg` | 900×900 | 同上 |
 | `works/work-08-crow.jpg` | 900×900 | 同上 |
 | `works/work-09-gift.jpg` | 1254×1254 | 同上 |
 
-現在、実際のサンプルLPへリンクしているのは `work-01`(Éclat Chocolat)・`work-02`(LUMIÈRE)・`work-03`(nailsalon_aoi)・`work-04`(esthe_aoi)の4点。残り(`work-05`〜`work-09`)はまだ専用サンプルLPが無いイラスト作品例のため、`.works__item--soon` クラス+`.works__badge`(「Coming Soon」)で準備中であることを示している。
+現在、実際のサンプルLPへリンクしているのは `work-01`(Éclat Chocolat)・`work-02`(LUMIÈRE)・`work-03`(nailsalon_aoi)・`work-04`(esthe_aoi)・`work-05`(nailatelier_aoi)の5点。残り(`work-06`〜`work-09`)はまだ専用サンプルLPが無いイラスト作品例のため、`.works__item--soon` クラス+`.works__badge`(「Coming Soon」)で準備中であることを示している。
 
 作品ギャラリー画像は `aspect-ratio: 4/5` でトリミング表示されるため、追加素材は正方形〜縦長(4:5前後)を目安にする。ファイル容量はJPEG品質を落としすぎない範囲で、おおよそ数十KB〜200KB程度に収めている(`work-02-mirror.png` は2MB超と重いため、追加でPNGを使う場合は圧縮を検討する)。
 
@@ -222,6 +222,8 @@ font-family: 'Cormorant Garamond', serif; /* 英字アクセント(ロゴ・番�
 # 「シャビーシック」系サンプルLPファミリー — 共通仕様
 
 `works/ongle/`(nailsalon_aoi、ネイルサロン)、`works/esthe-aoi/`(esthe_aoi、エステサロン)の2つから始まった、**同じ世界観を共有するサンプルLPのシリーズ**。今後も同じ女性モデル・同じトンマナで美容系(サロン・スパ等)のサンプルLPを追加していく想定。新しいLPを作る際は、明示的に別指定が無い限りこの仕様を踏襲する。
+
+`works/nailatelier_aoi/`(nailatelier_aoi、ネイルサロン)は、このファミリーのアクセントカラーを深緑(`--green-deep: #21301f` 等)に変更した派生LP。nailsalon_aoi(ongle、グレー系)とは別ブランドとして共存させており、MENUセクションの背景を深緑(`--charcoal-green: #172015`)にすることでテーマカラーを前面に出している。ネイル写真(`gallery-*.jpg`)はnailsalon_aoiと共通素材を使い回している(ファミリー共通の方針どおり)。
 
 ## ブランド名の付け方
 
