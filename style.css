@@ -936,6 +936,21 @@ a { text-decoration: none; color: inherit; }
   pointer-events: none;
 }
 
+/* 実際にリンクしているサンプルLPの店名キャプション(探しやすさのため) */
+.works__cell {
+  display: flex;
+  flex-direction: column;
+}
+
+.works__caption {
+  margin-top: 14px;
+  text-align: center;
+  font-family: var(--font-accent);
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  color: var(--color-ink-light);
+}
+
 /* ===== よくある質問セクション ===== */
 .faq {
   padding: 100px 0;
