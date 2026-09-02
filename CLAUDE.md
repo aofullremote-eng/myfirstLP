@@ -76,18 +76,18 @@ assets/
 
 ## フォント
 
-Google Fonts依存は解消済み。CSS変数(`style.css` の `:root`)で定義:
+シャビーシック系サンプルLP(nailsalon_aoi・esthe_aoi・nailatelier_aoi)と同じフォントに統一済み。CSS変数(`style.css` の `:root`)で定義:
 
 ```css
---font-display: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", sans-serif;
---font-body:    "Zen Maru Gothic", "Hiragino Maru Gothic ProN", sans-serif;
---font-accent:  "Quicksand", sans-serif;
+--font-display: "Hina Mincho", "Hiragino Mincho ProN", serif;
+--font-body:    "Hina Mincho", "Hiragino Mincho ProN", serif;
+--font-accent:  "Bodoni Moda", serif;
 ```
 
-- **和文本文・見出し**: システム標準の丸ゴシック(Zen Maru Gothic / ヒラギノ丸ゴ)
-- **英字アクセント**(ロゴ・eyebrow・ボタン内の一部・番号など): Quicksand系
-- `index.html` の `<head>` には Google Fonts の `<link>` が残っているが、実運用のCSSはシステムフォントで完結している(フォールバックとして機能)
-- **注意**: Quicksandは和文グリフを持たないため、和文テキストに `--font-accent` を指定しない(疑似イタリック化を避けるため、和文には常に `--font-display` / `--font-body` を使う。詳細は `style.css` 内 `.concept__stance` 付近のコメント参照)
+- **和文本文・見出し**: Hina Mincho(繊細な明朝体)
+- **英字アクセント**(ロゴ・作品ギャラリーのキャプション・価格・番号・フッターなど): 斜体(`font-style: italic`)のBodoni Moda
+- `index.html` の `<head>` で Google Fonts から読み込む(`family=Hina+Mincho&family=Bodoni+Moda:ital,wght@...`)。以前はZen Maru Gothic + Quicksandをシステムフォントで完結させていたが、シャビーシック系ファミリーとの統一を優先してGoogle Fonts依存に戻した
+- **注意**: Bodoni Modaは和文グリフを持たないため、和文テキストに `--font-accent` を指定しない(疑似イタリック化を避けるため、和文には常に `--font-display` / `--font-body` を使う。詳細は `style.css` 内 `.concept__stance` 付近のコメント参照)。ヒーローの `.eyebrow` は元々英字前提で `--font-accent` を使っていたが、テキストを和文(「自宅サロン・個人事業主様へ」)に変更した際に `--font-display` へ切り替え済み
 
 ## 色
 
@@ -124,7 +124,7 @@ Google Fonts依存は解消済み。CSS変数(`style.css` の `:root`)で定義:
 ## 変更してはいけない部分
 
 - **配色方針**: 黒文字を使わない方針(`--color-ink` のモカブラウンを本文色として維持する)。既存のCSS変数(`--color-*`)の値を無断で変更しない
-- **フォント方針**: 和文に `--font-accent`(Quicksand)を指定しない(疑似イタリック化するため)。この制約は `style.css` 内のコメントで明示されている
+- **フォント方針**: 和文に `--font-accent`(Bodoni Moda)を指定しない(疑似イタリック化するため)。この制約は `style.css` 内のコメントで明示されている
 - **導入フレームアニメーションの仕組み**(`#frameAnimation` / `#mainContent` の表示制御ロジック、`script.js`)は、ページの初回体験の核となる演出のため、構造を変える場合は動作確認を必須とする
 - **お問い合わせ導線**: メインの「お問い合わせはこちら」ボタンは、メール(mailto)からThreadsのDM誘導(`https://www.threads.com/@aoi_lp213`)に変更済み。このThreadsリンクを削除・変更しない(最終アクションの要)。フッターのThreadsリンクと合わせて導線が二重にならないよう注意する
 - **料金表示**: 正式な料金が決まるまでは `Coming Soon` 表示のままにする(`NOTES.md` の「次回再開時のメモ」参照)

@@ -14,9 +14,11 @@
   --radius-lg: 6px;
   --radius-md: 4px;
   --shadow-soft: 0 18px 40px rgba(90, 78, 74, 0.12);
-  --font-display: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", sans-serif;
-  --font-body: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", sans-serif;
-  --font-accent: "Quicksand", sans-serif;
+  /* シャビーシック系サンプルLP(nailsalon_aoi・esthe_aoi・nailatelier_aoi)と
+     同じフォントに統一。和文はHina Mincho、英字アクセントは斜体Bodoni Moda */
+  --font-display: "Hina Mincho", "Hiragino Mincho ProN", serif;
+  --font-body: "Hina Mincho", "Hiragino Mincho ProN", serif;
+  --font-accent: "Bodoni Moda", serif;
 }
 
 * {
@@ -357,10 +359,9 @@ a { text-decoration: none; color: inherit; }
 
 .eyebrow {
   display: inline-block;
-  font-family: var(--font-accent);
-  /* Quicksand には本来イタリック体がなく、font-style:italic だと
-     ブラウザが疑似的に斜体を合成してしまい文字ごとに形がバラつくため、
-     斜体は使わずそのまま表示する */
+  /* 和文テキストのため、--font-accent(Bodoni Moda)ではなく
+     見出しと同じ和文書体を使う(.concept__stance 付近のコメント参照) */
+  font-family: var(--font-display);
   font-weight: 600;
   color: var(--color-rose-deep);
   font-size: 0.95rem;
@@ -478,8 +479,8 @@ a { text-decoration: none; color: inherit; }
 }
 
 .concept__stance {
-  /* Quicksand は日本語グリフを持たないため、和文に指定すると
-     フォールバック書体+疑似イタリックになり他の文と体裁が揃わない。
+  /* アクセントフォント(Bodoni Moda)は日本語グリフを持たないため、和文に
+     指定するとフォールバック書体+疑似イタリックになり他の文と体裁が揃わない。
      見出し・本文と同じ和文書体をそのまま使う */
   font-family: var(--font-display);
   font-size: 1rem;
@@ -798,6 +799,7 @@ a { text-decoration: none; color: inherit; }
 
 .price-card__amount span {
   font-family: var(--font-accent);
+  font-style: italic;
   font-size: 1.7rem;
   font-weight: 600;
   color: var(--color-rose-deep);
@@ -946,6 +948,7 @@ a { text-decoration: none; color: inherit; }
   margin-top: 14px;
   text-align: center;
   font-family: var(--font-accent);
+  font-style: italic;
   font-size: 0.9rem;
   letter-spacing: 0.05em;
   color: var(--color-ink-light);
@@ -1065,6 +1068,7 @@ a { text-decoration: none; color: inherit; }
   color: var(--color-ink-light);
   font-size: 0.85rem;
   font-family: var(--font-accent);
+  font-style: italic;
 }
 
 .footer__inner {
