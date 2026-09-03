@@ -129,7 +129,23 @@
     display:grid; grid-template-columns: 1fr 1fr; gap: 5vw; align-items:center;
   }
   .concept-motif{ width:100%; max-width:360px; margin:0 auto; }
-  .concept-motif__frame img{ width:100%; aspect-ratio: 1 / 1; object-fit:cover; display:block; object-position: center 25%; }
+  .concept-motif__frame{ position:relative; width:100%; aspect-ratio: 1 / 1; overflow:hidden; }
+  .concept-motif__frame img{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; object-position: center 25%;
+    opacity:0; animation: motifSlide 12s infinite;
+  }
+  .concept-motif__frame img:nth-child(1){ animation-delay: 0s; }
+  .concept-motif__frame img:nth-child(2){ animation-delay: 4s; }
+  .concept-motif__frame img:nth-child(3){ animation-delay: 8s; }
+  @keyframes motifSlide{
+    0%, 100%{ opacity:0; }
+    4%, 29%{ opacity:1; }
+    33%{ opacity:0; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .concept-motif__frame img{ animation:none; opacity:0; }
+    .concept-motif__frame img:first-child{ opacity:1; }
+  }
   .concept-text .subtitle{ font-style:italic; letter-spacing:0.16em; color: var(--terracotta); font-size:0.95rem; display:block; margin-bottom:0.8rem; }
   .concept-text h2{
     font-family:'Bodoni Moda', serif; font-style:italic;
@@ -364,7 +380,9 @@
     <div class="container">
       <div class="concept-motif">
         <div class="concept-motif__frame">
-          <img src="assets/about-workspace.jpg" alt="レースのカーテンとドライフラワーに囲まれた、アイボリーで統一されたシャビーシックなネイルサロンの施術デスク">
+          <img src="assets/nail-slide-01.jpg" alt="テラコッタカラーのネイルで香水瓶を持つ手元">
+          <img src="assets/nail-slide-02.jpg" alt="ヌーディーなブラウン系ネイルでスティック型香水を持つ手元">
+          <img src="assets/nail-slide-03.jpg" alt="深みのあるレッドカラーで仕上げたネイル">
         </div>
       </div>
       <div class="concept-text">
