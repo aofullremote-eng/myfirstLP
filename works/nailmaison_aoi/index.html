@@ -132,14 +132,14 @@
   .concept-motif__frame{ position:relative; width:100%; aspect-ratio: 1 / 1; overflow:hidden; }
   .concept-motif__frame img{
     position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; object-position: center 25%;
-    opacity:0; animation: motifSlide 12s infinite;
+    opacity:0; animation: motifSlide 18s infinite;
   }
   .concept-motif__frame img:nth-child(1){ animation-delay: 0s; }
-  .concept-motif__frame img:nth-child(2){ animation-delay: 4s; }
-  .concept-motif__frame img:nth-child(3){ animation-delay: 8s; }
+  .concept-motif__frame img:nth-child(2){ animation-delay: 6s; }
+  .concept-motif__frame img:nth-child(3){ animation-delay: 12s; }
   @keyframes motifSlide{
     0%, 100%{ opacity:0; }
-    4%, 29%{ opacity:1; }
+    11%, 22%{ opacity:1; }
     33%{ opacity:0; }
   }
   @media (prefers-reduced-motion: reduce){
