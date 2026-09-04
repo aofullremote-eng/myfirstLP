@@ -179,8 +179,14 @@
   .room-card p{ font-size:0.85rem; color: var(--ink-light); }
 
   /* ---------- MENU / PRICE ---------- */
-  .menu{ background: var(--cream-deep); }
-  .menu .container{ max-width: 720px; }
+  .menu{ position:relative; overflow:hidden; background: var(--cream-deep); }
+  .menu__bg{ position:absolute; inset:0; z-index:0; opacity:0.16; }
+  .menu__bg img{
+    width:100%; height:100%; object-fit:cover; object-position: center 22%;
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 82%, transparent 100%);
+    mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 82%, transparent 100%);
+  }
+  .menu .container{ position:relative; z-index:1; max-width: 720px; }
   .menu-photo{
     max-width: 320px; margin: 0 auto 3rem;
     transform: rotate(-2deg);
@@ -381,6 +387,9 @@
 
   <!-- MENU / PRICE -->
   <section class="menu" id="menu">
+    <div class="menu__bg">
+      <img src="assets/menu-bg.jpg" alt="「L'atelier de beauté」のポスターを背景に、頬杖をついて微笑む女性">
+    </div>
     <div class="container">
       <div class="section-head">
         <span class="eyebrow">MENU</span>
