@@ -124,8 +124,10 @@
 
   /* ---------- CONCEPT / ABOUT ---------- */
   .concept .container{
-    max-width: 640px; margin: 0 auto; text-align:center;
+    display:grid; grid-template-columns: 1fr 1fr; gap: 5vw; align-items:center;
   }
+  .concept-motif{ width:100%; max-width:360px; margin:0 auto; }
+  .concept-motif__frame img{ width:100%; aspect-ratio: 1 / 1; object-fit:cover; display:block; box-shadow: var(--shadow); }
   .concept-text .subtitle{ font-style:italic; letter-spacing:0.16em; color: var(--olive-deep); font-size:0.95rem; display:block; margin-bottom:0.8rem; }
   .concept-text h2{
     font-family:'Bodoni Moda', serif; font-style:italic;
@@ -181,6 +183,16 @@
   /* ---------- MENU / PRICE ---------- */
   .menu{ background: var(--cream-deep); }
   .menu .container{ max-width: 720px; }
+  .menu-photo{
+    max-width: 320px; margin: 0 auto 3rem;
+    transform: rotate(-2deg);
+    box-shadow: var(--shadow);
+  }
+  .menu-photo img{ width:100%; aspect-ratio: 4 / 3; object-fit:cover; display:block; }
+  .menu-photo__caption{
+    display:block; text-align:center; margin-top:0.8rem;
+    font-style:italic; letter-spacing:0.06em; color: var(--olive-deep); font-size:0.9rem;
+  }
   .price-card{
     background: rgba(255,255,255,0.75);
     border: 1px solid var(--taupe);
@@ -215,13 +227,22 @@
   .menu-table li .price{ font-family:'Bodoni Moda', serif; font-size:1.1rem; color: var(--olive-deep); white-space:nowrap; }
 
   /* ---------- VOICE ---------- */
+  .voice{ position:relative; overflow:hidden; }
+  .voice__bg{ position:absolute; inset:0; z-index:0; }
+  .voice__bg img{ width:100%; height:100%; object-fit:cover; object-position: center 30%; }
+  .voice__bg::after{
+    content:""; position:absolute; inset:0;
+    background: linear-gradient(180deg, rgba(248,245,236,0.88) 0%, rgba(248,245,236,0.93) 100%);
+  }
+  .voice .container{ position:relative; z-index:1; }
   .voice__grid{
     display:grid; grid-template-columns: repeat(3, 1fr); gap: 2.6rem;
     max-width: 1000px; margin:0 auto;
   }
   .voice-card{
-    background: var(--white);
-    border: 1px solid var(--taupe);
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,0.8);
     border-radius: 4px;
     padding: 2rem 1.7rem;
   }
@@ -263,6 +284,8 @@
     .logo{ font-size: 1.05rem; letter-spacing:0.02em; }
     .header-cta{ padding: 0.55rem 0.9rem; font-size:0.78rem; white-space:nowrap; }
     section{ padding: 4.5rem 0; }
+    .concept .container{ grid-template-columns: 1fr; gap:2.6rem; text-align:center; }
+    .concept-motif{ max-width: 240px; margin: 0 auto; order:-1; }
     .about1 .container{ grid-template-columns: 1fr; gap:2.6rem; text-align:center; }
     .about1__arch{ max-width: 240px; }
     .room__grid{ grid-template-columns: 1fr; gap: 2.6rem; max-width:320px; }
@@ -301,6 +324,11 @@
   <!-- CONCEPT / ABOUT -->
   <section class="concept" id="about">
     <div class="container">
+      <div class="concept-motif">
+        <div class="concept-motif__frame">
+          <img src="assets/about-portrait.jpg" alt="「L'atelier de beauté」のポスターを背景に、頬杖をついてくつろぐ女性">
+        </div>
+      </div>
       <div class="concept-text">
         <span class="eyebrow">ABOUT</span>
         <span class="subtitle en">Slow Beauty, Deep Care</span>
@@ -401,11 +429,19 @@
           <span class="price en">¥8,800〜</span>
         </li>
       </ul>
+
+      <div class="menu-photo">
+        <img src="assets/menu-lotion.jpg" alt="大理石のトレイに並んだ、キャンドルやトリートメントローションなどのおうちケアアイテム">
+        <span class="menu-photo__caption en">Home Ritual Set</span>
+      </div>
     </div>
   </section>
 
   <!-- VOICE -->
   <section class="voice" id="voice">
+    <div class="voice__bg">
+      <img src="assets/voice-bg.jpg" alt="大理石のトレイに並んだ、キャンドルやトリートメントローションなどのおうちケアアイテム">
+    </div>
     <div class="container">
       <div class="section-head">
         <span class="eyebrow">VOICE</span>
