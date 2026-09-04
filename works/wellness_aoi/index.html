@@ -124,10 +124,8 @@
 
   /* ---------- CONCEPT / ABOUT ---------- */
   .concept .container{
-    display:grid; grid-template-columns: 1fr 1fr; gap: 5vw; align-items:center;
+    max-width: 640px; margin: 0 auto; text-align:center;
   }
-  .concept-motif{ width:100%; max-width:360px; margin:0 auto; }
-  .concept-motif__frame img{ width:100%; aspect-ratio: 1 / 1; object-fit:cover; display:block; box-shadow: var(--shadow); }
   .concept-text .subtitle{ font-style:italic; letter-spacing:0.16em; color: var(--olive-deep); font-size:0.95rem; display:block; margin-bottom:0.8rem; }
   .concept-text h2{
     font-family:'Bodoni Moda', serif; font-style:italic;
@@ -284,8 +282,6 @@
     .logo{ font-size: 1.05rem; letter-spacing:0.02em; }
     .header-cta{ padding: 0.55rem 0.9rem; font-size:0.78rem; white-space:nowrap; }
     section{ padding: 4.5rem 0; }
-    .concept .container{ grid-template-columns: 1fr; gap:2.6rem; text-align:center; }
-    .concept-motif{ max-width: 240px; margin: 0 auto; order:-1; }
     .about1 .container{ grid-template-columns: 1fr; gap:2.6rem; text-align:center; }
     .about1__arch{ max-width: 240px; }
     .room__grid{ grid-template-columns: 1fr; gap: 2.6rem; max-width:320px; }
@@ -324,11 +320,6 @@
   <!-- CONCEPT / ABOUT -->
   <section class="concept" id="about">
     <div class="container">
-      <div class="concept-motif">
-        <div class="concept-motif__frame">
-          <img src="assets/about-portrait.jpg" alt="「L'atelier de beauté」のポスターを背景に、頬杖をついてくつろぐ女性">
-        </div>
-      </div>
       <div class="concept-text">
         <span class="eyebrow">ABOUT</span>
         <span class="subtitle en">Slow Beauty, Deep Care</span>
