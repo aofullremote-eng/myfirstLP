@@ -797,6 +797,15 @@ a { text-decoration: none; color: inherit; }
   color: var(--color-rose-deep);
 }
 
+.price-card__old {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--color-ink-light);
+  text-decoration: line-through;
+  margin-bottom: 6px;
+}
+
 .price-card__amount span {
   font-family: var(--font-accent);
   font-style: italic;
