@@ -91,6 +91,8 @@
   .hero__note{
     margin-top:1rem; font-size:0.82rem; color: var(--ink-light);
   }
+  .note-cta{ display:none; }
+  .note-cta.is-visible{ display:block; }
 
   /* ---------- WHY / THOUGHTS ---------- */
   .why{ background: var(--cream); }
@@ -184,8 +186,10 @@
         予約が埋まらない焦り、値下げしても変わらない現実。<br>
         同じ場所で立ち止まっていた頃の私だからこそ伝えられることを、noteに綴りました。
       </p>
-      <a href="#" class="btn en">記事を読む →</a>
-      <p class="hero__note">タップすると、noteの記事ページに移動します</p>
+      <div class="note-cta" id="noteCta1">
+        <a href="https://note.com/preview/n50b71d4197ac?prev_access_key=1498209ad74e993c982816ca4fb90708" class="btn en" target="_blank" rel="noopener noreferrer">記事を読む →</a>
+        <p class="hero__note">タップすると、noteの記事ページに移動します</p>
+      </div>
     </div>
   </div>
 </section>
@@ -226,8 +230,10 @@
     <div class="divider" aria-hidden="true"><span></span><p class="en">READ MORE</p><span></span></div>
     <h2>あなたの集客も、<br class="only-mobile">ここから変わるかもしれません。</h2>
     <p>今の悩みは、いつか誰かの力になる経験に変わります。<br>その一歩を、この記事から。</p>
-    <a href="#" class="btn en">記事を読む →</a>
-    <p class="hero__note">タップすると、noteの記事ページに移動します</p>
+    <div class="note-cta" id="noteCta2">
+      <a href="https://note.com/preview/n50b71d4197ac?prev_access_key=1498209ad74e993c982816ca4fb90708" class="btn en" target="_blank" rel="noopener noreferrer">記事を読む →</a>
+      <p class="hero__note">タップすると、noteの記事ページに移動します</p>
+    </div>
   </div>
 </section>
 
@@ -235,6 +241,28 @@
   <span class="logo en">aoi</span>
   <p>© 2026 aoi</p>
 </footer>
+
+<script>
+  // ===== 記事公開(2026年9月6日 21:00)までnoteへのボタンを非表示にする =====
+  // 公開時刻を過ぎたら自動的に表示する。ページを開いたまま公開時刻を
+  // またいだ場合もリロード無しで表示に切り替わる。
+  (function () {
+    var target = new Date(2026, 8, 6, 21, 0, 0, 0); // 2026年9月6日 21:00
+    var ctas = document.querySelectorAll(".note-cta");
+
+    function reveal() {
+      ctas.forEach(function (el) {
+        el.classList.add("is-visible");
+      });
+    }
+
+    if (new Date() >= target) {
+      reveal();
+    } else {
+      setTimeout(reveal, target - new Date());
+    }
+  })();
+</script>
 
 </body>
 </html>
