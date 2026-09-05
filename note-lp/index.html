@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>月3〜4件しか予約が入らなかった私が、集客を変えた方法</title>
+<meta name="description" content="予約が埋まらず悩んでいた頃の私が、どうやって集客の考え方を変えていったか。当時の自分に向けて綴ったnote記事のご紹介です。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hina+Mincho&family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white: #fffdfb;
+    --cream: #faf3ec;
+    --cream-deep: #f1e2d0;
+    --pink: #e8bfc0;
+    --pink-deep: #c98087;
+    --taupe: #e3d3c4;
+    --ink: #5a4c44;
+    --ink-light: #8c7d72;
+    --shadow: 0 24px 50px rgba(120, 80, 70, 0.14);
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; overflow-x:hidden; }
+  body{
+    font-family: 'Hina Mincho', serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.9;
+    overflow-x:hidden;
+    overflow-wrap: break-word;
+  }
+  img{ max-width:100%; display:block; }
+  .en{ font-family: 'Bodoni Moda', serif; font-style: italic; }
+  .only-mobile{ display:none; }
+  .container{ max-width: 720px; margin: 0 auto; padding: 0 6vw; }
+  section{ padding: 6.5rem 0; }
+
+  /* ---------- HEADER ---------- */
+  header.site{
+    position: absolute; top:0; left:0; right:0; z-index:2;
+    display:flex; align-items:center; justify-content:center;
+    padding: 2rem 5vw;
+  }
+  .logo{ font-size: 1.05rem; letter-spacing:0.14em; color: var(--white); }
+
+  /* ---------- HERO ---------- */
+  .hero{ position:relative; overflow:hidden; padding:0; }
+  .hero__bg{ position:relative; min-height: 82vh; display:flex; align-items:flex-end; }
+  .hero__bg img{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position: center 35%;
+  }
+  .hero__scrim{
+    position:absolute; inset:0;
+    background: linear-gradient(180deg, rgba(90,60,55,0.35) 0%, rgba(90,60,55,0.25) 40%, rgba(250,243,236,0.96) 96%);
+  }
+  .hero__inner{
+    position:relative; z-index:1; width:100%;
+    padding: 3rem 6vw 3.5rem;
+    text-align:center;
+  }
+  .hero .eyebrow{
+    display:inline-block; color: var(--white); font-size:0.85rem;
+    letter-spacing:0.32em; margin-bottom:1.4rem;
+  }
+  .hero h1{
+    font-family:'Bodoni Moda', serif; font-style:italic; font-weight:500;
+    color: var(--white);
+    font-size: clamp(1.5rem, 4.4vw, 2.5rem);
+    line-height:1.6; letter-spacing:0.01em;
+    max-width: 680px; margin: 0 auto 1.6rem;
+    text-shadow: 0 6px 24px rgba(60,40,35,0.35);
+  }
+  .hero__lead{
+    max-width: 520px; margin: 0 auto 2.2rem;
+    color: var(--ink);
+    font-size: 0.98rem;
+  }
+  .btn{
+    display:inline-flex; align-items:center; gap:0.6rem;
+    padding: 1rem 2.4rem;
+    background: var(--pink-deep);
+    color: var(--white);
+    text-decoration:none;
+    font-size:0.9rem; letter-spacing:0.12em;
+    border-radius: 999px;
+    box-shadow: var(--shadow);
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  .btn:hover{ background: #b56d74; transform: translateY(-2px); }
+  .hero__note{
+    margin-top:1rem; font-size:0.82rem; color: var(--ink-light);
+  }
+
+  /* ---------- WHY / THOUGHTS ---------- */
+  .why{ background: var(--cream); }
+  .why .section-head{ text-align:center; margin-bottom: 2.6rem; }
+  .why .eyebrow, .thoughts .eyebrow{
+    display:block; font-style:italic; letter-spacing:0.18em; color: var(--pink-deep);
+    font-size:0.95rem; margin-bottom:0.8rem;
+  }
+  .why h2, .thoughts h2{
+    font-family:'Bodoni Moda', serif; font-style:italic; font-weight:500;
+    font-size: clamp(1.5rem, 3.2vw, 2rem);
+    line-height:1.6; letter-spacing:0.01em;
+  }
+  .why p, .thoughts p{
+    font-size:0.96rem; color: var(--ink);
+    text-align:center;
+    max-width: 560px; margin: 0 auto 1.3rem;
+  }
+  .why p:last-child, .thoughts p:last-child{ margin-bottom:0; }
+
+  /* ---------- THOUGHTS (with photo) ---------- */
+  .thoughts{ background: var(--cream-deep); }
+  .thoughts .container{
+    display:grid; grid-template-columns: 1fr 1fr; gap: 6vw; align-items:center; max-width: 980px;
+  }
+  .thoughts .section-head{ text-align:left; margin-bottom:1.8rem; }
+  .thoughts p{ text-align:left; margin-left:0; }
+  .thoughts__photo{ width:100%; max-width:360px; margin:0 auto; }
+  .thoughts__photo img{
+    width:100%; aspect-ratio: 1 / 1; object-fit:cover; display:block;
+    border-radius: 999px 999px 0 0;
+    box-shadow: var(--shadow);
+    opacity:0.92; filter: saturate(0.94) brightness(1.02);
+  }
+
+  /* ---------- CTA ---------- */
+  .cta{
+    position:relative; overflow:hidden;
+    background: linear-gradient(160deg, var(--pink-deep), #9c6068);
+    text-align:center;
+  }
+  .cta .container{ position:relative; z-index:1; }
+  .cta .divider{ display:flex; align-items:center; justify-content:center; gap:1rem; margin-bottom:2rem; }
+  .cta .divider span{ width:36px; height:1px; background: rgba(255,255,255,0.5); }
+  .cta .divider p{ font-size:0.85rem; letter-spacing:0.28em; color: rgba(255,255,255,0.85); }
+  .cta h2{
+    font-family:'Bodoni Moda', serif; font-style:italic; font-weight:500;
+    color: var(--white);
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    line-height:1.7; margin-bottom:1.6rem;
+  }
+  .cta p{ color: rgba(255,255,255,0.85); font-size:0.95rem; margin-bottom:2.2rem; }
+  .cta .btn{ background: var(--white); color: var(--pink-deep); }
+  .cta .btn:hover{ background: #fff; transform: translateY(-2px); }
+  .cta .hero__note{ color: rgba(255,255,255,0.7); }
+
+  /* ---------- FOOTER ---------- */
+  footer.site{
+    text-align:center; padding: 3rem 5vw; background: var(--cream); color: var(--ink-light);
+  }
+  footer.site .logo{ display:block; margin-bottom:0.6rem; font-size:1.05rem; color: var(--pink-deep); }
+  footer.site p{ font-size:0.78rem; letter-spacing:0.04em; }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 720px){
+    .only-mobile{ display:inline; }
+    section{ padding: 4.5rem 0; }
+    .hero__bg{ min-height: 74vh; }
+    .thoughts .container{ grid-template-columns: 1fr; gap:2.6rem; text-align:center; }
+    .thoughts .section-head{ text-align:center; }
+    .thoughts p{ text-align:center; }
+    .thoughts__photo{ max-width: 240px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <span class="logo en">aoi</span>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero__bg">
+    <img src="assets/hero-flatlay.jpg" alt="ドライフラワーとアンティーク雑貨に囲まれた、カフェラテとタルトのある温かみのある机の上">
+    <div class="hero__scrim"></div>
+    <div class="hero__inner">
+      <span class="eyebrow en">NOTE ARTICLE</span>
+      <h1>月3〜4件しか予約が入らなかった私が、<br class="only-mobile">集客を変えた方法</h1>
+      <p class="hero__lead">
+        予約が埋まらない焦り、値下げしても変わらない現実。<br>
+        同じ場所で立ち止まっていた頃の私だからこそ伝えられることを、noteに綴りました。
+      </p>
+      <a href="#" class="btn en">記事を読む →</a>
+      <p class="hero__note">タップすると、noteの記事ページに移動します</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow en">WHY I WROTE THIS</span>
+      <h2>なぜ、この記事を書いたか</h2>
+    </div>
+    <p>かつての私は、毎月3〜4件の予約で頭を抱えていました。技術には自信があるのに、なぜかお客様が増えない。SNSを頑張っても、広告を出しても、思うように結果につながらない日々が続いていました。</p>
+    <p>そんな時期を、私はどう抜け出したのか。特別な裏技ではなく、地道に積み重ねてきた「集客の考え方」の変化を、当時の自分に向けて書くつもりでまとめたのが、この記事です。</p>
+  </div>
+</section>
+
+<!-- THOUGHTS -->
+<section class="thoughts">
+  <div class="container">
+    <div class="thoughts-text">
+      <div class="section-head">
+        <span class="eyebrow en">MY THOUGHTS</span>
+        <h2>作り手の想い</h2>
+      </div>
+      <p>有料の記事に、大切な時間とお金を使ってくださる方がいる。それは私にとって、とても重い意味を持っています。</p>
+      <p>だからこそ、過去の私が本当に知りたかったこと、遠回りしてようやく気づいたことを、惜しみなく書きました。</p>
+      <p>この記事を読んでくださった一人でも多くの方の予約が、少しでも増えますように。かつての私と同じように悩む誰かの力に、少しでもなれたら嬉しいです。</p>
+    </div>
+    <div class="thoughts__photo">
+      <img src="assets/profile-hand.jpg" alt="アンティーク調のドレッサーの前で、深緑とべっ甲柄のネイルを見せる女性の手元">
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="container">
+    <div class="divider" aria-hidden="true"><span></span><p class="en">READ MORE</p><span></span></div>
+    <h2>あなたの集客も、<br class="only-mobile">ここから変わるかもしれません。</h2>
+    <p>今の悩みは、いつか誰かの力になる経験に変わります。<br>その一歩を、この記事から。</p>
+    <a href="#" class="btn en">記事を読む →</a>
+    <p class="hero__note">タップすると、noteの記事ページに移動します</p>
+  </div>
+</section>
+
+<footer class="site">
+  <span class="logo en">aoi</span>
+  <p>© 2026 aoi</p>
+</footer>
+
+</body>
+</html>
