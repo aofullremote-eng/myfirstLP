@@ -65,12 +65,13 @@ assets/
 | `works/work-03-mirror.png` | 1086×1448 | 同上。`works/ongle/` のabout1写真と同一。サンプルLP「nailsalon_aoi」(`works/ongle/`)へのリンク付き |
 | `works/work-04-esthe.jpg` | 1003×1254 | 同上。`works/esthe-aoi/` のヒーロー写真(`hero-back.jpg`)を4:5にトリミング。サンプルLP「esthe_aoi」(`works/esthe-aoi/`)へのリンク付き |
 | `works/work-05-nailatelier.jpg` | 1003×1254 | 同上。`works/nailatelier_aoi/` のネイル写真(`gallery-01.jpg`、シャビーシック系ネイルLP共通素材)を4:5にトリミング。サンプルLP「nailatelier_aoi」(`works/nailatelier_aoi/`)へのリンク付き |
-| `works/work-06-goldfish.jpg` | 677×900 | 同上 |
-| `works/work-07-cat.jpg` | 900×900 | 同上 |
-| `works/work-08-crow.jpg` | 900×900 | 同上 |
-| `works/work-09-gift.jpg` | 1254×1254 | 同上 |
+| `works/work-06-goldfish.jpg` | 677×900 | 現在ギャラリーには非表示(下記work-10に差し替え済み)。ファイルは残置 |
+| `works/work-07-cat.jpg` | 900×900 | 同上(Coming Soon枠) |
+| `works/work-08-crow.jpg` | 900×900 | 同上(Coming Soon枠) |
+| `works/work-09-gift.jpg` | 1254×1254 | 同上(Coming Soon枠) |
+| `works/work-10-wellness.jpg` | 1003×1254 | `aspect-ratio: 4 / 5` で `object-fit: cover`。`works/wellness_aoi/` のヒーロー写真(`hero.jpg`)を4:5にトリミング。サンプルLP「wellness_aoi」(`works/wellness_aoi/`)へのリンク付き |
 
-現在、実際のサンプルLPへリンクしているのは `work-01`(Éclat Chocolat)・`work-02`(LUMIÈRE)・`work-03`(nailsalon_aoi)・`work-04`(esthe_aoi)・`work-05`(nailatelier_aoi)の5点。残り(`work-06`〜`work-09`)はまだ専用サンプルLPが無いイラスト作品例のため、`.works__item--soon` クラス+`.works__badge`(「Coming Soon」)で準備中であることを示している。
+現在、実際のサンプルLPへリンクしているのは `work-01`(Éclat Chocolat)・`work-02`(LUMIÈRE)・`work-03`(nailsalon_aoi)・`work-04`(esthe_aoi)・`work-05`(nailatelier_aoi)・`work-10`(wellness_aoi)の6点。残り(`work-07`〜`work-09`)はまだ専用サンプルLPが無いイラスト作品例のため、`.works__item--soon` クラス+`.works__badge`(「Coming Soon」)で準備中であることを示している。
 
 作品ギャラリー画像は `aspect-ratio: 4/5` でトリミング表示されるため、追加素材は正方形〜縦長(4:5前後)を目安にする。ファイル容量はJPEG品質を落としすぎない範囲で、おおよそ数十KB〜200KB程度に収めている(`work-02-mirror.png` は2MB超と重いため、追加でPNGを使う場合は圧縮を検討する)。
 
