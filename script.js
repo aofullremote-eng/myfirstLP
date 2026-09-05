@@ -169,3 +169,27 @@ function initReveal() {
   revealTargets.forEach((el) => observer.observe(el));
   revealFadeTargets.forEach((el) => observer.observe(el));
 }
+
+// ===== 「ご依頼はnoteから」ボタンを21時に表示 =====
+// note記事の公開時刻(当日21:00、閲覧者の端末時刻基準)まではボタンを隠しておき、
+// 21:00を過ぎたら表示する。ページを開いたまま21:00をまたいだ場合も
+// リロード無しで自動的に表示されるようにする。
+(function () {
+  const noteLink = document.getElementById("noteLink");
+  if (!noteLink) return;
+
+  function getTodayAt21() {
+    const target = new Date();
+    target.setHours(21, 0, 0, 0);
+    return target;
+  }
+
+  if (new Date() >= getTodayAt21()) {
+    noteLink.classList.add("is-visible");
+  } else {
+    const msUntil21 = getTodayAt21() - new Date();
+    setTimeout(() => {
+      noteLink.classList.add("is-visible");
+    }, msUntil21);
+  }
+})();

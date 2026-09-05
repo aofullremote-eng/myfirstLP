@@ -171,6 +171,19 @@ a { text-decoration: none; color: inherit; }
   font-size: 1.05rem;
 }
 
+.btn--outline {
+  background: transparent;
+  color: var(--color-ivory);
+  border-color: rgba(255, 250, 239, 0.55);
+  padding: 12px 30px;
+  font-size: 0.92rem;
+}
+
+.btn--outline:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+}
+
 .btn--small {
   padding: 9px 24px;
   font-size: 0.88rem;
@@ -1070,21 +1083,13 @@ a { text-decoration: none; color: inherit; }
   font-family: var(--font-display);
 }
 
-.contact__secondary {
-  margin-top: 28px;
-  color: rgba(255, 250, 239, 0.75);
-  font-size: 0.9rem;
-  font-family: var(--font-display);
+.contact__note-link {
+  display: none;
+  margin-top: 24px;
 }
 
-.contact__secondary a {
-  color: var(--color-ivory);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.contact__secondary a:hover {
-  color: #fff;
+.contact__note-link.is-visible {
+  display: inline-block;
 }
 
 /* ===== フッター ===== */
