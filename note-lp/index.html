@@ -101,8 +101,13 @@
   /* ---------- HERO ---------- */
   .hero{ position:relative; overflow:hidden; padding:0; }
   .hero__bg{ position:relative; min-height: 82vh; display:flex; align-items:flex-end; }
-  .hero__bg img{
-    position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position: center 35%;
+  .hero__slide{
+    position:absolute; inset:0; opacity:0;
+    transition: opacity 1.8s ease;
+  }
+  .hero__slide.is-active{ opacity:1; z-index:1; }
+  .hero__slide img, .hero__slide video{
+    width:100%; height:100%; object-fit:cover; object-position: center 35%; display:block;
   }
   .hero__scrim{
     position:absolute; inset:0;
@@ -116,6 +121,7 @@
   .hero .eyebrow{
     display:inline-block; color: var(--white); font-size:0.85rem;
     letter-spacing:0.32em; margin-bottom:1.4rem;
+    transition: opacity 0.6s ease;
   }
   .hero h1{
     font-family:'Bodoni Moda', serif; font-style:italic; font-weight:500;
@@ -124,11 +130,20 @@
     line-height:1.6; letter-spacing:0.01em;
     max-width: 680px; margin: 0 auto 1.6rem;
     text-shadow: 0 6px 24px rgba(60,40,35,0.35);
+    transition: opacity 0.6s ease;
   }
   .hero__lead{
     max-width: 520px; margin: 0 auto 2.2rem;
     color: var(--ink);
     font-size: 0.98rem;
+    transition: opacity 0.6s ease;
+  }
+  /* タイトル画像そのものに文字が入っているため、そのスライド表示中は
+     重複を避けるためHTML側の見出し・リード文を隠す */
+  .hero.is-title-slide .eyebrow,
+  .hero.is-title-slide h1,
+  .hero.is-title-slide .hero__lead{
+    opacity:0; pointer-events:none;
   }
   .btn{
     display:inline-flex; align-items:center; gap:0.6rem;
@@ -287,13 +302,29 @@
 </header>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero is-title-slide">
   <div class="hero__bg">
-    <img src="assets/hero-flatlay.jpg" alt="ドライフラワーとアンティーク雑貨に囲まれた、カフェラテとタルトのある温かみのある机の上">
+    <div class="hero__slide is-active">
+      <img src="assets/hero-slide-title.jpg" alt="「自宅サロンで『予約が来ない』を抜け出した。月商5桁から6桁へ」というタイトルと、選ばれるサロンづくり・予約につながる発信の工夫・リピーターを増やす仕組み、という3つの言葉が添えられた、ネイルケアをする女性のバナー画像">
+    </div>
+    <div class="hero__slide">
+      <video autoplay muted loop playsinline>
+        <source src="assets/hero-video.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="hero__slide">
+      <img src="assets/hero-slide-storefront.jpg" alt="レースのカーテンとドライフラワーに囲まれたシャビーシックなネイルサロンの店先を、ほうきで掃除する女性">
+    </div>
+    <div class="hero__slide">
+      <img src="assets/hero-slide-worry.jpg" alt="ネイルポリッシュを前に、頭を抱えて悩む女性">
+    </div>
+    <div class="hero__slide">
+      <img src="assets/hero-slide-bed.jpg" alt="ドライフラワーとポラロイド写真に囲まれたベッドで、頬杖をついて横たわる女性">
+    </div>
     <div class="hero__scrim"></div>
     <div class="hero__inner">
       <span class="eyebrow en">NOTE ARTICLE</span>
-      <h1>月3〜4件しか予約が入らなかった私が、<br class="only-mobile">集客を変えた方法</h1>
+      <h1>自宅サロンで「予約が来ない」を抜け出した。<br class="only-mobile">月商5桁から6桁へ変わるまでにやったこと</h1>
       <p class="hero__lead">
         予約が埋まらない焦り、値下げしても変わらない現実。<br>
         同じ場所で立ち止まっていた頃の私だからこそ伝えられることを、noteに綴りました。
@@ -485,6 +516,29 @@
         });
       });
     }
+  })();
+</script>
+
+<script>
+  // ===== ヒーローのスライドショー(画像+動画をふわっとクロスフェード) =====
+  (function () {
+    const hero = document.querySelector(".hero");
+    const slides = document.querySelectorAll(".hero__slide");
+    if (!hero || slides.length < 2) return;
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (prefersReducedMotion) return; // 最初のスライド(タイトル画像)のまま静止させる
+
+    // 0番目はタイトル文字入りの画像なので、表示中はHTML側の見出しを隠す
+    let idx = 0;
+    setInterval(function () {
+      slides[idx].classList.remove("is-active");
+      idx = (idx + 1) % slides.length;
+      slides[idx].classList.add("is-active");
+      hero.classList.toggle("is-title-slide", idx === 0);
+    }, 4500);
   })();
 </script>
 
