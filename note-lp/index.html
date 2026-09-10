@@ -283,6 +283,25 @@
   }
   footer.site .logo{ display:block; margin-bottom:0.6rem; font-size:1.05rem; color: var(--pink-deep); }
   footer.site p{ font-size:0.78rem; letter-spacing:0.04em; }
+  .footer__threads{ margin: 1.6rem 0 1.4rem; }
+  .footer__threads-note{
+    font-size:0.72rem; color: var(--ink-light); letter-spacing:0.03em;
+    max-width: 300px; margin: 0 auto 0.9rem;
+  }
+  .threads-btn{
+    display:inline-flex; align-items:center; gap:0.45rem;
+    padding: 0.55rem 1.3rem;
+    background: var(--white);
+    border: 1px solid var(--pink-deep);
+    color: var(--pink-deep);
+    border-radius: 999px;
+    font-size:0.78rem; letter-spacing:0.04em;
+    text-decoration:none;
+    box-shadow: var(--shadow);
+    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  }
+  .threads-btn:hover{ background: var(--pink-deep); color: var(--white); transform: translateY(-2px); }
+  .threads-btn svg{ width:14px; height:14px; fill: currentColor; flex-shrink:0; }
 
   /* ---------- RESPONSIVE ---------- */
   @media (max-width: 720px){
@@ -441,6 +460,13 @@
 
 <footer class="site">
   <span class="logo en">aoi</span>
+  <div class="footer__threads">
+    <p class="footer__threads-note">noteを楽しみにしてくれる方は、Threadsをフォローしてaoiを応援してくださいね。</p>
+    <a href="https://www.threads.com/@aoi_lp213" class="threads-btn en" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 192 192" aria-hidden="true"><path d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.7443C82.2364 44.7443 69.7731 51.1409 62.102 62.7807L75.881 72.2328C81.6116 63.5383 90.6052 61.6848 97.2286 61.6848C97.3051 61.6848 97.3819 61.6848 97.4576 61.6855C105.707 61.7381 111.932 64.1366 115.961 68.814C118.893 72.2193 120.854 76.925 121.825 82.8638C114.511 81.6207 106.601 81.2385 98.145 81.7217C74.3247 83.0834 59.0111 96.9012 60.0396 116.106C60.5615 125.859 65.4397 134.253 73.8781 139.746C81.0113 144.39 90.1974 146.657 99.7351 146.152C112.376 145.474 122.322 140.554 129.294 131.526C134.628 124.629 138.007 115.649 139.503 104.288C145.573 108.061 150.084 113.03 152.552 118.999C156.744 129.106 157 145.681 143.616 159.052C131.874 170.783 117.777 175.863 97.0135 176.017C74.0704 175.845 56.6716 168.402 45.2988 154.9C34.6544 142.263 29.1592 124.211 28.9723 96.145C29.1592 68.0937 34.6544 50.0421 45.2988 37.4045C56.6716 23.9018 74.0704 16.459 97.0135 16.2871C120.116 16.4602 137.821 23.9391 149.652 38.5016C155.454 45.6549 159.827 54.5804 162.706 65.0407L179.128 60.6461C175.677 47.7768 170.207 36.6318 162.735 27.4157C147.639 8.83217 125.414 -0.0577415 97.0715 -0.246582H96.9556C68.6749 -0.0577415 46.6975 8.87024 31.6178 27.5233C18.2266 44.0546 11.3168 66.9714 11.0995 95.9757L11.0977 96.145L11.0995 96.3142C11.3168 125.319 18.2266 148.235 31.6178 164.767C46.6975 183.42 68.6749 192.34 96.9556 192.528H97.0715C122.031 192.363 139.749 185.947 154.351 171.833C173.622 153.276 173.031 130.075 166.744 116.028C162.221 105.923 153.596 97.7355 141.537 88.9883ZM98.4405 129.507C88.0005 130.095 77.1544 125.409 76.6196 115.372C76.2232 107.93 81.9158 99.6154 99.0812 98.6154C101.047 98.5001 102.976 98.4437 104.871 98.4437C111.106 98.4437 116.939 99.0692 122.242 100.264C120.264 124.699 108.662 128.949 98.4405 129.507Z"/></svg>
+      Threads @aoi_lp213
+    </a>
+  </div>
   <p>© 2026 aoi</p>
 </footer>
 
@@ -508,13 +534,19 @@
     }
 
     function onScroll() {
-      if (frameAnimDone || jumping) return;
+      if (jumping) {
+        // 演出の切り替わり中は、慣性スクロール(フリック操作の勢い)が
+        // そのまま本編の下の方まで飛ばしてしまわないよう、その都度先頭に戻す
+        window.scrollTo(0, 0);
+        return;
+      }
+      if (frameAnimDone) return;
 
       const scrollY = window.scrollY || document.documentElement.scrollTop;
       const docH = document.body.scrollHeight - window.innerHeight;
 
       if (scrollHint) {
-        const hintOpacity = Math.max(0, 1 - scrollY / (window.innerHeight * 0.3));
+        const hintOpacity = Math.max(0, 1 - scrollY / (window.innerHeight * 0.6));
         scrollHint.style.opacity = hintOpacity;
       }
 
@@ -537,19 +569,41 @@
     function finishAnimation() {
       frameAnimDone = true;
       jumping = true;
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-      window.scrollTo(0, 0);
-      requestAnimationFrame(function () {
-        document.documentElement.scrollTop = 0;
+
+      const htmlEl = document.documentElement;
+      const prevHtmlOverflow = htmlEl.style.overflow;
+      const prevBodyOverflow = document.body.style.overflow;
+
+      function forceTop() {
+        htmlEl.scrollTop = 0;
         document.body.scrollTop = 0;
+        window.scrollTo(0, 0);
+      }
+
+      // スマホのフリックスクロールがそのまま本編に流れ込み、ヒーローを
+      // 飛び越えて一気に下の方まで行ってしまう現象を防ぐため、演出が
+      // 完全に落ち着くまでスクロール自体を一時的にロックしておく
+      htmlEl.style.overflow = "hidden";
+      document.body.style.overflow = "hidden";
+      forceTop();
+
+      requestAnimationFrame(function () {
+        forceTop();
         requestAnimationFrame(function () {
           frameAnimation.classList.add("hidden");
           document.body.style.height = "";
           mainContent.classList.add("visible");
-          setTimeout(function () {
-            jumping = false;
-          }, 900);
+          forceTop();
+
+          requestAnimationFrame(function () {
+            forceTop();
+            setTimeout(function () {
+              forceTop();
+              htmlEl.style.overflow = prevHtmlOverflow;
+              document.body.style.overflow = prevBodyOverflow;
+              jumping = false;
+            }, 1300);
+          });
         });
       });
     }
