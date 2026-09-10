@@ -184,19 +184,24 @@
   .cta .price-badge{ border-color: rgba(255,255,255,0.6); color: var(--white); }
   .cta .price-badge span{ color: rgba(255,255,255,0.9); }
 
-  /* ---------- GALLERY(スクラップブック風にランダム配置) ---------- */
+  /* ---------- GALLERY(1枚のコラージュに3枚をバラバラのサイズで収める) ---------- */
   .gallery-scatter{ background: var(--cream); padding: 4.5rem 0 5.5rem; }
-  .gallery-scatter__grid{
-    display:flex; justify-content:center; align-items:flex-start;
-    gap: 3.5vw; flex-wrap:wrap;
-    max-width: 900px; margin:0 auto; padding: 0 6vw;
+  .gallery-collage{ display:flex; justify-content:center; padding: 0 6vw; }
+  .gallery-collage__frame{
+    position:relative;
+    width: min(92vw, 480px);
+    aspect-ratio: 5 / 4;
   }
-  .gallery-scatter__item{
-    width: 220px;
+  .gallery-collage__item{
+    position:absolute;
+    overflow:hidden;
+    border: 5px solid var(--white);
     box-shadow: var(--shadow);
-    transform: rotate(var(--rot,0deg)) translateY(var(--ty,0px));
   }
-  .gallery-scatter__item img{ width:100%; aspect-ratio:1/1; object-fit:cover; display:block; }
+  .gallery-collage__item img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .gallery-collage__item--1{ width:54%; aspect-ratio:4/5; left:2%; top:6%; transform: rotate(-4deg); z-index:1; }
+  .gallery-collage__item--2{ width:36%; aspect-ratio:1/1; right:4%; top:2%; transform: rotate(5deg); z-index:2; }
+  .gallery-collage__item--3{ width:28%; aspect-ratio:1/1; right:10%; top:38%; transform: rotate(-6deg); z-index:3; }
 
   /* ---------- WHY / THOUGHTS ---------- */
   .why, .point{ background: var(--cream); }
@@ -227,12 +232,21 @@
   }
   .thoughts .section-head{ text-align:left; margin-bottom:1.8rem; }
   .thoughts p{ text-align:left; margin-left:0; }
-  .thoughts__photo{ width:100%; max-width:360px; margin:0 auto; }
+  .thoughts__photo{
+    position:relative; width:100%; max-width:360px; margin:0 auto;
+    border-radius: 999px 999px 0 0;
+    overflow:hidden;
+    box-shadow: var(--shadow);
+  }
   .thoughts__photo img{
     width:100%; aspect-ratio: 3 / 4; object-fit:cover; display:block;
-    border-radius: 999px 999px 0 0;
-    box-shadow: var(--shadow);
-    opacity:0.92; filter: saturate(0.94) brightness(1.02);
+    opacity:0.86; filter: saturate(0.9) brightness(1.05);
+  }
+  .thoughts__photo::after{
+    content:"";
+    position:absolute; inset:0;
+    background: linear-gradient(180deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.08) 35%, rgba(255,255,255,0.32) 100%);
+    pointer-events:none;
   }
 
   /* ---------- CTA ---------- */
@@ -274,8 +288,6 @@
   @media (max-width: 720px){
     .only-mobile{ display:inline; }
     section{ padding: 4.5rem 0; }
-    .gallery-scatter__grid{ gap: 8vw 6vw; }
-    .gallery-scatter__item{ width: 38vw; }
     .thoughts .container{ grid-template-columns: 1fr; gap:2.6rem; text-align:center; }
     .thoughts .section-head{ text-align:center; }
     .thoughts p{ text-align:center; }
@@ -317,12 +329,6 @@
       </video>
     </div>
     <div class="hero__slide">
-      <img src="assets/hero-slide-storefront.jpg" alt="レースのカーテンとドライフラワーに囲まれたシャビーシックなネイルサロンの店先を、ほうきで掃除する女性">
-    </div>
-    <div class="hero__slide">
-      <img src="assets/hero-slide-worry.jpg" alt="ネイルポリッシュを前に、頭を抱えて悩む女性">
-    </div>
-    <div class="hero__slide">
       <img src="assets/hero-slide-bed.jpg" alt="ドライフラワーとポラロイド写真に囲まれたベッドで、頬杖をついて横たわる女性">
     </div>
   </div>
@@ -348,15 +354,17 @@
 
 <!-- GALLERY -->
 <section class="gallery-scatter">
-  <div class="gallery-scatter__grid">
-    <div class="gallery-scatter__item" style="--rot:-3deg; --ty:6px;">
-      <img src="assets/gallery-01.jpg" alt="レースのカーテンとドライフラワーに囲まれたシャビーシックなネイルサロンの店先を、ほうきで掃除する女性">
-    </div>
-    <div class="gallery-scatter__item" style="--rot:2deg; --ty:-18px;">
-      <img src="assets/gallery-02.jpg" alt="ネイルポリッシュを前に、頭を抱えて悩む女性">
-    </div>
-    <div class="gallery-scatter__item" style="--rot:-2deg; --ty:10px;">
-      <img src="assets/gallery-03.jpg" alt="赤系のジェルネイルが並んだカラーチャートとサンプルチップ">
+  <div class="gallery-collage">
+    <div class="gallery-collage__frame">
+      <div class="gallery-collage__item gallery-collage__item--1">
+        <img src="assets/gallery-01.jpg" alt="レースのカーテンとドライフラワーに囲まれたシャビーシックなネイルサロンの店先を、ほうきで掃除する女性">
+      </div>
+      <div class="gallery-collage__item gallery-collage__item--2">
+        <img src="assets/gallery-02.jpg" alt="ネイルポリッシュを前に、頭を抱えて悩む女性">
+      </div>
+      <div class="gallery-collage__item gallery-collage__item--3">
+        <img src="assets/gallery-03.jpg" alt="赤系のジェルネイルが並んだカラーチャートとサンプルチップ">
+      </div>
     </div>
   </div>
 </section>
@@ -370,7 +378,7 @@
     </div>
     <p>かつての私は、お恥ずかしながら月商にして5桁——それがやっとの時期がありました。技術には自信があるのに、なぜかお客様が増えない。SNSを頑張っても、広告を出しても、思うように結果につながらない日々が続いていました。</p>
     <p>そんな時期を、私はどう抜け出したのか。特別な裏技ではなく、地道に積み重ねてきた「集客の考え方」の変化を、当時の自分に向けて書くつもりでまとめたのが、この記事です。</p>
-    <p>読んでいただく途中で、「え、これってネイリストや整体師さんでも使える方法なの?」と驚かれるかもしれません。でも、答えは「はい」です。業種は違っても、お客様に選ばれる仕組みの本質は同じだから。むしろ読み進めるうちに、「そうか、そういうことか」と腑に落ちる瞬間が、きっとあるはずです。</p>
+    <p>読んでいただく途中で、「え、これってネイリストや整体師さんでも使える方法なの?」と驚かれるかもしれません。でも、答えは「はい」です。私自身、業種は違ってもこの方法を実際に経験してきたので、この記事を読んでいただければ、きっと納得していただけると思います。</p>
     <p>自宅サロンを開いているのに集客に苦しんでいるなら、まずは今のやり方を少し見直してみること。そして最終的には、あなたの空間にもう一度お客様が来てくださる——そんな仕組みを、一緒に作っていきましょう。</p>
   </div>
 </section>

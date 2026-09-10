@@ -336,14 +336,14 @@ font-family: 'Bodoni Moda', serif;      /* 英字全般。ロゴ・見出し・�
 
 - シャビーシック系ファミリー(nailsalon_aoi・esthe_aoi・nailatelier_aoi・nailmaison_aoi・wellness_aoiと同じ)のフォント(Hina Mincho + 斜体Bodoni Moda)を踏襲
 - 配色は「薄いピンクなど画像に合う優しいアンティークな」指定に合わせ、このLP専用の淡いローズ×アンティークベージュ配色を新規に定義(既存ファミリーの色とは別)
-- 「作り手の想い」セクションにのみ、シャビーシック系ファミリーと同じアーチ型(`border-radius: 999px 999px 0 0`)の写真フレームを使用
+- 「作り手の想い」セクションにのみ、シャビーシック系ファミリーと同じアーチ型(`border-radius: 999px 999px 0 0`)の写真フレームを使用。「もう少しふわっと柔らかいイメージにしてほしい」という指示を受け、ファミリー共通の「ふわっと」技法(`opacity:0.86` + `filter: saturate(0.9) brightness(1.05)` + `::after`の白グラデーション重ね)を適用済み(`blur()`は使わない。理由は本ファイル「シャビーシック系サンプルLPファミリー」節を参照)
 - **導入フレームアニメーション**: 本体LP(KOTONOHA)の `#frameAnimation`/`#mainContent` の仕組みをそのまま移植したもの。スクロール量に応じて静止画がパラパラ切り替わり、最後にLP本体(`#mainContent`)がフェード表示される。フレーム画像はユーザー提供の5秒動画(720×720, 24fps)から`ffmpeg`で全121コマを書き出したもの(`assets/frames/frame_0001.jpg`〜`frame_0121.jpg`)。ロジックは本体LPの`script.js`と同じだが、note-lpは1ファイル完結のためHTML内の`<script>`にインライン化している。`TOTAL_FRAMES`(121)・`FRAMES_DIR`(`assets/frames/`)は本体LPと値が異なるので、コピー移植する際は書き換えを忘れないこと
 - **ヒーローの構成(重要な仕様変更あり)**: 当初は`.hero__bg`をほぼ画面いっぱいの高さ(`min-height:82vh`)にして`object-fit:cover`で画像を敷き、その上に見出し・リード文を白文字+スクリムで重ねる構成だった。しかし①タイトル文字入りのバナー画像をスマホの縦長画面で`cover`すると左右の文字が大きく切れてしまう、②画像と文字が重なって読みにくい、という2つの指摘を受けて全面的に作り直した。現在の構成:
   - `.hero__bg`は`height: clamp(260px, 48vw, 520px)`の**独立した帯**とし、中の画像・動画は`object-fit:contain`(=画像は縮小されても必ず全体が見える。左右や上下が余っても`--cream-deep`色でレターボックスになるだけで、内容が切れることはない)
   - 見出し(`.eyebrow`/`h1`)・リード文・CTAは`.hero__inner`として画像帯の**外側(下)**に配置し、`--cream`背景の上に通常の文字色(`--ink`系)で表示する。画像に文字を重ねる設計はやめた
   - この変更に伴い、`.hero__scrim`・`.hero.is-title-slide`(タイトルスライド表示中だけ見出しを隠す仕組み)は不要になり削除済み。新たに同じ問題(画像とテキストの重なり)を作り込まないよう、今後もヒーロー画像の上に本文用の文字を重ねる設計は避けること
-- **ヒーローのスライドショー(`.hero__slide`)**: `.hero__bg` 内に5枚(①タイトル文字入りバナー画像 ②動画(`hero-video.mp4`、muted/loop/playsinline、音声トラックは`ffmpeg`で除去済み) ③店先の写真 ④悩む女性の写真 ⑤ベッドで横たわる写真)を重ねて配置し、4.5秒ごとに`.is-active`クラスをJSで付け替えてopacityのtransition(1.8s)でクロスフェードする。`prefers-reduced-motion`時は自動切り替えを行わず1枚目で静止させる
-- **ギャラリー(gallery-scatter)**: ヒーロー直後に、店先の写真・悩む女性の写真・ネイルカラーチャートの3枚を、`transform: rotate(var(--rot)) translateY(var(--ty))`でランダムに回転・上下オフセットさせて配置(本体LPの`.works__item--crystal`や他サンプルLPの`.menu-gallery`と同じ手法)。すべて`aspect-ratio:1/1`の正方形にトリミング
+- **ヒーローのスライドショー(`.hero__slide`)**: `.hero__bg` 内に3枚(①タイトル文字入りバナー画像 ②動画(`hero-video.mp4`、muted/loop/playsinline、音声トラックは`ffmpeg`で除去済み) ③ベッドで横たわる女性の写真)を重ねて配置し、4.5秒ごとに`.is-active`クラスをJSで付け替えてopacityのtransition(1.8s)でクロスフェードする。`prefers-reduced-motion`時は自動切り替えを行わず1枚目で静止させる。**以前は店先の写真・悩む女性の写真も含めた5枚構成だったが**、「タイトル、瞬きしている女の子(動画)、ベッドで寝ている女の子の順にしてほしい」「掃除している画像(店先)はほかで使用するので抜く」という指示を受けて3枚に絞った(店先の写真はギャラリーコラージュ側に残し、悩む女性の写真はヒーローから削除)
+- **ギャラリー(gallery-scatter → 1枚のコラージュ)**: ヒーロー直後に、店先の写真・悩む女性の写真・ネイルカラーチャートの3枚を配置。**以前は3枚を横に並べて個別に回転・上下オフセットさせる「散らし」レイアウト(`.gallery-scatter__item`)だったが**、「3枚が不自然なので、一つのコラージュのように、画像の大きさをあえてバラバラにして一つの枠の中に3枚を収めてほしい」という指示を受けて全面的に作り直した。現在は`.gallery-collage__frame`(`position:relative`、`aspect-ratio:5/4`の1つの箱)の中に、3枚の`.gallery-collage__item`(`position:absolute`、白フチ+`box-shadow`)をサイズ違い(54%/36%/28%幅)で角度を変えて重ねて配置する、スクラップブック風の単一コラージュ構成。すべて`aspect-ratio`をitemごとに指定(4/5・1/1・1/1)して`object-fit:cover`でトリミング
 - **この記事のポイント(`.point`)**: 「作り手の想い」とCTAバナーの間に追加した短いセクション。「書いてあることは既に知っているかもしれないが、戦略を理解してやるかどうかで効果が2〜3倍変わる」という趣旨の後押し文。CSSは`.why`/`.thoughts`と共通のテキストスタイルを流用(`.why, .point`のようにセレクタをまとめている)
 
 ## 使用する画像
@@ -351,7 +351,8 @@ font-family: 'Bodoni Moda', serif;      /* 英字全般。ロゴ・見出し・�
 | 用途 | ファイル |
 |---|---|
 | ヒーロー背景・旧フラットレイ(現在は未使用、参照なし) | `assets/hero-flatlay.jpg` |
-| ヒーロースライドショー(5枚) | `assets/hero-slide-title.jpg`(タイトルバナー。CTAバナーの見出し画像としても兼用)/ `hero-video.mp4`(動画)/ `hero-slide-storefront.jpg`(店先)/ `hero-slide-worry.jpg`(悩む女性)/ `hero-slide-bed.jpg`(ベッドで横たわる女性) |
+| ヒーロースライドショー(3枚) | `assets/hero-slide-title.jpg`(タイトルバナー。CTAバナーの見出し画像としても兼用)/ `hero-video.mp4`(動画)/ `hero-slide-bed.jpg`(ベッドで横たわる女性) |
+| ヒーロー用に撮ったが現在は未使用(店先・悩む女性の各ワイド版) | `assets/hero-slide-storefront.jpg` / `assets/hero-slide-worry.jpg`(ヒーローからは削除済み。ギャラリー用の正方形版`gallery-01.jpg`/`gallery-02.jpg`とは別ファイルなので、再利用時は正方形版と混同しないこと) |
 | CTAバナーの旧見出し画像(現在は未使用、`hero-slide-title.jpg`に統一) | `assets/cta-banner-graphic.jpg` |
 | 「作り手の想い」セクションの手元写真(アーチ型) | `assets/profile-hand.jpg` |
 | ギャラリー(スクラップブック風、3枚) | `assets/gallery-01.jpg`(店先を掃除する女性)/ `gallery-02.jpg`(悩む女性)/ `gallery-03.jpg`(レッド系カラーチャート) |
