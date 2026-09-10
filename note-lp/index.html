@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>月3〜4件しか予約が入らなかった私が、集客を変えた方法</title>
-<meta name="description" content="予約が埋まらず悩んでいた頃の私が、どうやって集客の考え方を変えていったか。当時の自分に向けて綴ったnote記事のご紹介です。">
+<title>自宅サロンで「予約が来ない」を抜け出した。月商5桁から6桁へ変わるまでにやったこと</title>
+<meta name="description" content="予約が埋まらず悩んでいた頃の私が、どうやって集客の考え方を変え、月商5桁から6桁へと変わっていったか。当時の自分に向けて綴ったnote記事のご紹介です。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hina+Mincho&family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
@@ -99,51 +99,45 @@
   .logo{ font-size: 1.05rem; letter-spacing:0.14em; color: var(--white); }
 
   /* ---------- HERO ---------- */
-  .hero{ position:relative; overflow:hidden; padding:0; }
-  .hero__bg{ position:relative; min-height: 82vh; display:flex; align-items:flex-end; }
+  /* 画像・動画の上に文字を重ねると読みにくくなる(特にタイトル文字入りの
+     バナー画像はスマホの縦長画面でobject-fit:coverすると左右の文字が
+     切れてしまう)ため、画像は「全体が見える」帯として上部に独立させ、
+     見出し・リード文・CTAはその下のクリーム背景に置く構成にしている */
+  .hero{ position:relative; padding:0; background: var(--cream); }
+  .hero__bg{
+    position:relative; width:100%;
+    height: clamp(260px, 48vw, 520px);
+    background: var(--cream-deep);
+    overflow:hidden;
+  }
   .hero__slide{
     position:absolute; inset:0; opacity:0;
     transition: opacity 1.8s ease;
   }
   .hero__slide.is-active{ opacity:1; z-index:1; }
   .hero__slide img, .hero__slide video{
-    width:100%; height:100%; object-fit:cover; object-position: center 35%; display:block;
-  }
-  .hero__scrim{
-    position:absolute; inset:0;
-    background: linear-gradient(180deg, rgba(90,60,55,0.35) 0%, rgba(90,60,55,0.25) 40%, rgba(250,243,236,0.96) 96%);
+    width:100%; height:100%; object-fit:contain; display:block;
   }
   .hero__inner{
-    position:relative; z-index:1; width:100%;
-    padding: 3rem 6vw 3.5rem;
+    position:relative; width:100%;
+    padding: 2.6rem 6vw 3.5rem;
     text-align:center;
   }
   .hero .eyebrow{
-    display:inline-block; color: var(--white); font-size:0.85rem;
+    display:inline-block; color: var(--pink-deep); font-size:0.85rem;
     letter-spacing:0.32em; margin-bottom:1.4rem;
-    transition: opacity 0.6s ease;
   }
   .hero h1{
     font-family:'Bodoni Moda', serif; font-style:italic; font-weight:500;
-    color: var(--white);
-    font-size: clamp(1.5rem, 4.4vw, 2.5rem);
+    color: var(--ink);
+    font-size: clamp(1.4rem, 4vw, 2.3rem);
     line-height:1.6; letter-spacing:0.01em;
     max-width: 680px; margin: 0 auto 1.6rem;
-    text-shadow: 0 6px 24px rgba(60,40,35,0.35);
-    transition: opacity 0.6s ease;
   }
   .hero__lead{
     max-width: 520px; margin: 0 auto 2.2rem;
-    color: var(--ink);
+    color: var(--ink-light);
     font-size: 0.98rem;
-    transition: opacity 0.6s ease;
-  }
-  /* タイトル画像そのものに文字が入っているため、そのスライド表示中は
-     重複を避けるためHTML側の見出し・リード文を隠す */
-  .hero.is-title-slide .eyebrow,
-  .hero.is-title-slide h1,
-  .hero.is-title-slide .hero__lead{
-    opacity:0; pointer-events:none;
   }
   .btn{
     display:inline-flex; align-items:center; gap:0.6rem;
@@ -160,8 +154,16 @@
   .hero__note{
     margin-top:1rem; font-size:0.82rem; color: var(--ink-light);
   }
-  .note-cta{ display:none; }
-  .note-cta.is-visible{ display:block; }
+  .note-cta__live{ display:none; }
+  .note-cta.is-published .note-cta__live{ display:block; }
+  .note-cta.is-published .note-cta__pending{ display:none; }
+  .btn--soon{
+    background: var(--taupe); color: var(--ink-light);
+    border:none; font-family:inherit; cursor:not-allowed;
+  }
+  .btn--soon:hover{ background: var(--taupe); transform:none; }
+  .cta .btn--soon{ background: rgba(255,255,255,0.35); color: rgba(255,255,255,0.85); }
+  .cta .btn--soon:hover{ background: rgba(255,255,255,0.35); }
   .price-badge{
     display:inline-block;
     margin-bottom:1.2rem;
@@ -197,23 +199,26 @@
   .gallery-scatter__item img{ width:100%; aspect-ratio:1/1; object-fit:cover; display:block; }
 
   /* ---------- WHY / THOUGHTS ---------- */
-  .why{ background: var(--cream); }
-  .why .section-head{ text-align:center; margin-bottom: 2.6rem; }
-  .why .eyebrow, .thoughts .eyebrow{
+  .why, .point{ background: var(--cream); }
+  .why .section-head, .point .section-head{ text-align:center; margin-bottom: 2.6rem; }
+  .why .eyebrow, .thoughts .eyebrow, .point .eyebrow{
     display:block; font-style:italic; letter-spacing:0.18em; color: var(--pink-deep);
     font-size:0.95rem; margin-bottom:0.8rem;
   }
-  .why h2, .thoughts h2{
+  .why h2, .thoughts h2, .point h2{
     font-family:'Bodoni Moda', serif; font-style:italic; font-weight:500;
     font-size: clamp(1.5rem, 3.2vw, 2rem);
     line-height:1.6; letter-spacing:0.01em;
   }
-  .why p, .thoughts p{
+  .why p, .thoughts p, .point p{
     font-size:0.96rem; color: var(--ink);
     text-align:center;
     max-width: 560px; margin: 0 auto 1.3rem;
   }
-  .why p:last-child, .thoughts p:last-child{ margin-bottom:0; }
+  .why p:last-child, .thoughts p:last-child, .point p:last-child{ margin-bottom:0; }
+  .point p.point__emphasis{
+    font-family:'Bodoni Moda', serif; font-style:italic; font-size:1.05rem; color: var(--pink-deep);
+  }
 
   /* ---------- THOUGHTS (with photo) ---------- */
   .thoughts{ background: var(--cream-deep); }
@@ -269,7 +274,6 @@
   @media (max-width: 720px){
     .only-mobile{ display:inline; }
     section{ padding: 4.5rem 0; }
-    .hero__bg{ min-height: 74vh; }
     .gallery-scatter__grid{ gap: 8vw 6vw; }
     .gallery-scatter__item{ width: 38vw; }
     .thoughts .container{ grid-template-columns: 1fr; gap:2.6rem; text-align:center; }
@@ -302,7 +306,7 @@
 </header>
 
 <!-- HERO -->
-<section class="hero is-title-slide">
+<section class="hero">
   <div class="hero__bg">
     <div class="hero__slide is-active">
       <img src="assets/hero-slide-title.jpg" alt="「自宅サロンで『予約が来ない』を抜け出した。月商5桁から6桁へ」というタイトルと、選ばれるサロンづくり・予約につながる発信の工夫・リピーターを増やす仕組み、という3つの言葉が添えられた、ネイルケアをする女性のバナー画像">
@@ -321,15 +325,20 @@
     <div class="hero__slide">
       <img src="assets/hero-slide-bed.jpg" alt="ドライフラワーとポラロイド写真に囲まれたベッドで、頬杖をついて横たわる女性">
     </div>
-    <div class="hero__scrim"></div>
-    <div class="hero__inner">
-      <span class="eyebrow en">NOTE ARTICLE</span>
-      <h1>自宅サロンで「予約が来ない」を抜け出した。<br class="only-mobile">月商5桁から6桁へ変わるまでにやったこと</h1>
-      <p class="hero__lead">
-        予約が埋まらない焦り、値下げしても変わらない現実。<br>
-        同じ場所で立ち止まっていた頃の私だからこそ伝えられることを、noteに綴りました。
-      </p>
-      <div class="note-cta" id="noteCta1">
+  </div>
+  <div class="hero__inner">
+    <span class="eyebrow en">NOTE ARTICLE</span>
+    <h1>自宅サロンで「予約が来ない」を抜け出した。<br class="only-mobile">月商5桁から6桁へ変わるまでにやったこと</h1>
+    <p class="hero__lead">
+      予約が埋まらない焦り、値下げしても変わらない現実。<br>
+      同じ場所で立ち止まっていた頃の私だからこそ伝えられることを、noteに綴りました。
+    </p>
+    <div class="note-cta" id="noteCta1">
+      <div class="note-cta__pending">
+        <button type="button" class="btn btn--soon en" disabled>Coming Soon</button>
+        <p class="hero__note">9月18日(金)21:00 公開予定です</p>
+      </div>
+      <div class="note-cta__live">
         <a href="https://note.com/preview/n50b71d4197ac?prev_access_key=1498209ad74e993c982816ca4fb90708" class="btn en" target="_blank" rel="noopener noreferrer">記事を読む →</a>
         <p class="hero__note">タップすると、noteの記事ページに移動します</p>
       </div>
@@ -359,7 +368,7 @@
       <span class="eyebrow en">WHY I WROTE THIS</span>
       <h2>なぜ、この記事を書いたか</h2>
     </div>
-    <p>かつての私は、毎月3〜4件の予約で頭を抱えていました。技術には自信があるのに、なぜかお客様が増えない。SNSを頑張っても、広告を出しても、思うように結果につながらない日々が続いていました。</p>
+    <p>かつての私は、お恥ずかしながら月商にして5桁——それがやっとの時期がありました。技術には自信があるのに、なぜかお客様が増えない。SNSを頑張っても、広告を出しても、思うように結果につながらない日々が続いていました。</p>
     <p>そんな時期を、私はどう抜け出したのか。特別な裏技ではなく、地道に積み重ねてきた「集客の考え方」の変化を、当時の自分に向けて書くつもりでまとめたのが、この記事です。</p>
     <p>読んでいただく途中で、「え、これってネイリストや整体師さんでも使える方法なの?」と驚かれるかもしれません。でも、答えは「はい」です。業種は違っても、お客様に選ばれる仕組みの本質は同じだから。むしろ読み進めるうちに、「そうか、そういうことか」と腑に落ちる瞬間が、きっとあるはずです。</p>
     <p>自宅サロンを開いているのに集客に苦しんでいるなら、まずは今のやり方を少し見直してみること。そして最終的には、あなたの空間にもう一度お客様が来てくださる——そんな仕組みを、一緒に作っていきましょう。</p>
@@ -384,20 +393,40 @@
   </div>
 </section>
 
+<!-- POINT -->
+<section class="point">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow en">THE POINT</span>
+      <h2>この記事のポイント</h2>
+    </div>
+    <p>このnoteに書いてあることは、もしかしたらすでに知っている、あるいはやったことがあるかもしれません。</p>
+    <p>でも、ただやるのと、戦略を理解したうえでやるのとでは、効果が2倍にも3倍にもなります。</p>
+    <p>私が実際に経験し、教えてもらったことを、包み隠さずお伝えします。</p>
+    <p class="point__emphasis">「ここが頑張り時だ」「変わりたい」——そう思うなら、ぜひ手に取ってみてください。</p>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="cta">
   <div class="container">
     <div class="cta__banner-image">
-      <img src="assets/cta-banner-graphic.jpg" alt="「自宅サロンで月3〜4件しか予約が入らなかった私が、集客を変えた方法」というタイトルと、選ばれるサロンへ・理想のお客様を引き寄せる・私らしい働き方を叶える、という3つの言葉が添えられた、ネイルケアをする女性のバナー画像">
+      <img src="assets/hero-slide-title.jpg" alt="「自宅サロンで『予約が来ない』を抜け出した。月商5桁から6桁へ」というタイトルと、選ばれるサロンづくり・予約につながる発信の工夫・リピーターを増やす仕組み、という3つの言葉が添えられた、ネイルケアをする女性のバナー画像">
     </div>
     <div class="divider" aria-hidden="true"><span></span><p class="en">READ MORE</p><span></span></div>
     <h2>あなたの集客も、<br class="only-mobile">ここから変わるかもしれません。</h2>
     <p>今の悩みは、いつか誰かの力になる経験に変わります。<br>その一歩を、この記事から。</p>
     <div class="note-cta" id="noteCta2">
-      <p class="price-badge en">FIRST 5 READERS<span>初回5名様限定 ¥780</span></p>
-      <a href="https://note.com/preview/n50b71d4197ac?prev_access_key=1498209ad74e993c982816ca4fb90708" class="btn en" target="_blank" rel="noopener noreferrer">記事を読む →</a>
-      <p class="hero__note">タップすると、noteの記事ページに移動します</p>
-      <p class="hero__note">読んでくださった後、感想を聞かせていただけると嬉しいです。</p>
+      <p class="price-badge en">FIRST 5 COPIES<span>初回5部限定 ¥780</span></p>
+      <div class="note-cta__pending">
+        <button type="button" class="btn btn--soon en" disabled>Coming Soon</button>
+        <p class="hero__note">9月18日(金)21:00 公開予定です</p>
+      </div>
+      <div class="note-cta__live">
+        <a href="https://note.com/preview/n50b71d4197ac?prev_access_key=1498209ad74e993c982816ca4fb90708" class="btn en" target="_blank" rel="noopener noreferrer">記事を読む →</a>
+        <p class="hero__note">タップすると、noteの記事ページに移動します</p>
+        <p class="hero__note">読んでくださった後、感想を聞かせていただけると嬉しいです。</p>
+      </div>
     </div>
   </div>
 </section>
@@ -522,44 +551,42 @@
 <script>
   // ===== ヒーローのスライドショー(画像+動画をふわっとクロスフェード) =====
   (function () {
-    const hero = document.querySelector(".hero");
     const slides = document.querySelectorAll(".hero__slide");
-    if (!hero || slides.length < 2) return;
+    if (slides.length < 2) return;
 
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
     if (prefersReducedMotion) return; // 最初のスライド(タイトル画像)のまま静止させる
 
-    // 0番目はタイトル文字入りの画像なので、表示中はHTML側の見出しを隠す
     let idx = 0;
     setInterval(function () {
       slides[idx].classList.remove("is-active");
       idx = (idx + 1) % slides.length;
       slides[idx].classList.add("is-active");
-      hero.classList.toggle("is-title-slide", idx === 0);
     }, 4500);
   })();
 </script>
 
 <script>
-  // ===== 記事公開(2026年9月6日 21:00)までnoteへのボタンを非表示にする =====
-  // 公開時刻を過ぎたら自動的に表示する。ページを開いたまま公開時刻を
-  // またいだ場合もリロード無しで表示に切り替わる。
+  // ===== 記事公開(2026年9月18日 21:00)までボタンをComing Soon表示にする =====
+  // 公開時刻までは日付を案内しつつボタンは押せない状態にし、公開時刻を
+  // 過ぎたら自動的に本来のリンク付きボタンに切り替える。ページを開いた
+  // まま公開時刻をまたいだ場合もリロード無しで切り替わる。
   (function () {
-    var target = new Date(2026, 8, 6, 21, 0, 0, 0); // 2026年9月6日 21:00
+    var target = new Date(2026, 8, 18, 21, 0, 0, 0); // 2026年9月18日 21:00
     var ctas = document.querySelectorAll(".note-cta");
 
-    function reveal() {
+    function publish() {
       ctas.forEach(function (el) {
-        el.classList.add("is-visible");
+        el.classList.add("is-published");
       });
     }
 
     if (new Date() >= target) {
-      reveal();
+      publish();
     } else {
-      setTimeout(reveal, target - new Date());
+      setTimeout(publish, target - new Date());
     }
   })();
 </script>
