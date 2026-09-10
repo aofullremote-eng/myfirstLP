@@ -33,6 +33,60 @@
   img{ max-width:100%; display:block; }
   .en{ font-family: 'Bodoni Moda', serif; font-style: italic; }
   .only-mobile{ display:none; }
+
+  /* ---------- 導入フレームアニメーション(スクロールで静止画がパラパラ切り替わる演出) ---------- */
+  #frameAnimation{
+    position: fixed; inset: 0; z-index: 1000;
+    background: var(--cream-deep);
+    display:flex; align-items:center; justify-content:center;
+    opacity:1; transition: opacity 1.3s;
+  }
+  #frameAnimation.hidden{ opacity:0; pointer-events:none; }
+  #framePlaceholder{
+    position:absolute; inset:0;
+    background: linear-gradient(160deg, var(--cream) 0%, var(--cream-deep) 45%, var(--taupe) 100%);
+    display:flex; align-items:center; justify-content:center;
+  }
+  #framePlaceholder .pl-name{
+    font-family:'Bodoni Moda', serif; font-style:italic;
+    font-size: clamp(2.2rem, 11vw, 5rem); font-weight:500;
+    color: rgba(90, 76, 68, 0.16); letter-spacing:0.2em;
+  }
+  #frameImg{
+    position:absolute; inset:0; width:100%; height:100%;
+    object-fit:cover; object-position:50% 30%; display:none;
+  }
+  #scrollHint{
+    position:absolute; bottom:2.5rem; left:50%; transform:translateX(-50%);
+    z-index:10; display:flex; flex-direction:column; align-items:center; gap:0.5rem;
+    animation: hintBob 2s ease-in-out infinite; pointer-events:none;
+  }
+  #scrollHint .hint-text{
+    font-family:'Hina Mincho', serif; font-size:0.72rem; letter-spacing:0.25em;
+    color:#fff; font-weight:500;
+    text-shadow: 0 1px 10px rgba(0,0,0,0.5), 0 0 20px rgba(0,0,0,0.3);
+  }
+  #scrollHint .hint-arrow{
+    width:1px; height:32px;
+    background: linear-gradient(rgba(255,255,255,0.85), transparent);
+    animation: arrowDrop 1.8s ease-in-out infinite;
+  }
+  @keyframes hintBob{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(6px); } }
+  @keyframes arrowDrop{
+    0%{ opacity:0; transform:scaleY(0); transform-origin:center top; }
+    40%{ opacity:1; transform:scaleY(1); transform-origin:center top; }
+    80%{ opacity:0; transform:scaleY(1); transform-origin:center top; }
+    100%{ opacity:0; }
+  }
+  #mainContent{
+    position:fixed; inset:0; opacity:0; pointer-events:none;
+    transition: opacity 0.8s 0.3s;
+  }
+  #mainContent.visible{ position:static; opacity:1; pointer-events:auto; }
+  @media (prefers-reduced-motion: reduce){
+    #scrollHint, #scrollHint .hint-arrow{ animation:none !important; }
+  }
+
   .container{ max-width: 720px; margin: 0 auto; padding: 0 6vw; }
   section{ padding: 6.5rem 0; }
 
@@ -113,6 +167,20 @@
   .cta .price-badge{ border-color: rgba(255,255,255,0.6); color: var(--white); }
   .cta .price-badge span{ color: rgba(255,255,255,0.9); }
 
+  /* ---------- GALLERY(スクラップブック風にランダム配置) ---------- */
+  .gallery-scatter{ background: var(--cream); padding: 4.5rem 0 5.5rem; }
+  .gallery-scatter__grid{
+    display:flex; justify-content:center; align-items:flex-start;
+    gap: 3.5vw; flex-wrap:wrap;
+    max-width: 900px; margin:0 auto; padding: 0 6vw;
+  }
+  .gallery-scatter__item{
+    width: 220px;
+    box-shadow: var(--shadow);
+    transform: rotate(var(--rot,0deg)) translateY(var(--ty,0px));
+  }
+  .gallery-scatter__item img{ width:100%; aspect-ratio:1/1; object-fit:cover; display:block; }
+
   /* ---------- WHY / THOUGHTS ---------- */
   .why{ background: var(--cream); }
   .why .section-head{ text-align:center; margin-bottom: 2.6rem; }
@@ -187,6 +255,8 @@
     .only-mobile{ display:inline; }
     section{ padding: 4.5rem 0; }
     .hero__bg{ min-height: 74vh; }
+    .gallery-scatter__grid{ gap: 8vw 6vw; }
+    .gallery-scatter__item{ width: 38vw; }
     .thoughts .container{ grid-template-columns: 1fr; gap:2.6rem; text-align:center; }
     .thoughts .section-head{ text-align:center; }
     .thoughts p{ text-align:center; }
@@ -195,6 +265,22 @@
 </style>
 </head>
 <body>
+
+<!-- 導入フレームアニメーション(スクロールで静止画がパラパラ切り替わる演出) -->
+<div id="frameAnimation">
+  <div id="framePlaceholder" style="display:none">
+    <div class="pl-name">aoi</div>
+  </div>
+  <img id="frameImg" src="assets/frames/frame_0001.jpg" alt="" style="display:none">
+  <div id="scrollHint">
+    <div class="hint-text">下にスクロール</div>
+    <div class="hint-arrow"></div>
+  </div>
+</div>
+
+<noscript><style>#frameAnimation{display:none!important}#mainContent{position:static!important;opacity:1!important}</style></noscript>
+
+<div id="mainContent">
 
 <header class="site">
   <span class="logo en">aoi</span>
@@ -216,6 +302,21 @@
         <a href="https://note.com/preview/n50b71d4197ac?prev_access_key=1498209ad74e993c982816ca4fb90708" class="btn en" target="_blank" rel="noopener noreferrer">記事を読む →</a>
         <p class="hero__note">タップすると、noteの記事ページに移動します</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-scatter">
+  <div class="gallery-scatter__grid">
+    <div class="gallery-scatter__item" style="--rot:-3deg; --ty:6px;">
+      <img src="assets/gallery-01.jpg" alt="レースのカーテンとドライフラワーに囲まれたシャビーシックなネイルサロンの店先を、ほうきで掃除する女性">
+    </div>
+    <div class="gallery-scatter__item" style="--rot:2deg; --ty:-18px;">
+      <img src="assets/gallery-02.jpg" alt="ネイルポリッシュを前に、頭を抱えて悩む女性">
+    </div>
+    <div class="gallery-scatter__item" style="--rot:-2deg; --ty:10px;">
+      <img src="assets/gallery-03.jpg" alt="赤系のジェルネイルが並んだカラーチャートとサンプルチップ">
     </div>
   </div>
 </section>
@@ -274,6 +375,118 @@
   <span class="logo en">aoi</span>
   <p>© 2026 aoi</p>
 </footer>
+
+</div><!-- /#mainContent -->
+
+<script>
+  // ===== 導入フレームアニメーション =====
+  // スクロール量に応じて静止画をパラパラ切り替え、最後にLP本体を表示する
+  (function () {
+    const TOTAL_FRAMES = 121;
+    const FRAMES_DIR = "assets/frames/";
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    const frameAnimation = document.getElementById("frameAnimation");
+    const frameImg = document.getElementById("frameImg");
+    const scrollHint = document.getElementById("scrollHint");
+    const mainContent = document.getElementById("mainContent");
+
+    const skipIntro =
+      prefersReducedMotion ||
+      new URLSearchParams(location.search).get("preview") === "1";
+
+    let hasFrames = false;
+    let preloaded = [];
+    let frameAnimDone = false;
+    let jumping = false;
+
+    if (skipIntro) {
+      frameAnimation.classList.add("hidden");
+      frameAnimation.style.display = "none";
+      mainContent.classList.add("visible");
+      frameAnimDone = true;
+    } else {
+      const testImg = new Image();
+      testImg.onload = function () {
+        hasFrames = true;
+        frameImg.style.display = "block";
+        preloadFrames();
+      };
+      testImg.onerror = function () {
+        initScroll();
+      };
+      testImg.src = FRAMES_DIR + "frame_0001.jpg";
+    }
+
+    function preloadFrames() {
+      for (let i = 1; i <= TOTAL_FRAMES; i++) {
+        const img = new Image();
+        img.src = FRAMES_DIR + "frame_" + String(i).padStart(4, "0") + ".jpg";
+        preloaded.push(img);
+      }
+      initScroll();
+    }
+
+    function initScroll() {
+      document.body.style.height = hasFrames
+        ? window.innerHeight + TOTAL_FRAMES * 40 + "px"
+        : "300vh";
+
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+    }
+
+    function onScroll() {
+      if (frameAnimDone || jumping) return;
+
+      const scrollY = window.scrollY || document.documentElement.scrollTop;
+      const docH = document.body.scrollHeight - window.innerHeight;
+
+      if (scrollHint) {
+        const hintOpacity = Math.max(0, 1 - scrollY / (window.innerHeight * 0.3));
+        scrollHint.style.opacity = hintOpacity;
+      }
+
+      if (hasFrames) {
+        const progress = Math.min(scrollY / (docH * 0.85), 1);
+        const frameIdx = Math.min(
+          Math.floor(progress * TOTAL_FRAMES),
+          TOTAL_FRAMES - 1
+        );
+        if (preloaded[frameIdx] && preloaded[frameIdx].complete) {
+          frameImg.src = preloaded[frameIdx].src;
+        }
+        if (progress >= 1) finishAnimation();
+      } else {
+        const progress = Math.min(scrollY / (window.innerHeight * 1.5), 1);
+        if (progress >= 1) finishAnimation();
+      }
+    }
+
+    function finishAnimation() {
+      frameAnimDone = true;
+      jumping = true;
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      window.scrollTo(0, 0);
+      requestAnimationFrame(function () {
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+        requestAnimationFrame(function () {
+          frameAnimation.classList.add("hidden");
+          document.body.style.height = "";
+          mainContent.classList.add("visible");
+          setTimeout(function () {
+            jumping = false;
+          }, 900);
+        });
+      });
+    }
+  })();
+</script>
 
 <script>
   // ===== 記事公開(2026年9月6日 21:00)までnoteへのボタンを非表示にする =====
