@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>mimosa handmade | 天然石とシルバーの、一点物アクセサリー</title>
+<meta name="description" content="天然石とシルバーを組み合わせた、一点物のハンドメイドアクセサリー。日常にそっと特別を添える作品を、オーダーメイドでお届けします。">
+<style>
+  :root{
+    --cream: #faf6f1;
+    --cream-deep: #f0e6da;
+    --terracotta: #c17a5a;
+    --terracotta-deep: #a35f42;
+    --white: #ffffff;
+    --ink: #55483e;
+    --ink-light: #8a7b6f;
+    --line: #e6d9cb;
+    --shadow: 0 20px 45px rgba(120, 90, 60, 0.12);
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; overflow-x:hidden; }
+  body{
+    font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.9;
+    overflow-x:hidden;
+  }
+  img{ max-width:100%; display:block; }
+  .en{ font-family: Georgia, "Times New Roman", serif; font-style: italic; }
+  .only-mobile{ display:none; }
+  .container{ max-width: 880px; margin:0 auto; padding: 0 6vw; }
+  section{ padding: 6rem 0; }
+
+  /* placeholder photo box(実際の商品では、ここにお客様ご自身の写真が入ります) */
+  .photo-placeholder{
+    display:flex; align-items:center; justify-content:center;
+    background: linear-gradient(135deg, var(--cream-deep), var(--line));
+    color: var(--ink-light);
+    font-size: 0.78rem; letter-spacing: 0.08em;
+    text-align:center; padding: 1rem;
+  }
+
+  /* ---------- HEADER ---------- */
+  header.site{
+    position:sticky; top:0; z-index:10;
+    display:flex; align-items:center; justify-content:center;
+    padding: 1.2rem 5vw;
+    background: rgba(250, 246, 241, 0.9);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+  }
+  .logo{ font-size: 1.1rem; letter-spacing:0.1em; color: var(--terracotta-deep); }
+
+  /* ---------- HERO ---------- */
+  .hero{ text-align:center; padding: 4.5rem 0 3rem; }
+  .hero .eyebrow{
+    display:inline-block; color: var(--terracotta-deep); font-size:0.82rem;
+    letter-spacing:0.3em; margin-bottom:1.2rem;
+  }
+  .hero h1{
+    font-size: clamp(1.6rem, 4.4vw, 2.5rem);
+    line-height:1.7; margin-bottom:1.4rem;
+  }
+  .hero__lead{
+    max-width: 480px; margin: 0 auto 2.4rem;
+    color: var(--ink-light); font-size:0.96rem;
+  }
+  .hero__photo{
+    width: min(86vw, 560px); aspect-ratio: 4/3; margin: 0 auto;
+    border-radius: 12px; box-shadow: var(--shadow);
+  }
+  .btn{
+    display:inline-flex; align-items:center; gap:0.6rem;
+    margin-top: 2.2rem;
+    padding: 1rem 2.4rem;
+    background: var(--terracotta);
+    color: var(--white);
+    text-decoration:none;
+    font-size:0.9rem; letter-spacing:0.1em;
+    border-radius: 999px;
+    box-shadow: var(--shadow);
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  .btn:hover{ background: var(--terracotta-deep); transform: translateY(-2px); }
+
+  /* ---------- こだわり ---------- */
+  .concept{ background: var(--cream-deep); }
+  .section-head{ text-align:center; margin-bottom: 3rem; }
+  .section-head .eyebrow{
+    display:block; color: var(--terracotta-deep); font-size:0.85rem;
+    letter-spacing:0.24em; margin-bottom:0.8rem;
+  }
+  .section-head h2{ font-size: clamp(1.4rem, 3.2vw, 1.9rem); }
+  .concept__grid{
+    display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+  }
+  .concept__card{
+    background: var(--white); border-radius: 12px; padding: 2rem 1.6rem;
+    text-align:center; box-shadow: var(--shadow);
+  }
+  .concept__card .num{ font-family:Georgia, serif; font-style:italic; color: var(--terracotta); font-size:1.3rem; margin-bottom:0.8rem; }
+  .concept__card p{ font-size:0.9rem; color: var(--ink-light); }
+
+  /* ---------- プロフィール ---------- */
+  .profile .container{
+    display:grid; grid-template-columns: 220px 1fr; gap: 3rem; align-items:center;
+  }
+  .profile__photo{ aspect-ratio: 3/4; border-radius: 12px; box-shadow: var(--shadow); }
+  .profile h2{ margin-bottom:1.2rem; font-size: clamp(1.3rem, 3vw, 1.7rem); }
+  .profile p{ margin-bottom:1rem; font-size:0.94rem; }
+  .profile p:last-child{ margin-bottom:0; }
+
+  /* ---------- 作品紹介 ---------- */
+  .works{ background: var(--cream-deep); }
+  .works__grid{
+    display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+  }
+  .works__item{ background: var(--white); border-radius:12px; overflow:hidden; box-shadow: var(--shadow); }
+  .works__photo{ aspect-ratio: 1/1; }
+  .works__info{ padding: 1.4rem 1.4rem 1.6rem; text-align:center; }
+  .works__info h3{ font-size:1rem; margin-bottom:0.4rem; }
+  .works__info .price{ font-family:Georgia, serif; font-style:italic; color: var(--terracotta-deep); font-size:0.95rem; }
+  .works__note{
+    text-align:center; margin-top: 2.4rem; font-size:0.88rem; color: var(--ink-light);
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq__item{ border-bottom: 1px solid var(--line); padding: 1.6rem 0; }
+  .faq__item:first-child{ padding-top:0; }
+  .faq__q{ font-weight:bold; margin-bottom:0.6rem; }
+  .faq__q .mark{ color: var(--terracotta-deep); margin-right:0.5rem; }
+  .faq__a{ color: var(--ink-light); font-size:0.92rem; padding-left: 1.5rem; }
+
+  /* ---------- CONTACT ---------- */
+  .contact{
+    background: var(--terracotta); color: var(--white); text-align:center;
+  }
+  .contact h2{ font-size: clamp(1.4rem, 3.4vw, 2rem); margin-bottom:1.2rem; }
+  .contact p{ color: rgba(255,255,255,0.85); margin-bottom:2rem; font-size:0.95rem; }
+  .contact .btn{ background: var(--white); color: var(--terracotta-deep); }
+  .contact .btn:hover{ background: #fff; }
+
+  /* ---------- FOOTER ---------- */
+  footer.site{
+    text-align:center; padding: 2.6rem 5vw; color: var(--ink-light); font-size:0.78rem;
+  }
+
+  @media (max-width: 640px){
+    .only-mobile{ display:inline; }
+    section{ padding: 4rem 0; }
+    .profile .container{ grid-template-columns: 1fr; text-align:center; }
+    .profile__photo{ width: 60vw; max-width:220px; margin: 0 auto; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <span class="logo en">mimosa handmade</span>
+</header>
+
+<!-- ヒーロー -->
+<section class="hero">
+  <div class="container">
+    <span class="eyebrow en">HANDMADE ACCESSORY</span>
+    <h1>小さな石とシルバーに、<br class="only-mobile">日常の「特別」を。</h1>
+    <p class="hero__lead">
+      天然石とシルバーを組み合わせた、ひとつひとつ表情の違うアクセサリー。<br>
+      身につけるだけで、今日の気分が少し上向くものをお届けします。
+    </p>
+    <div class="hero__photo photo-placeholder">
+      [ ここにヒーロー写真が入ります(完成イメージ・世界観が伝わる1枚) ]
+    </div>
+    <a href="#contact" class="btn en">お問い合わせはこちら</a>
+  </div>
+</section>
+
+<!-- こだわり -->
+<section class="concept">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow en">CONCEPT</span>
+      <h2>3つのこだわり</h2>
+    </div>
+    <div class="concept__grid">
+      <div class="concept__card">
+        <div class="num en">01</div>
+        <p>天然石を1点ずつ選び抜いて使用。<br>同じ表情のものはひとつもありません。</p>
+      </div>
+      <div class="concept__card">
+        <div class="num en">02</div>
+        <p>飾りすぎない、シンプルなデザイン。<br>普段の装いに自然になじみます。</p>
+      </div>
+      <div class="concept__card">
+        <div class="num en">03</div>
+        <p>すべて手作業で丁寧に仕上げています。<br>長く愛用いただけるものづくりを。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- プロフィール -->
+<section class="profile">
+  <div class="container">
+    <div class="profile__photo photo-placeholder">
+      [ プロフィール写真 ]
+    </div>
+    <div>
+      <span class="eyebrow en" style="color:var(--terracotta-deep); letter-spacing:0.2em; font-size:0.85rem;">PROFILE</span>
+      <h2>はじめまして、hanacoです</h2>
+      <p>3年前、育児の合間に始めたアクセサリー作り。最初は自分用のプレゼントのつもりでしたが、身につけるたびに気持ちが軽くなる感覚に気づき、誰かにも届けたいと思うようになりました。</p>
+      <p>まだ大きな実績があるわけではありませんが、ひとつひとつのご注文に丁寧に向き合うことを大切にしています。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 作品紹介 -->
+<section class="works">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow en">WORKS</span>
+      <h2>作品紹介</h2>
+    </div>
+    <div class="works__grid">
+      <div class="works__item">
+        <div class="works__photo photo-placeholder">[ 作品写真1 ]</div>
+        <div class="works__info">
+          <h3>Moonstone Ring</h3>
+          <p class="price">¥4,500〜</p>
+        </div>
+      </div>
+      <div class="works__item">
+        <div class="works__photo photo-placeholder">[ 作品写真2 ]</div>
+        <div class="works__info">
+          <h3>Silver Drop Earring</h3>
+          <p class="price">¥3,800〜</p>
+        </div>
+      </div>
+      <div class="works__item">
+        <div class="works__photo photo-placeholder">[ 作品写真3 ]</div>
+        <div class="works__info">
+          <h3>Rough Stone Necklace</h3>
+          <p class="price">¥6,800〜</p>
+        </div>
+      </div>
+    </div>
+    <p class="works__note">上記は一例です。石の種類やデザインのオーダーメイドも承っております。</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow en">FAQ</span>
+      <h2>よくある質問</h2>
+    </div>
+    <div class="faq__item">
+      <p class="faq__q"><span class="mark en">Q.</span>オーダーメイドはできますか?</p>
+      <p class="faq__a">はい、石の種類や色味のご希望をお伺いしながらお作りすることができます。まずはお気軽にDMでご相談ください。</p>
+    </div>
+    <div class="faq__item">
+      <p class="faq__q"><span class="mark en">Q.</span>発送までどれくらいかかりますか?</p>
+      <p class="faq__a">ご注文確定から発送まで、通常5〜10日ほどいただいております。混雑状況によって前後する場合があります。</p>
+    </div>
+    <div class="faq__item">
+      <p class="faq__q"><span class="mark en">Q.</span>お支払い方法は?</p>
+      <p class="faq__a">現在はご注文時に個別にご案内しています。詳しくはDMにてお問い合わせください。</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <h2>気になる作品があれば、<br class="only-mobile">お気軽にどうぞ。</h2>
+    <p>ご質問・オーダーメイドのご相談は、Threadsからお気軽にお送りください。</p>
+    <a href="#" class="btn en">Threadsでお問い合わせ</a>
+  </div>
+</section>
+
+<footer class="site">
+  <p>© 2026 mimosa handmade</p>
+</footer>
+
+</body>
+</html>
