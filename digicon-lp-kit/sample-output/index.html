@@ -109,7 +109,8 @@
   .profile .container{
     display:grid; grid-template-columns: 220px 1fr; gap: 3rem; align-items:center;
   }
-  .profile__photo{ aspect-ratio: 3/4; border-radius: 12px; box-shadow: var(--shadow); }
+  .profile__photo{ aspect-ratio: 3/4; border-radius: 12px; box-shadow: var(--shadow); overflow:hidden; }
+  .profile__photo img{ width:100%; height:100%; object-fit:cover; object-position: 40% 20%; display:block; }
   .profile h2{ margin-bottom:1.2rem; font-size: clamp(1.3rem, 3vw, 1.7rem); }
   .profile p{ margin-bottom:1rem; font-size:0.94rem; }
   .profile p:last-child{ margin-bottom:0; }
@@ -208,8 +209,8 @@
 <!-- プロフィール -->
 <section class="profile">
   <div class="container">
-    <div class="profile__photo photo-placeholder">
-      [ プロフィール写真 ]
+    <div class="profile__photo">
+      <img src="assets/profile.jpg" alt="ターコイズのアクセサリーを身につけ、自宅のアトリエでノートにデザインを描くhanacoさんのポートレート">
     </div>
     <div>
       <span class="eyebrow en" style="color:var(--terracotta-deep); letter-spacing:0.2em; font-size:0.85rem;">PROFILE</span>
