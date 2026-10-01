@@ -64,10 +64,18 @@
     color: var(--ink-light); font-size:0.96rem;
   }
   .hero__photo{
+    position:relative;
     width: min(70vw, 360px); aspect-ratio: 3/4; margin: 0 auto;
     border-radius: 12px; box-shadow: var(--shadow); overflow:hidden;
   }
-  .hero__photo img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .hero__slide{
+    position:absolute; inset:0; opacity:0;
+    transition: opacity 1.8s ease;
+  }
+  .hero__slide.is-active{ opacity:1; z-index:1; }
+  .hero__slide img, .hero__slide video{
+    width:100%; height:100%; object-fit:cover; display:block;
+  }
   .btn{
     display:inline-flex; align-items:center; gap:0.6rem;
     margin-top: 2.2rem;
@@ -110,11 +118,20 @@
   .profile .container{
     display:grid; grid-template-columns: 240px 1fr; gap: 3.2rem; align-items:center;
   }
-  .profile__photo{ width:100%; max-width:280px; margin:0 auto; }
-  .profile__photo img{
-    width:100%; aspect-ratio: 3/4; object-fit:cover; display:block;
+  .profile__photo{
+    position:relative; width:100%; max-width:280px; margin:0 auto;
+    aspect-ratio: 3/4; overflow:hidden;
     border-radius: 999px 999px 0 0;
     box-shadow: var(--shadow);
+  }
+  .profile__photo img{
+    width:100%; height:100%; object-fit:cover; display:block;
+    opacity:0.88;
+    filter: saturate(0.92) brightness(1.04);
+  }
+  .profile__photo::after{
+    content:""; position:absolute; inset:0;
+    background: linear-gradient(180deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.06) 35%, rgba(255,255,255,0.3) 100%);
   }
   .profile .eyebrow{ display:block; color: var(--pink-deep); letter-spacing:0.22em; font-size:0.85rem; margin-bottom:0.6rem; }
   .profile h2{ margin-bottom:1.2rem; font-size: clamp(1.3rem, 3vw, 1.7rem); word-break: keep-all; }
@@ -233,8 +250,16 @@
       「自分の世界観を発信したい」「LPを自分で作ってみたい」。<br>
       そんな想いを、今日からかたちにするための入門セットです。
     </p>
-    <div class="hero__photo">
-      <img src="assets/hero.jpg" alt="レースのワンピースを着て、花に囲まれた朝食のテーブルでくつろぐ女性">
+    <div class="hero__photo" id="heroPhoto">
+      <div class="hero__slide is-active">
+        <video src="assets/hero-video.mp4" autoplay muted loop playsinline aria-label="朝食のテーブルでくつろぐ女性"></video>
+      </div>
+      <div class="hero__slide">
+        <img src="assets/hero-slide-02.jpg" alt="花やノート、コーヒーが置かれたナチュラルな作業机の俯瞰写真">
+      </div>
+      <div class="hero__slide">
+        <img src="assets/hero-slide-03.jpg" alt="机に向かいパソコンで作業する女性を上から見た写真">
+      </div>
     </div>
     <a href="#offer" class="btn en">セットの中身を見る</a>
   </div>
@@ -364,6 +389,23 @@
   </div>
   <p>© 2026 aoi</p>
 </footer>
+
+<script>
+  (function(){
+    var root = document.getElementById('heroPhoto');
+    if(!root) return;
+    var slides = root.querySelectorAll('.hero__slide');
+    if(slides.length < 2) return;
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduceMotion) return;
+    var current = 0;
+    setInterval(function(){
+      slides[current].classList.remove('is-active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('is-active');
+    }, 4500);
+  })();
+</script>
 
 </body>
 </html>
