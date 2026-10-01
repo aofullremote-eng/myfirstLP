@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>初めてでも安心 デジタルコンテンツスタートセット | aoi</title>
+<meta name="description" content="自分の世界観を作るプロンプト集と、初めてでもLPが作れるようになるガイドをセットにした、デジタルコンテンツスタートセットです。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hina+Mincho&family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream: #faf4f0;
+    --cream-deep: #f1e2d9;
+    --brown: #8b5e45;
+    --brown-deep: #5c3c2a;
+    --pink: #d9a8a0;
+    --pink-deep: #c17f76;
+    --white: #fffbf8;
+    --ink: #4a362b;
+    --ink-light: #8a7468;
+    --line: #e8d9cf;
+    --shadow: 0 22px 48px rgba(92, 60, 42, 0.14);
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; overflow-x:hidden; }
+  body{
+    font-family: "Hina Mincho", "Hiragino Mincho ProN", serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.9;
+    overflow-x:hidden;
+  }
+  img{ max-width:100%; display:block; }
+  .en{ font-family: "Bodoni Moda", serif; font-style: italic; }
+  .only-mobile{ display:none; }
+  .container{ max-width: 880px; margin:0 auto; padding: 0 6vw; }
+  section{ padding: 6.5rem 0; }
+
+  /* ---------- HEADER ---------- */
+  header.site{
+    position:sticky; top:0; z-index:10;
+    display:flex; align-items:center; justify-content:center;
+    padding: 1.3rem 5vw;
+    background: rgba(250, 244, 240, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .logo{ font-size: 1.1rem; letter-spacing:0.14em; color: var(--brown-deep); }
+
+  /* ---------- HERO ---------- */
+  .hero{ text-align:center; padding: 4.8rem 0 3.5rem; }
+  .hero .eyebrow{
+    display:inline-block; color: var(--pink-deep); font-size:0.82rem;
+    letter-spacing:0.32em; margin-bottom:1.3rem;
+  }
+  .hero h1{
+    font-size: clamp(1.6rem, 4.4vw, 2.5rem);
+    line-height:1.8; margin-bottom:1.4rem; color: var(--ink);
+    word-break: keep-all;
+  }
+  .hero__lead{
+    max-width: 480px; margin: 0 auto 2.4rem;
+    color: var(--ink-light); font-size:0.96rem;
+  }
+  .hero__photo{
+    width: min(70vw, 360px); aspect-ratio: 3/4; margin: 0 auto;
+    border-radius: 12px; box-shadow: var(--shadow); overflow:hidden;
+  }
+  .hero__photo img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .btn{
+    display:inline-flex; align-items:center; gap:0.6rem;
+    margin-top: 2.2rem;
+    padding: 1rem 2.4rem;
+    background: var(--brown);
+    color: var(--white);
+    text-decoration:none;
+    font-size:0.9rem; letter-spacing:0.1em;
+    border-radius: 999px;
+    box-shadow: var(--shadow);
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  .btn:hover{ background: var(--brown-deep); transform: translateY(-2px); }
+  .btn--outline{
+    background: transparent; color: var(--brown-deep); border: 1px solid var(--brown);
+    box-shadow:none;
+  }
+  .btn--outline:hover{ background: var(--brown); color: var(--white); }
+
+  /* ---------- こだわり ---------- */
+  .concept{ background: var(--cream-deep); }
+  .section-head{ text-align:center; margin-bottom: 3rem; }
+  .section-head .eyebrow{
+    display:block; color: var(--pink-deep); font-size:0.85rem;
+    letter-spacing:0.24em; margin-bottom:0.8rem;
+  }
+  .section-head h2{ font-size: clamp(1.4rem, 3.2vw, 1.9rem); word-break: keep-all; }
+  .concept__grid{
+    display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+  }
+  .concept__card{
+    background: var(--white); border-radius: 12px; padding: 2.2rem 1.6rem;
+    text-align:center; box-shadow: var(--shadow);
+  }
+  .concept__card .num{ font-family:"Bodoni Moda", serif; font-style:italic; color: var(--pink-deep); font-size:1.3rem; margin-bottom:0.8rem; }
+  .concept__card p{ font-size:0.9rem; color: var(--ink-light); }
+
+  /* ---------- プロフィール ---------- */
+  .profile .container{
+    display:grid; grid-template-columns: 240px 1fr; gap: 3.2rem; align-items:center;
+  }
+  .profile__photo{ width:100%; max-width:280px; margin:0 auto; }
+  .profile__photo img{
+    width:100%; aspect-ratio: 3/4; object-fit:cover; display:block;
+    border-radius: 999px 999px 0 0;
+    box-shadow: var(--shadow);
+  }
+  .profile .eyebrow{ display:block; color: var(--pink-deep); letter-spacing:0.22em; font-size:0.85rem; margin-bottom:0.6rem; }
+  .profile h2{ margin-bottom:1.2rem; font-size: clamp(1.3rem, 3vw, 1.7rem); word-break: keep-all; }
+  .profile p{ margin-bottom:1rem; font-size:0.94rem; }
+  .profile p:last-child{ margin-bottom:0; }
+
+  /* ---------- セットの中身(オファー) ---------- */
+  .offer{ background: var(--cream-deep); }
+  .price-badge{
+    display:block; width:fit-content; margin: 0 auto 3rem;
+    padding:0.7rem 2rem;
+    border: 1px solid var(--pink-deep);
+    border-radius:999px;
+    font-size:0.82rem; letter-spacing:0.1em;
+    color: var(--pink-deep); text-align:center;
+  }
+  .price-badge span{
+    display:block; font-family:"Bodoni Moda", serif; font-style:italic;
+    font-size:1.3rem; color: var(--brown-deep); margin-top:0.3rem;
+  }
+  .offer__grid{
+    display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem; margin-bottom: 2rem;
+  }
+  .offer__item{
+    background: var(--white); border-radius:14px; padding: 2.2rem 1.8rem;
+    box-shadow: var(--shadow); text-align:center;
+  }
+  .offer__item .tag{
+    display:inline-block; font-family:"Bodoni Moda", serif; font-style:italic;
+    color: var(--pink-deep); font-size:0.85rem; letter-spacing:0.08em; margin-bottom:0.8rem;
+  }
+  .offer__item h3{ font-size:1.1rem; margin-bottom:0.8rem; word-break: keep-all; }
+  .offer__item p{ font-size:0.9rem; color: var(--ink-light); margin-bottom:1.6rem; }
+  .offer__note{
+    text-align:center; font-size:0.85rem; color: var(--ink-light);
+  }
+
+  /* ---------- 再販について ---------- */
+  .resale{ background: var(--white); }
+  .resale__box{
+    background: var(--cream); border: 1px solid var(--line); border-radius:14px;
+    padding: 2.4rem 2rem; max-width: 640px; margin: 0 auto;
+  }
+  .resale__box p{ font-size:0.94rem; margin-bottom:1.1rem; }
+  .resale__box p:last-child{ margin-bottom:0; }
+  .resale__box .ok{ color: var(--brown-deep); font-weight:bold; }
+  .resale__box .ng{ color: var(--pink-deep); font-weight:bold; }
+
+  /* ---------- FAQ ---------- */
+  .faq__item{ border-bottom: 1px solid var(--line); padding: 1.7rem 0; }
+  .faq__item:first-child{ padding-top:0; }
+  .faq__q{ font-weight:bold; margin-bottom:0.6rem; }
+  .faq__q .mark{ color: var(--pink-deep); margin-right:0.5rem; }
+  .faq__a{ color: var(--ink-light); font-size:0.92rem; padding-left: 1.5rem; }
+
+  /* ---------- CONTACT ---------- */
+  .contact{
+    background: linear-gradient(150deg, var(--brown) 0%, var(--brown-deep) 100%);
+    color: var(--white); text-align:center;
+  }
+  .contact h2{ font-size: clamp(1.4rem, 3.4vw, 2rem); margin-bottom:1.2rem; word-break: keep-all; }
+  .contact p{ color: rgba(255,255,255,0.85); margin-bottom:2rem; font-size:0.95rem; }
+  .contact .btn-group{ display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+  .contact .btn{ background: var(--white); color: var(--brown-deep); }
+  .contact .btn:hover{ background: #fff; }
+  .contact .btn--outline{ background:transparent; color: var(--white); border-color: rgba(255,255,255,0.6); }
+  .contact .btn--outline:hover{ background: rgba(255,255,255,0.15); }
+
+  /* ---------- FOOTER ---------- */
+  footer.site{
+    text-align:center; padding: 2.8rem 5vw; color: var(--ink-light); font-size:0.78rem;
+    background: var(--cream);
+  }
+  .footer__threads{ margin: 1.6rem 0 1.4rem; }
+  .footer__threads-note{
+    font-size:0.72rem; color: var(--ink-light); letter-spacing:0.03em;
+    max-width: 300px; margin: 0 auto 0.9rem;
+  }
+  .threads-btn{
+    display:inline-flex; align-items:center; gap:0.45rem;
+    padding: 0.55rem 1.3rem;
+    background: var(--white);
+    border: 1px solid var(--pink-deep);
+    color: var(--pink-deep);
+    border-radius: 999px;
+    font-size:0.78rem; letter-spacing:0.04em;
+    text-decoration:none;
+    box-shadow: var(--shadow);
+    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  }
+  .threads-btn:hover{ background: var(--pink-deep); color: var(--white); transform: translateY(-2px); }
+  .threads-btn svg{ width:14px; height:14px; fill: currentColor; flex-shrink:0; }
+
+  @media (max-width: 640px){
+    .only-mobile{ display:inline; }
+    section{ padding: 4.4rem 0; }
+    .profile .container{ grid-template-columns: 1fr; text-align:center; }
+    .profile__photo{ max-width:220px; margin: 0 auto; }
+    .contact .btn-group{ flex-direction:column; align-items:center; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <span class="logo en">aoi</span>
+</header>
+
+<!-- ヒーロー -->
+<section class="hero">
+  <div class="container">
+    <span class="eyebrow en">DIGITAL CONTENT START SET</span>
+    <h1>はじめてでも、安心。<br class="only-mobile">デジタルコンテンツ<br class="only-mobile">スタートセット</h1>
+    <p class="hero__lead">
+      「自分の世界観を発信したい」「LPを自分で作ってみたい」。<br>
+      そんな想いを、今日からかたちにするための入門セットです。
+    </p>
+    <div class="hero__photo">
+      <img src="assets/hero.jpg" alt="レースのワンピースを着て、花に囲まれた朝食のテーブルでくつろぐ女性">
+    </div>
+    <a href="#offer" class="btn en">セットの中身を見る</a>
+  </div>
+</section>
+
+<!-- こだわり -->
+<section class="concept">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow en">CONCEPT</span>
+      <h2>3つのこだわり</h2>
+    </div>
+    <div class="concept__grid">
+      <div class="concept__card">
+        <div class="num en">01</div>
+        <p>専門知識が無くても大丈夫。<br>一つずつ順番に進めるだけで、自分の世界観をかたちにできます。</p>
+      </div>
+      <div class="concept__card">
+        <div class="num en">02</div>
+        <p>プロンプトも手順も、aoiが実際に使っているものだけをそのままお渡しします。</p>
+      </div>
+      <div class="concept__card">
+        <div class="num en">03</div>
+        <p>内容をきちんと理解していただいた方には、条件付きで再販もご案内しています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- プロフィール -->
+<section class="profile">
+  <div class="container">
+    <div class="profile__photo">
+      <img src="assets/profile.jpg" alt="花が咲く小道で、光にかざした手越しに空を見上げる女性のポートレート">
+    </div>
+    <div>
+      <span class="eyebrow en">PROFILE</span>
+      <h2>はじめまして、aoiです</h2>
+      <p>LP制作のパートナーとして活動しています。これまで試行錯誤しながら身につけてきた「世界観の作り方」と「LPの作り方」を、同じように一歩を踏み出したい方のために、一つのセットにまとめました。</p>
+      <p>まだ大きな実績があるわけではありませんが、だからこそ分かる「最初につまずきやすいポイント」を、このセットにぎゅっと詰め込んでいます。</p>
+    </div>
+  </div>
+</section>
+
+<!-- セットの中身 -->
+<section class="offer" id="offer">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow en">WHAT'S INCLUDED</span>
+      <h2>セットの中身</h2>
+    </div>
+    <p class="price-badge en">DIGITAL CONTENT START SET<span>¥19,800</span></p>
+    <div class="offer__grid">
+      <div class="offer__item">
+        <span class="tag en">PROMPT</span>
+        <h3>あなたの世界観を作るプロンプト集</h3>
+        <p>写真や言葉の雰囲気を、AIで再現するためのプロンプト集です。</p>
+        <a href="#" class="btn btn--outline en">プロンプト集を見る →</a>
+      </div>
+      <div class="offer__item">
+        <span class="tag en">GUIDE</span>
+        <h3>初めてでも作れるLPガイド</h3>
+        <p>Claude Code × Netlify Dropで、自分のLPを公開するまでの手順ガイドです。</p>
+        <a href="#" class="btn btn--outline en">ガイドを見る →</a>
+      </div>
+    </div>
+    <p class="offer__note">※ 今後、セットの内容が増える可能性があります。</p>
+  </div>
+</section>
+
+<!-- 再販について -->
+<section class="resale">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow en">RESALE</span>
+      <h2>再販について</h2>
+    </div>
+    <div class="resale__box">
+      <p><span class="ok">OK</span> プロンプト集・LPの作り方ガイドは、内容をきちんとご理解いただいた上でなら、条件付きで再販していただけます(表紙デザインは変更をお願いしています)。</p>
+      <p><span class="ng">NG</span> 説明用のPDF資料そのものの再販はできません。再販される場合は、ご自身の言葉で新しくオリジナルの説明資料を作成してください。</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow en">FAQ</span>
+      <h2>よくある質問</h2>
+    </div>
+    <div class="faq__item">
+      <p class="faq__q"><span class="mark en">Q.</span>Claude Proへの登録は必要ですか?</p>
+      <p class="faq__a">はい、LPガイドの中でClaude Codeを使用するため、Claude Proへの登録が必要です。詳しい手順はガイドの中でご案内しています。</p>
+    </div>
+    <div class="faq__item">
+      <p class="faq__q"><span class="mark en">Q.</span>再販は本当に自由にできますか?</p>
+      <p class="faq__a">内容をきちんとご理解いただいた上で、表紙デザインを変更していただければ、条件付きで可能です。ただし説明用PDFそのものの再販はできませんので、ご自身の言葉で資料を作り直してください。</p>
+    </div>
+    <div class="faq__item">
+      <p class="faq__q"><span class="mark en">Q.</span>パソコンが苦手でも大丈夫ですか?</p>
+      <p class="faq__a">はい。ガイドは専門知識が無い方にも分かるよう、一つずつ丁寧に説明しています。</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <h2>今日から、<br class="only-mobile">あなたの一歩を。</h2>
+    <p>気になる方は、下のボタンからチェックしてみてください。</p>
+    <div class="btn-group">
+      <a href="#" class="btn en">プロンプト集を見る</a>
+      <a href="#" class="btn btn--outline en">ガイドを見る</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <span class="logo en">aoi</span>
+  <div class="footer__threads">
+    <p class="footer__threads-note">ご質問・ご相談は、Threadsからお気軽にどうぞ。</p>
+    <a href="https://www.threads.com/@aoi_lp213" class="threads-btn en" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 192 192" aria-hidden="true"><path d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.7443C82.2364 44.7443 69.7731 51.1409 62.102 62.7807L75.881 72.2328C81.6116 63.5383 90.6052 61.6848 97.2286 61.6848C97.3051 61.6848 97.3819 61.6848 97.4576 61.6855C105.707 61.7381 111.932 64.1366 115.961 68.814C118.893 72.2193 120.854 76.925 121.825 82.8638C114.511 81.6207 106.601 81.2385 98.145 81.7217C74.3247 83.0834 59.0111 96.9012 60.0396 116.106C60.5615 125.859 65.4397 134.253 73.8781 139.746C81.0113 144.39 90.1974 146.657 99.7351 146.152C112.376 145.474 122.322 140.554 129.294 131.526C134.628 124.629 138.007 115.649 139.503 104.288C145.573 108.061 150.084 113.03 152.552 118.999C156.744 129.106 157 145.681 143.616 159.052C131.874 170.783 117.777 175.863 97.0135 176.017C74.0704 175.845 56.6716 168.402 45.2988 154.9C34.6544 142.263 29.1592 124.211 28.9723 96.145C29.1592 68.0937 34.6544 50.0421 45.2988 37.4045C56.6716 23.9018 74.0704 16.459 97.0135 16.2871C120.116 16.4602 137.821 23.9391 149.652 38.5016C155.454 45.6549 159.827 54.5804 162.706 65.0407L179.128 60.6461C175.677 47.7768 170.207 36.6318 162.735 27.4157C147.639 8.83217 125.414 -0.0577415 97.0715 -0.246582H96.9556C68.6749 -0.0577415 46.6975 8.87024 31.6178 27.5233C18.2266 44.0546 11.3168 66.9714 11.0995 95.9757L11.0977 96.145L11.0995 96.3142C11.3168 125.319 18.2266 148.235 31.6178 164.767C46.6975 183.42 68.6749 192.34 96.9556 192.528H97.0715C122.031 192.363 139.749 185.947 154.351 171.833C173.622 153.276 173.031 130.075 166.744 116.028C162.221 105.923 153.596 97.7355 141.537 88.9883ZM98.4405 129.507C88.0005 130.095 77.1544 125.409 76.6196 115.372C76.2232 107.93 81.9158 99.6154 99.0812 98.6154C101.047 98.5001 102.976 98.4437 104.871 98.4437C111.106 98.4437 116.939 99.0692 122.242 100.264C120.264 124.699 108.662 128.949 98.4405 129.507Z"/></svg>
+      Threads @aoi_lp213
+    </a>
+  </div>
+  <p>© 2026 aoi</p>
+</footer>
+
+</body>
+</html>
