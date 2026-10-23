@@ -147,6 +147,18 @@
     box-shadow:none;
   }
   .btn--outline:hover{ background: var(--brown); color: var(--white); }
+  .note-cta__live{ display:none; }
+  .note-cta.is-published .note-cta__live{ display:block; }
+  .note-cta.is-published .note-cta__pending{ display:none; }
+  .note-cta__note{ margin-top:1rem; font-size:0.82rem; color: var(--ink-light); }
+  .contact .note-cta__note{ color: rgba(255,255,255,0.75); }
+  .btn--soon{
+    background: var(--line); color: var(--ink-light);
+    border:none; font-family:inherit; cursor:not-allowed;
+  }
+  .btn--soon:hover{ background: var(--line); transform:none; }
+  .contact .btn--soon{ background: rgba(255,255,255,0.25); color: rgba(255,255,255,0.85); }
+  .contact .btn--soon:hover{ background: rgba(255,255,255,0.25); }
 
   /* ---------- こだわり ---------- */
   .concept{ background: var(--cream-deep); }
@@ -461,10 +473,38 @@
     <h2>今日から、<br class="only-mobile">あなたの一歩を。</h2>
     <p>笑顔を消さずに、家族のために。気になる方は、下のボタンからチェックしてみてください。</p>
     <div class="btn-group">
-      <a href="#" class="btn en">noteで詳しく見る →</a>
+      <div class="note-cta" id="noteCta">
+        <div class="note-cta__pending">
+          <button type="button" class="btn btn--soon en" disabled>Coming Soon</button>
+          <p class="note-cta__note">21:00 公開予定です</p>
+        </div>
+        <div class="note-cta__live">
+          <a href="https://note.com/glad_llama5023/n/n7c1eb07531b3" class="btn en" target="_blank" rel="noopener noreferrer">noteで詳しく見る →</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
+<script>
+  // ===== note公開(2026年10月23日 21:00)までボタンをComing Soon表示にする =====
+  (function () {
+    var target = new Date(2026, 9, 23, 21, 0, 0, 0); // 2026年10月23日 21:00
+    var ctas = document.querySelectorAll(".note-cta");
+
+    function publish() {
+      ctas.forEach(function (el) {
+        el.classList.add("is-published");
+      });
+    }
+
+    if (new Date() >= target) {
+      publish();
+    } else {
+      setTimeout(publish, target - new Date());
+    }
+  })();
+</script>
 
 <footer class="site">
   <span class="logo en">aoi</span>
